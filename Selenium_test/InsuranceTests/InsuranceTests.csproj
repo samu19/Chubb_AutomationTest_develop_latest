@@ -9,8 +9,8 @@
     <ProjectGuid>{7F0412B4-C7CF-4A42-951D-189179CD967E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuoteTests</RootNamespace>
-    <AssemblyName>QuoteTests</AssemblyName>
+    <RootNamespace>InsuranceTests</RootNamespace>
+    <AssemblyName>InsuranceTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -21,6 +21,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +39,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -61,7 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GetQuoteTest.cs" />
+    <Compile Include="InsuranceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -75,6 +79,14 @@
       <Project>{19ED65A7-19F6-4CF4-8325-0315319B2A3A}</Project>
       <Name>LandingPageAutomation</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PaymentPageAutomation\PaymentPageAutomation.csproj">
+      <Project>{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}</Project>
+      <Name>PaymentPageAutomation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PlanPageAutomation\PlanPageAutomation.csproj">
+      <Project>{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}</Project>
+      <Name>PlanPageAutomation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuotePageAutomation\QuotePageAutomation.csproj">
       <Project>{435C309E-DA83-42A4-BD1B-365109B64CD9}</Project>
       <Name>QuotePageAutomation</Name>
@@ -82,6 +94,10 @@
     <ProjectReference Include="..\SeleniumAutomation\SeleniumAutomation.csproj">
       <Project>{FB1B1968-5548-409F-902F-56FEA9634AC3}</Project>
       <Name>SeleniumAutomation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravellerDetailsPageAutomation\TravellerDetailsPageAutomation.csproj">
+      <Project>{5EDF8967-E862-4599-A197-0653EC82CD63}</Project>
+      <Name>TravellerDetailsPageAutomation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

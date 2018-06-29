@@ -11,12 +11,16 @@ namespace QuotePageAutomation
     public class AdultAge : IFillable
     {
         public string adultAge;
-
+        public string coverType;
         public void Fill()
         {
+            string xPath = "/html/body/chubb-dbs-app/app-trip/div/form/div[1]/div/chubb-traveler-age/div/mat-form-field/div/div[1]/div/input";
+
+            if (coverType == "Family")
+                xPath = "//*[@id='mat-input-5']";
             // to pass in adult age
-            Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-            Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(xPath)));
+            Driver.Instance.FindElement(By.XPath(xPath)).SendKeys(adultAge);
         }
     }
 }

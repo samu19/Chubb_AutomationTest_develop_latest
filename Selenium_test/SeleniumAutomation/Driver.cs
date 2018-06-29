@@ -8,19 +8,23 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 using System.IO;
 using OpenQA.Selenium.Chrome;
+//using OpenQA.Selenium.Chrome;
 
 namespace SeleniumAutomation
 {
     public class Driver
     {
-        private static int timeout = 10;
-        private const int ATTEMPT = 4;
+        private static int timeout = 3;
+        private const int ATTEMPT = 3;
 
         public static IWebDriver Instance { get; set; }
 
         public static void Initialize(int Timeout)
         {
+            ChromeOptions options = new ChromeOptions();
 
+            options.EnableMobileEmulation("iPhone 6/7/8");
+            //options.AddArgument("start-maximized");
             Instance = new ChromeDriver();
 
             Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(timeout);
@@ -28,9 +32,13 @@ namespace SeleniumAutomation
 
         public static void Initialize()
         {
+            ChromeOptions options = new ChromeOptions();
+
+            options.EnableMobileEmulation("Galaxy S5");
+            options.AddArgument("start-maximized");
             //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
 
-            Instance = new ChromeDriver();
+            Instance = new ChromeDriver(options);
             Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
         }
 

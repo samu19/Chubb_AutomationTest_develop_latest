@@ -15,9 +15,12 @@ namespace QuotePageAutomation
 
         public void Fill()
         {
+            if (String.IsNullOrWhiteSpace(childAge))
+                return;
+
             // To pass in child age
-            Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-            Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='mat-input-6']")));
+            Driver.Instance.FindElement(By.XPath("//*[@id='mat-input-6']")).SendKeys(childAge);
         }
     }
 }

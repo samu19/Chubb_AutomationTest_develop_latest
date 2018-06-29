@@ -3,8 +3,10 @@ using OpenQA.Selenium.Support.UI;
 using SeleniumAutomation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace QuotePageAutomation
@@ -16,28 +18,15 @@ namespace QuotePageAutomation
         public void Fill()
         {
             // To pass in Cover Type into appropriate field
-            switch(coverType)
+            if(coverType != "Individual")
             {
-                case "Individual":
-                    //default selection is Individual
-                    break;
-
-                case "Family":
-                    Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-                    Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
-                    break;
-
-                case "Group":
-                    Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-                    Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
-                    break;
-
-                case "Couple":
-                    Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-                    Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
-                    break;
-
+                Driver.Instance.FindElement(By.XPath("//*[@id='mat-select-0']/div/div[1]")).Click();
+                ReadOnlyCollection<IWebElement> coverTypeOptions = Driver.Instance.FindElements(By.ClassName("mat-option-text"));
+                coverTypeOptions.FirstOrDefault(a => a.Text == coverType).Click();
+                //Thread.Sleep(10000);
+                
             }
+
         }
     }
 }

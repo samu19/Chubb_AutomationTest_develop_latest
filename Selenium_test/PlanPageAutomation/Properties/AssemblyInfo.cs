@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QuoteSummaryAutomation")]
+[assembly: AssemblyTitle("PlanPageAutomation")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QuoteSummaryAutomation")]
+[assembly: AssemblyProduct("PlanPageAutomation")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("41262c2e-b923-44d1-a17a-1515694fe2cf")]
+[assembly: Guid("dea649a0-7747-4723-a7bb-b65ee72e9aa5")]
 
 // Version information for an assembly consists of the following four values:
 //

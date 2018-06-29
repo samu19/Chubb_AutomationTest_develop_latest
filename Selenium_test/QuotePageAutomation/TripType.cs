@@ -18,8 +18,8 @@ namespace QuotePageAutomation
             if (!isSingleTrip) // If Annual Trip
             {
                 //To change - choose Annual Trip radio button
-                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.CssSelector("input[id*='ddlLetterTemplate_Input']")));
-                Driver.ClickWithRetry(By.CssSelector("input[id*='ddlLetterTemplate_Input']"));
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id("mat-radio-3-input")));
+                Driver.ClickWithRetry(By.Id("mat-radio-3-input"));
             }
         }
     }

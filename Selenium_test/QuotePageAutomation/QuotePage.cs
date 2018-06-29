@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumAutomation;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -12,20 +14,19 @@ namespace QuotePageAutomation
 {
     public class QuotePage
     {
-        private static string quotePage = @"xxx";
+        private static string quotePage = ConfigurationManager.AppSettings["url"].ToString();
 
-        public static string CompanyName
-        {
-            get
-            {
-                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.CssSelector("span[id*='lblCompany']")));
-                return Driver.Instance.FindElement(By.CssSelector("span[id*='lblCompany']")).GetAttribute("textContent");
-            }
-        }
+
 
         public static void GotoQuotePage()
         {
+            //Driver.Instance.Manage().Window.Maximize();
             Driver.Instance.Navigate().GoToUrl(quotePage);
+        }
+
+        public static string GetCurrentURLSlug()
+        {
+            return Driver.Instance.Url.Split('/').Last();
         }
 
 
@@ -60,8 +61,9 @@ namespace QuotePageAutomation
             }
 
             // Trigger Get Quote Button Here
-            Driver.ClickWithRetry(By.CssSelector("input[id*='btnSendForEndorsement']"));
-            Driver.GetWait().Until(ExpectedConditions.UrlToBe("https://10.229.85.23/Dashboard/UserDashboard.aspx"));
+            Driver.ClickWithRetry(By.XPath("/html/body/chubb-dbs-app/app-trip/div/form/div[2]/button"));
+            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("quote"));
+            //Driver.GetWait().Until(ExpectedConditions.UrlToBe("https://10.229.85.23/Dashboard/UserDashboard.aspx"));
         }
 
         

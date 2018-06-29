@@ -16,9 +16,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotePageAutomation", "QuotePageAutomation\QuotePageAutomation.csproj", "{435C309E-DA83-42A4-BD1B-365109B64CD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteTests", "QuoteTests\QuoteTests.csproj", "{7F0412B4-C7CF-4A42-951D-189179CD967E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuranceTests", "InsuranceTests\InsuranceTests.csproj", "{7F0412B4-C7CF-4A42-951D-189179CD967E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuoteSummaryAutomation", "QuoteSummaryAutomation\QuoteSummaryAutomation.csproj", "{41262C2E-B923-44D1-A17A-1515694FE2CF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlanPageAutomation", "PlanPageAutomation\PlanPageAutomation.csproj", "{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerDetailsPageAutomation", "TravellerDetailsPageAutomation\TravellerDetailsPageAutomation.csproj", "{5EDF8967-E862-4599-A197-0653EC82CD63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentPageAutomation", "PaymentPageAutomation\PaymentPageAutomation.csproj", "{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,10 +50,18 @@ Global
 		{7F0412B4-C7CF-4A42-951D-189179CD967E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F0412B4-C7CF-4A42-951D-189179CD967E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F0412B4-C7CF-4A42-951D-189179CD967E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{41262C2E-B923-44D1-A17A-1515694FE2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{41262C2E-B923-44D1-A17A-1515694FE2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{41262C2E-B923-44D1-A17A-1515694FE2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{41262C2E-B923-44D1-A17A-1515694FE2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA649A0-7747-4723-A7BB-B65EE72E9AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EDF8967-E862-4599-A197-0653EC82CD63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EDF8967-E862-4599-A197-0653EC82CD63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EDF8967-E862-4599-A197-0653EC82CD63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EDF8967-E862-4599-A197-0653EC82CD63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
