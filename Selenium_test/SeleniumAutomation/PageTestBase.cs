@@ -25,7 +25,7 @@ namespace SeleniumAutomation
                 {
                     var screenshot = ((ITakesScreenshot)Driver.Instance).GetScreenshot();
 
-                    string imageFolder = Path.GetFullPath(@"..\..\..\..\Screenshots");
+                    string imageFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\Screenshots");
                     if (!Directory.Exists(imageFolder))
                     {
                         Directory.CreateDirectory(imageFolder);

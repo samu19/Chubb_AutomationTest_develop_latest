@@ -12,6 +12,7 @@ using OpenQA.Selenium.Support.UI;
 using PlanPageAutomation;
 using TravellerDetailsPageAutomation;
 using PaymentPageAutomation;
+using System.Collections.Generic;
 
 namespace InsuranceTests
 {
@@ -19,7 +20,7 @@ namespace InsuranceTests
     public class InsuranceTest : PageTestBase
     {
 
-        [Test, TestCaseSource("QUOTEDATA"), Order(1)]
+        //[Test, TestCaseSource("QUOTEDATA"), Order(1)]
         public void Test_001_GetQuote(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge)
         {
             UITest("GetQuote", () =>
@@ -105,7 +106,7 @@ namespace InsuranceTests
 
         }
 
-        [Test, TestCaseSource("PLANDATA_1"), Order(2)]
+        //[Test, TestCaseSource("PLANDATA_1"), Order(2)]
         public void Test_002_SelectPlan(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
             int _planNo)
         {
@@ -143,7 +144,7 @@ namespace InsuranceTests
             }
         };
 
-        [Test, Order(3)]
+        //[Test, Order(3)]
         public void Test_003_FillTravelDetails(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
             int _planNo, ApplicantDetail _a)
         {
@@ -154,7 +155,7 @@ namespace InsuranceTests
             });
         }
 
-        [Test, Order(4)]
+        //[Test, Order(4)]
         public void Test_004_FillPaymentDetails(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
             int _planNo, ApplicantDetail _a, CreditCardInfo _CCInfo)
         {
@@ -226,13 +227,13 @@ namespace InsuranceTests
             {
                 try
                 {
-                    //QuotePage.GotoQuotePage();
-
-                    //QuotePage.FillSection(countries).FillSection(dates).FillSection(coverType).FillSection(adultAge).FillSection(childAge).GetQuote();
-
+                    GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
+                    SelectPlan(_planNo);
+                    FillTravelDetails(_a);
+                    FillPaymentDetails(_CCInfo);
 
                     //Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
-                    Test_004_FillPaymentDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a, _CCInfo);
+                    //Test_004_FillPaymentDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a, _CCInfo);
 
 
                     
@@ -257,68 +258,105 @@ namespace InsuranceTests
         }
 
 
-        static object[] EndToEndData = {
-            new object[] {
-                bool.Parse(ConfigurationManager.AppSettings["tripType_1"].ToString()),
-                ConfigurationManager.AppSettings["countries_1"].ToString(),
-                DateTime.Parse(ConfigurationManager.AppSettings["departDate_1"]),
-                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_1"]),
-                ConfigurationManager.AppSettings["coverType_1"].ToString(),
-                ConfigurationManager.AppSettings["adultAge_1"].ToString(),
-                ConfigurationManager.AppSettings["childAge_1"].ToString(),
-                Convert.ToInt32(ConfigurationManager.AppSettings["planNo_1"]),
-                new ApplicantDetail
-                {
-                    aNRIC = ConfigurationManager.AppSettings["aNRIC_1"].ToString(),
-                    aFullName = ConfigurationManager.AppSettings["aFullName_1"].ToString(),
-                    aDOB = ConfigurationManager.AppSettings["aDOB_1"].ToString(),
-                    aNationality = ConfigurationManager.AppSettings["aNationality_1"].ToString(),
-                    aMobile = ConfigurationManager.AppSettings["aMobile_1"].ToString(),
-                    aEmail = ConfigurationManager.AppSettings["aEmail_1"].ToString()
-                },
-                new CreditCardInfo
-                {
-                    cardNo = ConfigurationManager.AppSettings["cardNo_1"].ToString(),
-                    cardHolderName = ConfigurationManager.AppSettings["cardHolderName_1"].ToString(),
-                    expiryDate = ConfigurationManager.AppSettings["expiryDate_1"].ToString(),
-                    cvv = ConfigurationManager.AppSettings["cvv_1"].ToString()
-                }
-            }
-            ,
-            new object[] {
-                bool.Parse(ConfigurationManager.AppSettings["tripType_2"].ToString()),
-                ConfigurationManager.AppSettings["countries_2"].ToString(),
-                DateTime.Parse(ConfigurationManager.AppSettings["departDate_2"]),
-                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_2"]),
-                ConfigurationManager.AppSettings["coverType_2"].ToString(),
-                ConfigurationManager.AppSettings["adultAge_2"].ToString(),
-                ConfigurationManager.AppSettings["childAge_2"].ToString(),
-                Convert.ToInt32(ConfigurationManager.AppSettings["planNo_2"]),
-                new ApplicantDetail
-                {
-                    aNRIC = ConfigurationManager.AppSettings["aNRIC_2"].ToString(),
-                    aFullName = ConfigurationManager.AppSettings["aFullName_2"].ToString(),
-                    aDOB = ConfigurationManager.AppSettings["aDOB_2"].ToString(),
-                    aNationality = ConfigurationManager.AppSettings["aNationality_2"].ToString(),
-                    aMobile = ConfigurationManager.AppSettings["aMobile_2"].ToString(),
-                    aEmail = ConfigurationManager.AppSettings["aEmail_2"].ToString()
-                },
-                new CreditCardInfo
-                {
-                    cardNo = ConfigurationManager.AppSettings["cardNo_2"].ToString(),
-                    cardHolderName = ConfigurationManager.AppSettings["cardHolderName_2"].ToString(),
-                    expiryDate = ConfigurationManager.AppSettings["expiryDate_2"].ToString(),
-                    cvv = ConfigurationManager.AppSettings["cvv_2"].ToString()
-                }
-            }
+
+        //static object[] EndToEndData = {
+        //    new object[] {
+        //        bool.Parse(ConfigurationManager.AppSettings["tripType_1"].ToString()),
+        //        ConfigurationManager.AppSettings["countries_1"].ToString(),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["departDate_1"]),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["returnDate_1"]),
+        //        ConfigurationManager.AppSettings["coverType_1"].ToString(),
+        //        ConfigurationManager.AppSettings["adultAge_1"].ToString(),
+        //        ConfigurationManager.AppSettings["childAge_1"].ToString(),
+        //        Convert.ToInt32(ConfigurationManager.AppSettings["planNo_1"]),
+        //        new ApplicantDetail
+        //        {
+        //            aNRIC = ConfigurationManager.AppSettings["aNRIC_1"].ToString(),
+        //            aFullName = ConfigurationManager.AppSettings["aFullName_1"].ToString(),
+        //            aDOB = ConfigurationManager.AppSettings["aDOB_1"].ToString(),
+        //            aNationality = ConfigurationManager.AppSettings["aNationality_1"].ToString(),
+        //            aMobile = ConfigurationManager.AppSettings["aMobile_1"].ToString(),
+        //            aEmail = ConfigurationManager.AppSettings["aEmail_1"].ToString()
+        //        },
+        //        new CreditCardInfo
+        //        {
+        //            cardNo = ConfigurationManager.AppSettings["cardNo_1"].ToString(),
+        //            cardHolderName = ConfigurationManager.AppSettings["cardHolderName_1"].ToString(),
+        //            expiryDate = ConfigurationManager.AppSettings["expiryDate_1"].ToString(),
+        //            cvv = ConfigurationManager.AppSettings["cvv_1"].ToString()
+        //        }
+        //    }
+        //    ,
+        //    new object[] {
+        //        bool.Parse(ConfigurationManager.AppSettings["tripType_2"].ToString()),
+        //        ConfigurationManager.AppSettings["countries_2"].ToString(),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["departDate_2"]),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["returnDate_2"]),
+        //        ConfigurationManager.AppSettings["coverType_2"].ToString(),
+        //        ConfigurationManager.AppSettings["adultAge_2"].ToString(),
+        //        ConfigurationManager.AppSettings["childAge_2"].ToString(),
+        //        Convert.ToInt32(ConfigurationManager.AppSettings["planNo_2"]),
+        //        new ApplicantDetail
+        //        {
+        //            aNRIC = ConfigurationManager.AppSettings["aNRIC_2"].ToString(),
+        //            aFullName = ConfigurationManager.AppSettings["aFullName_2"].ToString(),
+        //            aDOB = ConfigurationManager.AppSettings["aDOB_2"].ToString(),
+        //            aNationality = ConfigurationManager.AppSettings["aNationality_2"].ToString(),
+        //            aMobile = ConfigurationManager.AppSettings["aMobile_2"].ToString(),
+        //            aEmail = ConfigurationManager.AppSettings["aEmail_2"].ToString()
+        //        },
+        //        new CreditCardInfo
+        //        {
+        //            cardNo = ConfigurationManager.AppSettings["cardNo_2"].ToString(),
+        //            cardHolderName = ConfigurationManager.AppSettings["cardHolderName_2"].ToString(),
+        //            expiryDate = ConfigurationManager.AppSettings["expiryDate_2"].ToString(),
+        //            cvv = ConfigurationManager.AppSettings["cvv_2"].ToString()
+        //        }
+        //    }
+        //};
+
+        static object[] EndToEndData =
+        {           
+            addConfigData(1),
+            addConfigData(2)
         };
+
+        public static object[] addConfigData(int i)
+        {
+            return new object[] {
+                bool.Parse(ConfigurationManager.AppSettings["tripType_" + i].ToString()),
+                ConfigurationManager.AppSettings["countries_" + i].ToString(),
+                DateTime.Parse(ConfigurationManager.AppSettings["departDate_" + i]),
+                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_" + i]),
+                ConfigurationManager.AppSettings["coverType_" + i].ToString(),
+                ConfigurationManager.AppSettings["adultAge_" + i].ToString(),
+                ConfigurationManager.AppSettings["childAge_" + i].ToString(),
+                Convert.ToInt32(ConfigurationManager.AppSettings["planNo_" + i]),
+                new ApplicantDetail
+                {
+                    aNRIC = ConfigurationManager.AppSettings["aNRIC_" + i].ToString(),
+                    aFullName = ConfigurationManager.AppSettings["aFullName_" + i].ToString(),
+                    aDOB = ConfigurationManager.AppSettings["aDOB_" + i].ToString(),
+                    aNationality = ConfigurationManager.AppSettings["aNationality_" + i].ToString(),
+                    aMobile = ConfigurationManager.AppSettings["aMobile_" + i].ToString(),
+                    aEmail = ConfigurationManager.AppSettings["aEmail_" + i].ToString()
+                },
+                new CreditCardInfo
+                {
+                    cardNo = ConfigurationManager.AppSettings["cardNo_" + i].ToString(),
+                    cardHolderName = ConfigurationManager.AppSettings["cardHolderName_" + i].ToString(),
+                    expiryDate = ConfigurationManager.AppSettings["expiryDate_" + i].ToString(),
+                    cvv = ConfigurationManager.AppSettings["cvv_" + i].ToString()
+                }
+            };
+        }
+       
+
 
         [OneTimeSetUp()]
         public void SetupTest()
         {
             Driver.Initialize();
-
-
         }
 
         [OneTimeTearDown()]
