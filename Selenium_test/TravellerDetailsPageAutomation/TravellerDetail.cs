@@ -9,7 +9,7 @@ namespace TravellerDetailsPageAutomation
 {
     public class TravellerDetail : IFillable
     {
-        public void Fill()
+        public void Fill(FullElementSelector fullElementSelector)
         {
         }
     }

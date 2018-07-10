@@ -33,11 +33,11 @@ namespace TravellerDetailsPageAutomation
             return this;
         }
 
-        public void Proceed()
+        public void Proceed(FullElementSelector fullElementSelector)
         {
             foreach (IFillable section in this.sectionsToFill)
             {
-                section.Fill();
+                section.Fill(fullElementSelector);
 
             }
 

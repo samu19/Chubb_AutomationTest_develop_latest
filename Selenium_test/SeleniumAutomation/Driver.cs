@@ -23,8 +23,8 @@ namespace SeleniumAutomation
         {
             ChromeOptions options = new ChromeOptions();
 
-            options.EnableMobileEmulation("iPhone 6/7/8");
-            //options.AddArgument("start-maximized");
+            //options.EnableMobileEmulation("iPhone 6/7/8");
+            options.AddArgument("start-maximized");
             Instance = new ChromeDriver();
 
             Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(timeout);
@@ -34,7 +34,7 @@ namespace SeleniumAutomation
         {
             ChromeOptions options = new ChromeOptions();
 
-            options.EnableMobileEmulation("Galaxy S5");
+            //options.EnableMobileEmulation("Galaxy S5");
             options.AddArgument("start-maximized");
             //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
 

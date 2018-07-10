@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Driver.cs" />
+    <Compile Include="FullElementSelector.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="IFillable.cs" />
     <Compile Include="PageTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

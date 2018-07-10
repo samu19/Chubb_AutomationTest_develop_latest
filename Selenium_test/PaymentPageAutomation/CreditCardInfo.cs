@@ -17,7 +17,7 @@ namespace PaymentPageAutomation
         public string expiryDate;
         public string cvv;
 
-        public void Fill()
+        public void Fill(FullElementSelector fullElementSelector)
         {
             /* credit card number */
             Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath("//*[@id='tokenExIframeDiv']")));

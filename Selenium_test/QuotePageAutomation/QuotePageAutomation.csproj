@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -48,16 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdultAge.cs" />
-    <Compile Include="ChildAge.cs" />
-    <Compile Include="Countries.cs" />
-    <Compile Include="CoverType.cs" />
-    <Compile Include="PromoCode.cs" />
-    <Compile Include="QuoteDates.cs" />
+    <Compile Include="QuoteData.cs" />
     <Compile Include="QuotePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Region.cs" />
-    <Compile Include="TripType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeleniumAutomation\SeleniumAutomation.csproj">

@@ -19,7 +19,7 @@ namespace TravellerDetailsPageAutomation
         public string aNationality;
         public string aMobile;
         public string aEmail;
-        public void Fill()
+        public void Fill(FullElementSelector fullElementSelector)
         {
             /* applicant info */
             Driver.Instance.FindElement(By.Id("aNric")).SendKeys(aNRIC); 

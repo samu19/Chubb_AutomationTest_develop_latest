@@ -1,0 +1,23 @@
+{
+	"tripTypeElement" : "mat-radio-3-input",
+    "countriesElement" : "//*[@id='mat-input-2']",
+    "autocompletePopupElement" : ".autocomplete-option.ng-star-inserted",
+    "popupTriggerElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/div[1]/div/span/img",
+	"popupCountryElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/div[2]/div/div[1]",
+    "departDateElement" : "//*[@id='mat-input-0']",
+    "returnDateElement" : "//*[@id='mat-input-1']",
+	"departDateMonthElement" : "//*[@id='mat-datepicker-0']/div[1]/div/button[1]/span",
+	"returnDateMonthElement" : "//*[@id='mat-datepicker-1']/div[1]/div/button[1]/span",
+	"departDateDecreaseElement" : "//*[@id='mat-datepicker-0']/div[1]/div/button[2]",
+	"returnDateDecreaseElement" : "//*[@id='mat-datepicker-1']/div[1]/div/button[2]",
+	"departDateIncreaseElement" : "//*[@id='mat-datepicker-0']/div[1]/div/button[3]",
+	"returnDateIncreaseElement" : "//*[@id='mat-datepicker-1']/div[1]/div/button[3]",
+	"dateDayElement" : "mat-calendar-body-cell-content",
+    "coverTypeElement" : "//*[@id='mat-input-3']",
+    "coverTypeDropDownElement" : "//div[@class='select-list-dropdown-option with-border select-singleline-option ng-star-inserted']/div",
+    "adultAgeElement" : "//*[@id='mat-input-4']",
+    "childAgeElement" : "//*[@id='mat-input-6']",
+	"promoCodeElement" : "//*[@id='mat-input-5']",
+    "quoteButtonElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-button/button",
+	"planSummarySlug"  : "plan"
+}

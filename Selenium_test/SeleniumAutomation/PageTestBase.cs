@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -23,22 +24,28 @@ namespace SeleniumAutomation
             {
                 try
                 {
-                    var screenshot = ((ITakesScreenshot)Driver.Instance).GetScreenshot();
+                    string path = ConfigurationManager.AppSettings["testFolder"].ToString();
 
-                    string imageFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\Screenshots");
-                    if (!Directory.Exists(imageFolder))
-                    {
-                        Directory.CreateDirectory(imageFolder);
-                    }
-
-                    var filePath = imageFolder + "\\" + TestName + "_" + DateTime.Now.ToString("yyyyMMdd HHmmss") + ".jpg";
-
-                    screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Jpeg);
+                    SaveScreenshot(path, "Error", TestName);
                 }
                 catch (Exception) { }
 
                 throw;
             }
+        }
+
+        public void SaveScreenshot(string path, string prefix, string TestName)
+        {
+            var screenshot = ((ITakesScreenshot)Driver.Instance).GetScreenshot();
+            string imageFolder = Path.GetFullPath(path + TestName + "\\Screenshots");
+            if (!Directory.Exists(imageFolder))
+            {
+                Directory.CreateDirectory(imageFolder);
+            }
+
+            var filePath = imageFolder + "\\" + prefix + "_" + TestName + "_" + DateTime.Now.ToString("yyyyMMdd HHmmss") + ".jpg";
+
+            screenshot.SaveAsFile(filePath, ScreenshotImageFormat.Jpeg);
         }
     }
 }

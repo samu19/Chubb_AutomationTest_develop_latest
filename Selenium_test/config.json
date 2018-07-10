@@ -1,0 +1,60 @@
+[  
+   {  
+      "testId":1,
+	  "testName":"MyTest1",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Thailand",
+         "departDate":"2018-10-29",
+         "returnDate":"2018-12-01",
+         "coverType":"Family",
+         "adultAge":"30",
+         "childAge":"9",
+		 "promoCode":"DBSCUSTOMER"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"07/20",
+         "cvv":"123"
+      }
+   },
+   {  
+	  "testId":2,
+	  "testName":"MyTest2",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Malaysia",
+         "departDate":"2018-09-01",
+         "returnDate":"2018-10-30",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Dick Grayson",
+         "aDOB":"27/10/1977",
+         "aNationality":"Thailand",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"07/20",
+         "cvv":"123"
+      }
+   }
+]

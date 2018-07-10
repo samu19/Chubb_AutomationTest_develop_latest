@@ -13,86 +13,81 @@ using PlanPageAutomation;
 using TravellerDetailsPageAutomation;
 using PaymentPageAutomation;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace InsuranceTests
 {
     [TestFixture]
     public class InsuranceTest : PageTestBase
     {
-
-        //[Test, TestCaseSource("QUOTEDATA"), Order(1)]
-        public void Test_001_GetQuote(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge)
+        /// <summary>
+        /// TestCaseSource specifies the input information for this test method.
+        /// Its format is an object array. If the object array has n objects,
+        /// this test will run n times.
+        /// </summary>
+        [Test, TestCaseSource("NewData"), Order(1)]
+        public void Test_001_GetQuote(InputData input)
         {
+            
+
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = input.testid + "-" + input.testName;
             UITest("GetQuote", () =>
             {
-                GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
+                try
+                {
+                    GetQuote(input.quoteData, fullElementSelector);
+                }
+                catch (Exception ex)
+                {
+                    string message_ = "Exception for " + TestName + " : " + ex.Message;
+                    Helper.redirectConsoleLog(TestName, message_);
+                    Assert.Fail();
+                }
+
+
+
+                string message = TestName + " passed.";
+
+                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+
+                SaveScreenshot(path, "Success", TestName);
+                Helper.redirectConsoleLog(TestName, message);
 
             });
         }
-        static object[] QUOTEDATA = {
-            new object[] {
-                bool.Parse(ConfigurationManager.AppSettings["tripType_1"].ToString()),
-                ConfigurationManager.AppSettings["countries_1"].ToString(),
-                DateTime.Parse(ConfigurationManager.AppSettings["departDate_1"]),
-                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_1"]),
-                ConfigurationManager.AppSettings["coverType_1"].ToString(),
-                ConfigurationManager.AppSettings["adultAge_1"].ToString(),
-                ConfigurationManager.AppSettings["childAge_1"].ToString()
-            },
-            new object[] {
-                bool.Parse(ConfigurationManager.AppSettings["tripType_2"].ToString()),
-                ConfigurationManager.AppSettings["countries_2"].ToString(),
-                DateTime.Parse(ConfigurationManager.AppSettings["departDate_2"]),
-                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_2"]),
-                ConfigurationManager.AppSettings["coverType_2"].ToString(),
-                ConfigurationManager.AppSettings["adultAge_2"].ToString(),
-                ConfigurationManager.AppSettings["childAge_2"].ToString()
-            }
-        };
 
-        public void GetQuote(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge)
+
+        public void GetQuote(QuoteData quoteData, FullElementSelector fullElementSelector)
         {
-            var tripType = new TripType
+            var _quoteData = new QuoteData
             {
-                isSingleTrip = _isSingleTrip
-            };
-
-            var countries = new Countries
-            {
-                countries = _countries
-            };
-
-            var dates = new QuoteDates
-            {
-                departDate = _departDate,
-                returnDate = _returnDate
-            };
-
-            var coverType = new CoverType
-            {
-                coverType = _coverType
-            };
-
-            var adultAge = new AdultAge
-            {
-                adultAge = _adultAge,
-                coverType = _coverType
-            };
-
-            var childAge = new ChildAge
-            {
-                childAge = _childAge
+                isSingleTrip = quoteData.isSingleTrip,
+                countries = quoteData.countries,
+                departDate = quoteData.departDate,
+                returnDate = quoteData.returnDate,
+                coverType = quoteData.coverType,
+                adultAge = quoteData.adultAge,
+                childAge = quoteData.childAge,
+                promoCode = quoteData.promoCode
             };
 
 
             try
             {
                 QuotePage.GotoQuotePage();
+
+                if (quoteData.coverType != "Family")
+                {
+                    IAlert alert = Driver.Instance.SwitchTo().Alert();
+                    alert.Accept();
+                }
                 //QuotePage.FillSection(countries).FillSection(dates).FillSection(adultAge).GetQuote();
-                QuotePage.FillSection(countries).FillSection(dates).FillSection(coverType).FillSection(adultAge).FillSection(childAge).GetQuote();
+                QuotePage.FillSection(_quoteData).GetQuote(fullElementSelector);
 
 
-                Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
+                Assert.IsTrue(QuotePage.GetCurrentURLSlug() == fullElementSelector.planSummarySlug, "Plan Summary Page not reached");
                 //Console.WriteLine(_isSingleTrip + ", " + _countries + ", " + _departDate + ", " + _returnDate + ", " + _coverType);
             }
             catch (Exception ex)
@@ -112,7 +107,7 @@ namespace InsuranceTests
         {
             UITest("SelectPlan", () =>
             {
-                Test_001_GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
+                //Test_001_GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
                 SelectPlan(_planNo);
             });
         }
@@ -159,20 +154,21 @@ namespace InsuranceTests
         public void Test_004_FillPaymentDetails(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
             int _planNo, ApplicantDetail _a, CreditCardInfo _CCInfo)
         {
+            FullElementSelector fullElementSelector = LoadElementSelectors();
             UITest("FillPaymentDetails", () =>
             {
                 Test_003_FillTravelDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a);
-                FillPaymentDetails(_CCInfo);
+                FillPaymentDetails(_CCInfo, fullElementSelector);
             });
         }
 
         public void FillTravelDetails(ApplicantDetail _a)
         {
             ApplicantDetail applicantDetail = _a;
-
+            FullElementSelector fullElementSelector = LoadElementSelectors();
             try
             {
-                EditTravellerDetailsPage.FillSection(applicantDetail).Proceed();
+                EditTravellerDetailsPage.FillSection(applicantDetail).Proceed(fullElementSelector);
 
 
                 /* traveller info */
@@ -195,7 +191,7 @@ namespace InsuranceTests
 
         }
 
-        public void FillPaymentDetails(CreditCardInfo creditCardInfo)
+        public void FillPaymentDetails(CreditCardInfo creditCardInfo, FullElementSelector fullElementSelector)
         {
             try
             {
@@ -203,7 +199,7 @@ namespace InsuranceTests
 
 
                 //trigger payment
-                CreditCardDetailsPage.FillSection(creditCardInfo).Pay();
+                CreditCardDetailsPage.FillSection(creditCardInfo).Pay(fullElementSelector);
                 
                 
 
@@ -219,24 +215,63 @@ namespace InsuranceTests
             Console.WriteLine("Payment Success.");
         }
 
-        [Test, TestCaseSource("EndToEndData"), Order(7)]
-        public void Test_007_EndToEnd(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
-            int _planNo, ApplicantDetail _a, CreditCardInfo _CCInfo)
+
+        [Test]
+        public void QuoteFunctionality()
         {
-            UITest("End-To-End", () =>
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            //string TestName = input.testid + "-" + input.testName;
+            string TestName = "Quote Functionality Test";
+            UITest("GetQuote", () =>
             {
                 try
                 {
-                    GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
-                    SelectPlan(_planNo);
-                    FillTravelDetails(_a);
-                    FillPaymentDetails(_CCInfo);
+                    QuotePage.GotoQuotePage();
+                    QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                }
+                catch (Exception ex)
+                {
+                    string message_ = "Exception for " + TestName + " : " + ex.Message;
+                    Helper.redirectConsoleLog(TestName, message_);
+                    Assert.Fail();
+                }
+
+
+
+                string message = TestName + " passed.";
+
+                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+
+                SaveScreenshot(path, "Success", TestName);
+                Helper.redirectConsoleLog(TestName, message);
+
+            });
+        }
+
+        /// <summary>
+        /// TestCaseSource specifies the input information for this test method.
+        /// Its format is an object array. If the object array has n objects,
+        /// this test will run n times.
+        /// </summary>
+        [Test, TestCaseSource("NewData"), Order(7)]
+        public void Test_007_EndToEnd(InputData input)
+        {
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = input.testid + "-" + input.testName;
+            UITest(TestName, () =>
+            {
+                try
+                {
+                    GetQuote(input.quoteData, fullElementSelector);
+                    SelectPlan(input.planNo);
+                    FillTravelDetails(input.applicantDetail);
+                    FillPaymentDetails(input.creditCardInfo, fullElementSelector);
 
                     //Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
                     //Test_004_FillPaymentDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a, _CCInfo);
 
 
-                    
+
                     PaymentSuccessPage.ViewPDF();
                     // click pdf
 
@@ -245,13 +280,20 @@ namespace InsuranceTests
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Exception: " + ex.Message);
+                    string message_ = "Exception for " + TestName + " : " + ex.Message;
+                    Helper.redirectConsoleLog(TestName, message_);
                     Assert.Fail();
                 }
 
 
 
-                Console.WriteLine("End-To-End passed.");
+                string message = TestName + " passed.";
+
+                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+
+                SaveScreenshot(path, "Success", TestName);
+                Helper.redirectConsoleLog(TestName, message);
+
 
                 //Driver.Close();
             });
@@ -315,48 +357,124 @@ namespace InsuranceTests
         //    }
         //};
 
-        static object[] EndToEndData =
-        {           
-            addConfigData(1),
-            addConfigData(2)
-        };
+        static object[] EndToEndData= AddConfigData2();
 
-        public static object[] addConfigData(int i)
+        static object[] NewData = AddConfigData3();
+        //{
+        //    addConfigData(1),
+        //    addConfigData(2)
+        //    addConfigData2()
+        //};
+
+        //public static object[] addConfigData(int i)
+        //{
+        //    return new object[] {
+        //        bool.Parse(ConfigurationManager.AppSettings["tripType_" + i].ToString()),
+        //        ConfigurationManager.AppSettings["countries_" + i].ToString(),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["departDate_" + i]),
+        //        DateTime.Parse(ConfigurationManager.AppSettings["returnDate_" + i]),
+        //        ConfigurationManager.AppSettings["coverType_" + i].ToString(),
+        //        ConfigurationManager.AppSettings["adultAge_" + i].ToString(),
+        //        ConfigurationManager.AppSettings["childAge_" + i].ToString(),
+        //        Convert.ToInt32(ConfigurationManager.AppSettings["planNo_" + i]),
+        //        new ApplicantDetail
+        //        {
+        //            aNRIC = ConfigurationManager.AppSettings["aNRIC_" + i].ToString(),
+        //            aFullName = ConfigurationManager.AppSettings["aFullName_" + i].ToString(),
+        //            aDOB = ConfigurationManager.AppSettings["aDOB_" + i].ToString(),
+        //            aNationality = ConfigurationManager.AppSettings["aNationality_" + i].ToString(),
+        //            aMobile = ConfigurationManager.AppSettings["aMobile_" + i].ToString(),
+        //            aEmail = ConfigurationManager.AppSettings["aEmail_" + i].ToString()
+        //        },
+        //        new CreditCardInfo
+        //        {
+        //            cardNo = ConfigurationManager.AppSettings["cardNo_" + i].ToString(),
+        //            cardHolderName = ConfigurationManager.AppSettings["cardHolderName_" + i].ToString(),
+        //            expiryDate = ConfigurationManager.AppSettings["expiryDate_" + i].ToString(),
+        //            cvv = ConfigurationManager.AppSettings["cvv_" + i].ToString()
+        //        }
+        //    };
+        ////}
+
+
+        /// <summary>
+        /// Transfers the information from the json file into the input for the EndToEnd Test
+        /// </summary>
+        public static object[] AddConfigData2()
         {
-            return new object[] {
-                bool.Parse(ConfigurationManager.AppSettings["tripType_" + i].ToString()),
-                ConfigurationManager.AppSettings["countries_" + i].ToString(),
-                DateTime.Parse(ConfigurationManager.AppSettings["departDate_" + i]),
-                DateTime.Parse(ConfigurationManager.AppSettings["returnDate_" + i]),
-                ConfigurationManager.AppSettings["coverType_" + i].ToString(),
-                ConfigurationManager.AppSettings["adultAge_" + i].ToString(),
-                ConfigurationManager.AppSettings["childAge_" + i].ToString(),
-                Convert.ToInt32(ConfigurationManager.AppSettings["planNo_" + i]),
-                new ApplicantDetail
-                {
-                    aNRIC = ConfigurationManager.AppSettings["aNRIC_" + i].ToString(),
-                    aFullName = ConfigurationManager.AppSettings["aFullName_" + i].ToString(),
-                    aDOB = ConfigurationManager.AppSettings["aDOB_" + i].ToString(),
-                    aNationality = ConfigurationManager.AppSettings["aNationality_" + i].ToString(),
-                    aMobile = ConfigurationManager.AppSettings["aMobile_" + i].ToString(),
-                    aEmail = ConfigurationManager.AppSettings["aEmail_" + i].ToString()
-                },
-                new CreditCardInfo
-                {
-                    cardNo = ConfigurationManager.AppSettings["cardNo_" + i].ToString(),
-                    cardHolderName = ConfigurationManager.AppSettings["cardHolderName_" + i].ToString(),
-                    expiryDate = ConfigurationManager.AppSettings["expiryDate_" + i].ToString(),
-                    cvv = ConfigurationManager.AppSettings["cvv_" + i].ToString()
-                }
-            };
+            List<object> full = new List<object>();
+            List<InputData> fromJson = LoadJsonInput(); // fromJson will contain all the information from config.json
+            int listLen = fromJson.Count;
+            for (int i = 0; i < listLen; i++)
+            {
+                List<object> singleSet = new List<object>();
+                singleSet.Add(fromJson[i].quoteData.isSingleTrip);
+                singleSet.Add(fromJson[i].quoteData.countries);
+                singleSet.Add(fromJson[i].quoteData.departDate);
+                singleSet.Add(fromJson[i].quoteData.returnDate);
+                singleSet.Add(fromJson[i].quoteData.coverType);
+                singleSet.Add(fromJson[i].quoteData.adultAge);
+                singleSet.Add(fromJson[i].quoteData.childAge);
+                singleSet.Add(fromJson[i].planNo);
+                singleSet.Add(fromJson[i].applicantDetail);
+                singleSet.Add(fromJson[i].creditCardInfo);
+                singleSet.Add(fromJson[i].testid);
+                singleSet.Add(fromJson[i].testName);
+                full.Add(singleSet.ToArray()); 
+            }
+            return full.ToArray();
+
         }
-       
+
+
+        public static object[] AddConfigData3()
+        {
+            List<object> full = new List<object>();
+            List<InputData> fromJson = LoadJsonInput(); // fromJson will contain all the information from config.json
+            int listLen = fromJson.Count;
+            for (int i = 0; i < listLen; i++)
+            {
+                List<object> singleSet = new List<object>();
+                singleSet.Add(fromJson[i]);
+                full.Add(singleSet.ToArray());
+            }
+            return full.ToArray();
+
+        }
+
+        /// <summary>
+        /// Retrieves the information from config.json file,
+        /// and deserialises into InputData class. Returns as a list of that class.
+        /// </summary>
+        public static List<InputData> LoadJsonInput()
+        {
+            string jsonConfigFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\");
+            using (StreamReader r = new StreamReader(jsonConfigFolder + "config.json"))
+            {
+                string json = r.ReadToEnd();
+                List<InputData> foo = JsonConvert.DeserializeObject<List<InputData>>(json);
+                return foo;
+            }
+        }
+
+
+        public static FullElementSelector LoadElementSelectors()
+        {
+            string jsonConfigFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\");
+            using (StreamReader r = new StreamReader(jsonConfigFolder + "elementConfig.json"))
+            {
+                string json = r.ReadToEnd();
+                FullElementSelector foo = JsonConvert.DeserializeObject<FullElementSelector>(json);
+                return foo;
+            }
+        }
+
 
 
         [OneTimeSetUp()]
         public void SetupTest()
         {
-            Driver.Initialize();
+            Driver.Initialize();          
         }
 
         [OneTimeTearDown()]
@@ -364,5 +482,12 @@ namespace InsuranceTests
         {
             Driver.Close();
         }
+
+        //[TearDown()]
+        //public void EachTestCleanup()
+        //{
+        //    IAlert alert = Driver.Instance.SwitchTo().Alert();
+        //    alert.Accept();
+        //}
     }
 }
