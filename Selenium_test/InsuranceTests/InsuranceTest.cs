@@ -38,6 +38,8 @@ namespace InsuranceTests
                 try
                 {
                     GetQuote(input.quoteData, fullElementSelector);
+                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
+
                 }
                 catch (Exception ex)
                 {
@@ -70,7 +72,8 @@ namespace InsuranceTests
                 coverType = quoteData.coverType,
                 adultAge = quoteData.adultAge,
                 childAge = quoteData.childAge,
-                promoCode = quoteData.promoCode
+                promoCode = quoteData.promoCode,
+                regionNo = quoteData.regionNo
             };
 
 
@@ -101,14 +104,18 @@ namespace InsuranceTests
 
         }
 
-        //[Test, TestCaseSource("PLANDATA_1"), Order(2)]
-        public void Test_002_SelectPlan(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
-            int _planNo)
+        [Test, TestCaseSource("NewData"), Order(1)]
+        public void Test_002_SelectPlan(InputData input)
         {
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = input.testid + "-" + input.testName;
             UITest("SelectPlan", () =>
             {
-                //Test_001_GetQuote(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge);
-                SelectPlan(_planNo);
+                FillTravelDetails(input.applicantDetail, input.travellerDetails);
+
+                GetQuote(input.quoteData, fullElementSelector);
+                SelectPlan(1);
+
             });
         }
 
@@ -118,7 +125,7 @@ namespace InsuranceTests
             {
 
                 PlanPage.SelectPlan(_planNo);
-                Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "summary/edit", "Enter Travel Details Page not reached.");
+                Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "apply/application-details", "Enter Travel Details Page not reached.");
                 //Thread.Sleep(100000);
             }
             catch (Exception ex)
@@ -145,8 +152,8 @@ namespace InsuranceTests
         {
             UITest("FillTravelDetails", () =>
             {
-                Test_002_SelectPlan(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo);
-                FillTravelDetails(_a);
+                //Test_002_SelectPlan(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo);
+                //FillTravelDetails(_a);
             });
         }
 
@@ -162,13 +169,14 @@ namespace InsuranceTests
             });
         }
 
-        public void FillTravelDetails(ApplicantDetail _a)
+        public void FillTravelDetails(ApplicantDetail _a, TravellerDetails _t)
         {
             ApplicantDetail applicantDetail = _a;
+
             FullElementSelector fullElementSelector = LoadElementSelectors();
             try
             {
-                EditTravellerDetailsPage.FillSection(applicantDetail).Proceed(fullElementSelector);
+                EditTravellerDetailsPage.FillSection(applicantDetail).FillSection(_t).Proceed(fullElementSelector);
 
 
                 /* traveller info */
@@ -227,7 +235,25 @@ namespace InsuranceTests
                 try
                 {
                     QuotePage.GotoQuotePage();
-                    QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                    QuotePage.QuoteErrorMessageTest(fullElementSelector);
+
+                    /*
+                    QuotePage.GotoQuotePage();
+                    //QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                    //QuotePage.FillSection(null).GetQuote(fullElementSelector);
+                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
+                    QuotePage.QuoteToolTipTest(fullElementSelector);
+                    Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
+
+                    QuotePage.GotoQuotePage();
+
+                    IAlert alert = Driver.Instance.SwitchTo().Alert();
+                    alert.Accept();
+
+                    QuotePage.QuoteToolTipTest(fullElementSelector, false);
+
+                    //QuotePage.QuoteErrorMessageTest(fullElementSelector);
+                    */
                 }
                 catch (Exception ex)
                 {
@@ -264,7 +290,7 @@ namespace InsuranceTests
                 {
                     GetQuote(input.quoteData, fullElementSelector);
                     SelectPlan(input.planNo);
-                    FillTravelDetails(input.applicantDetail);
+                    //FillTravelDetails(input.applicantDetail);
                     FillPaymentDetails(input.creditCardInfo, fullElementSelector);
 
                     //Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
@@ -448,7 +474,7 @@ namespace InsuranceTests
         /// </summary>
         public static List<InputData> LoadJsonInput()
         {
-            string jsonConfigFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\");
+            string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
             using (StreamReader r = new StreamReader(jsonConfigFolder + "config.json"))
             {
                 string json = r.ReadToEnd();

@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace TravellerDetailsPageAutomation
 {
-    public class TravellerDetail : IFillable
+    public class TravellerDetail
     {
-        public void Fill(FullElementSelector fullElementSelector)
-        {
-        }
+        public string tNRIC;
+        public string tFullName;
+        public string tDOB;
+        public string tNationality;
+
     }
 }

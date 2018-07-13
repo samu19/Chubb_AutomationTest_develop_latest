@@ -29,6 +29,13 @@ namespace SeleniumAutomation
         public string promoCodeElement { get; set; }
         public string quoteButtonElement { get; set; }
         public string planSummarySlug { get; set; }
+        public string annualRegionElement { get; set; }
+        public string annualRegionListElement { get; set; }
+        public string annualDateElement { get; set; }
+        public string annualDateMonthElement { get; set; }
+        public string annualDateDecreaseElement { get; set; }
+        public string annualDateIncreaseElement { get; set; }
+        public string annualChildAgeElement { get; set; }
     }
 
 }

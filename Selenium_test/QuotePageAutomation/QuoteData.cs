@@ -15,6 +15,7 @@ namespace QuotePageAutomation
     {
         public bool isSingleTrip { get; set; }
         public string countries { get; set; }
+        public int regionNo { get; set; }
         public DateTime departDate { get; set; }
         public DateTime returnDate { get; set; }
         public string coverType { get; set; }
@@ -32,44 +33,65 @@ namespace QuotePageAutomation
                 string tripTypeElement = fullElementSelector.tripTypeElement;
                 //To change - choose Annual Trip radio button
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
-                Driver.ClickWithRetry(By.Id(tripTypeElement));
+                Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
+                //Driver.ClickWithRetry(By.Id(tripTypeElement));
             }
 
-            // To pass in countries IBMB: 
-            ////*[@id="Destination"]/div/div[1]/div/div[1]/div/input
-            string countriesElement = fullElementSelector.countriesElement;
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
-            var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
-
-            //char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
-            //foreach(char a in alpha)
-            //{
-            //    destination.SendKeys(a.ToString());
-            //    destination.SendKeys(Keys.Backspace);
-            //}
-
-            destination.SendKeys(countries);
-            //Thread.Sleep(1500); // 
-            string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
-            ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
-            if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+            if (isSingleTrip)
             {
-                string popupTriggerElement = fullElementSelector.popupTriggerElement;
-                Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
-                Thread.Sleep(500);
+                // To pass in countries IBMB: 
+                ////*[@id="Destination"]/div/div[1]/div/div[1]/div/input
+                string countriesElement = fullElementSelector.countriesElement;
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
+                var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
+
+                //char[] alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+                //foreach(char a in alpha)
+                //{
+                //    destination.SendKeys(a.ToString());
+                //    destination.SendKeys(Keys.Backspace);
+                //}
+
+                destination.SendKeys(countries);
+                //Thread.Sleep(1500); // 
+                string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
+                ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                {
+                    string popupTriggerElement = fullElementSelector.popupTriggerElement;
+                    Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
+                    Thread.Sleep(500);
+                }
+
+                string popupCountryElement = fullElementSelector.popupCountryElement;
+                Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
+
+
+                DateHandler(departDate, fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
+                DateHandler(returnDate, fullElementSelector.returnDateElement, fullElementSelector.returnDateMonthElement, fullElementSelector.returnDateDecreaseElement, fullElementSelector.returnDateIncreaseElement, fullElementSelector.dateDayElement);
+
             }
+            else
+            {
+                string regionElement = fullElementSelector.annualRegionElement;
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(regionElement)));
+                var region = Driver.Instance.FindElement(By.XPath(regionElement));
+                region.Click();
+                string regionListElement = fullElementSelector.annualRegionListElement;
+                var regionList = Driver.Instance.FindElement(By.CssSelector(regionListElement));
+                ReadOnlyCollection<IWebElement> _regionList = regionList.FindElements(By.XPath("./div/div"));
+                var aa = _regionList[0].FindElement(By.XPath("./div/div[1]"));
+                _regionList.FirstOrDefault(a => a.FindElement(By.XPath("./div/div[1]")).Text == "Region " + regionNo.ToString()).Click();
 
-            string popupCountryElement = fullElementSelector.popupCountryElement;
-            Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
+                DateHandler(departDate, fullElementSelector.annualDateElement, fullElementSelector.annualDateMonthElement, fullElementSelector.annualDateDecreaseElement, fullElementSelector.annualDateIncreaseElement, fullElementSelector.dateDayElement);
 
+            }
 
             //Dates
 
-            DateHandler(departDate, fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
-            DateHandler(returnDate, fullElementSelector.returnDateElement, fullElementSelector.returnDateMonthElement, fullElementSelector.returnDateDecreaseElement, fullElementSelector.returnDateIncreaseElement, fullElementSelector.dateDayElement);
-            
 
-       
+
+
             // To pass in Cover Type into appropriate field
             if (coverType != "Individual")
             {
@@ -93,7 +115,12 @@ namespace QuotePageAutomation
             //child age
             if (!String.IsNullOrWhiteSpace(childAge))
             {
-                string childAgeElement = fullElementSelector.childAgeElement;
+                string childAgeElement;
+                if (isSingleTrip)
+                    childAgeElement = fullElementSelector.childAgeElement;
+                else
+                    childAgeElement = fullElementSelector.annualChildAgeElement;
+
                 // To pass in child age
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(childAgeElement)));
                 Driver.Instance.FindElement(By.XPath(childAgeElement)).SendKeys(childAge);

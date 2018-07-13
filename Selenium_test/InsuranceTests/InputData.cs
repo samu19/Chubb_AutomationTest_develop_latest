@@ -14,6 +14,7 @@ namespace InsuranceTests
         public QuoteData quoteData { get; set; }
         public int planNo { get; set; }
         public ApplicantDetail applicantDetail { get; set; }
+        public TravellerDetails travellerDetails { get; set; }
         public CreditCardInfo creditCardInfo { get; set; }
         public string testid { get; set; }
         public string  testName { get; set; }

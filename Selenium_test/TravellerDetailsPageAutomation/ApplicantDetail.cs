@@ -19,6 +19,8 @@ namespace TravellerDetailsPageAutomation
         public string aNationality;
         public string aMobile;
         public string aEmail;
+        public bool applicantIsTraveller = true;
+        
         public void Fill(FullElementSelector fullElementSelector)
         {
             /* applicant info */
@@ -41,6 +43,9 @@ namespace TravellerDetailsPageAutomation
 
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='applicant-Email']/div/div[1]/div/input")));
             Driver.Instance.FindElement(By.XPath("//*[@id='applicant-Email']/div/div[1]/div/input")).SendKeys(aEmail);
+
+            if (!applicantIsTraveller)
+                ;//toggle off (only for individual)
         }
     }
 }

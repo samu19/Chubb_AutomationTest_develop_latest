@@ -120,7 +120,7 @@ namespace QuotePageAutomation
             if (departDiff != 179)
                 throw new Exception("Error! Max Depart Date is not 180 days later.");
             QuoteData.DateHandler(maxDepartDate.AddDays(1), fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
-            QuoteData.DateHandler(maxDepartDate.AddDays(100), fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
+            QuoteData.DateHandler(maxDepartDate.AddDays(1), fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
             string checkSelectedDepartDate = departDate.GetAttribute("value");
             DateTime _checkSelectedDepartDate = DateTime.ParseExact(checkSelectedDepartDate, "dd MMM yyyy", null);
             double doubleCheckDepartDiff = (_checkSelectedDepartDate - CurrentDate).TotalDays;
@@ -233,24 +233,323 @@ namespace QuotePageAutomation
             ages = childAge.GetAttribute("ng-reflect-value").Split(',').ToList<string>();
             if (ages.Count() != 5)
                 Console.WriteLine("FAIL: " + "Family: Can only key in up to five ages, separated by commas");
-        }
+
+          }
 
         public static void QuoteToolTipTest(FullElementSelector fullElementSelector, bool isSingleTrip = true)
         {
+            if (!isSingleTrip) // If Annual Trip
+            {
+                string tripTypeElement = fullElementSelector.tripTypeElement;
+                //To change - choose Annual Trip radio button
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
+                Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
+                //Driver.ClickWithRetry(By.Id(tripTypeElement));
+            }
+
+            /* Destination Tool Tip */
+            if (isSingleTrip)
+            {
+                string countriesElement = fullElementSelector.countriesElement;
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
+                var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
+                destination.SendKeys("ugan");
+
+                string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
+                ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                {
+                    string popupTriggerElement = fullElementSelector.popupTriggerElement;
+                    Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
+                    Thread.Sleep(500);
+                }
+
+                string popupCountryElement = fullElementSelector.popupCountryElement;
+                Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
+
+
+                string destinationToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/autocomplete-countries/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button";
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(destinationToolTipElement)));
+                Driver.Instance.FindElement(By.XPath(destinationToolTipElement)).Click();
+                string destinationToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/div/span[2]")).Text;
+
+                var destinationToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/mat-toolbar"));
+                string destinationTitleToolTipMessage = destinationToolTipTitle.FindElement(By.XPath("./span")).Text;
+
+                Console.WriteLine(destinationTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine + destinationToolTipMessage);
+                Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/button")).Click();
+
+                
+            }
+            else
+            {////*[@id="mat-dialog-0"]/custom-dialog/div/div
+                string regionToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/select-region/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button";
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(regionToolTipElement)));
+                Driver.Instance.FindElement(By.XPath(regionToolTipElement)).Click();
+
+                var regionToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div"));
+
+                var regionToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/mat-toolbar"));
+                string regionTitleToolTipMessage = regionToolTipTitle.FindElement(By.XPath("./span")).Text;
+                Console.WriteLine(regionTitleToolTipMessage + Environment.NewLine + "--------------");
+                //foreach (var i in coverTypeToolTipMessage)
+                //{
+                //    Console.WriteLine(i.FindElement(By.XPath(".//span[1]")).Text + ": " + i.FindElement(By.XPath(".//span[2]")).Text);
+                //}
+                ReadOnlyCollection<IWebElement> regionToolTipAll = regionToolTipMessage.FindElements(By.XPath("./div"));
+                foreach (IWebElement i in regionToolTipAll)
+                {
+                    Console.WriteLine(i.Text + Environment.NewLine);
+                }
+                Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/button")).Click();
+
+            }
+
+            Thread.Sleep(500);
+            Console.WriteLine(Environment.NewLine);
+
+            string departDateToolTipElement;
+
+            if (isSingleTrip)
+                departDateToolTipElement = "//*[@id='test_daterangepicker_emailaddress']/div[1]/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
+            else
+                departDateToolTipElement = "//*[@id='ct&dd']/custom-datepicker/div/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
+
+            Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(departDateToolTipElement)));
+            Driver.Instance.FindElement(By.XPath(departDateToolTipElement)).Click();
+            string departDateToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-1']/custom-dialog/div/div/div/span[2]")).Text;
+
+            var departDateToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-1']/custom-dialog/div/mat-toolbar"));
+            string departDateTitleToolTipMessage = departDateToolTipTitle.FindElement(By.XPath("./span")).Text;
+
+            Console.WriteLine(departDateTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   departDateToolTipMessage);
+            Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-1']/custom-dialog/div/div/button")).Click();
+
+            Thread.Sleep(500);
+            Console.WriteLine(Environment.NewLine);
+
+            if (isSingleTrip)
+            {
+                string returnDateToolTipElement = "//*[@id='test_daterangepicker_emailaddress']/div[2]/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(returnDateToolTipElement)));
+                Driver.Instance.FindElement(By.XPath(returnDateToolTipElement)).Click();
+                string returnDateToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/custom-dialog/div/div/div/span[2]")).Text;
+
+                var returnDateToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/custom-dialog/div/mat-toolbar"));
+                string returnDateTitleToolTipMessage = returnDateToolTipTitle.FindElement(By.XPath("./span")).Text;
+
+                Console.WriteLine(returnDateTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine + returnDateToolTipMessage);
+                Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/custom-dialog/div/div/button")).Click();
+
+                //
+
+                Thread.Sleep(500);
+                Console.WriteLine(Environment.NewLine);
+            }
+            
+            string coverTypeToolTipElement = "//*[@id='ct&dd']/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button";
+            Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(coverTypeToolTipElement)));
+            Driver.Instance.FindElement(By.XPath(coverTypeToolTipElement)).Click();
+
+            string coverTypeMatDialog;
+            if (isSingleTrip)
+                coverTypeMatDialog = "mat-dialog-3";
+            else
+                coverTypeMatDialog = "mat-dialog-2";
+
+            var coverTypeToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='" + coverTypeMatDialog + "']/custom-dialog/div/div"));
+
+            var coverTypeToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='" + coverTypeMatDialog + "']/custom-dialog/div/mat-toolbar"));
+            string coverTypeTitleToolTipMessage = coverTypeToolTipTitle.FindElement(By.XPath("./span")).Text;
+            Console.WriteLine(coverTypeTitleToolTipMessage + Environment.NewLine + "--------------");
+            //foreach (var i in coverTypeToolTipMessage)
+            //{
+            //    Console.WriteLine(i.FindElement(By.XPath(".//span[1]")).Text + ": " + i.FindElement(By.XPath(".//span[2]")).Text);
+            //}
+            ReadOnlyCollection<IWebElement> coverTypeToolTipAll = coverTypeToolTipMessage.FindElements(By.XPath("./div"));
+            foreach (IWebElement i in coverTypeToolTipAll)
+            {
+                Console.WriteLine(i.Text + Environment.NewLine);
+            }
+            Driver.Instance.FindElement(By.XPath("//*[@id='" + coverTypeMatDialog + "']/custom-dialog/div/div/button")).Click();
+
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
             
 
-            /* Able to type and filter for countries based on the 1st letter typed in */
+            Thread.Sleep(500);
+            Console.WriteLine(Environment.NewLine);
 
+
+            
+            string adultAgeElement = fullElementSelector.adultAgeElement;
+            var travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
+
+            
+
+            string travellerAgeToolTipElement = "//*[@id='test_input_name']/div/div[1]/div/span/label/mat-label/button";
+
+            string coverTypeElement = fullElementSelector.coverTypeElement;
+            var coverType = Driver.Instance.FindElement(By.XPath(coverTypeElement));
+            js.ExecuteScript("arguments[0].scrollIntoView();", coverType);
+            coverType.Click();
+
+            //Driver.Instance.FindElement(By.XPath(coverTypeElement)).Click(); ////div[@class='select-list-dropdown-option with-border select-singleline-option ng-star-inserted']/div
+            string coverTypeDropDownElement = fullElementSelector.coverTypeDropDownElement;
+            string currentCoverType;
+
+            int j;
+
+            if (isSingleTrip)
+                j = 4;
+            else
+                j = 3;
+            ReadOnlyCollection<IWebElement> coverTypeOptions = Driver.Instance.FindElements(By.XPath(coverTypeDropDownElement));
+            for(int i=0; i<j; i++)
+            {
+                currentCoverType = coverTypeOptions[i].Text;
+                coverTypeOptions[i].Click();
+ 
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(adultAgeElement)));
+                
+                travellerAge.SendKeys("22,22"); ////*[@id="mat-dialog-5"]/custom-dialog/div/div/div/span[2]
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(travellerAgeToolTipElement)));
+                Driver.Instance.FindElement(By.XPath(travellerAgeToolTipElement)).Click();
+                
+                string travellerAgePath = "//*[@id='mat-dialog-" + (i+j).ToString() + "']/custom-dialog/div/div";
+                string travellerAgeToolTipMessage = Driver.Instance.FindElement(By.XPath(travellerAgePath + "/div")).Text;
+
+                var travellerAgeToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-" + (i+j).ToString() + "']/custom-dialog/div/mat-toolbar"));
+                string travellerAgeTitleToolTipMessage = travellerAgeToolTipTitle.FindElement(By.XPath("./span")).Text;
+
+                Driver.Instance.FindElement(By.XPath(travellerAgePath + "/button")).Click();
+                Console.WriteLine(travellerAgeTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   travellerAgeToolTipMessage);
+                //
+                Thread.Sleep(500);
+                Console.WriteLine(Environment.NewLine);
+
+                coverType.Click();
+            }
+
+            // Child ToolTip
+            string childMatInput;
+            string childMatDialog;
+
+            if (isSingleTrip)
+            {
+                childMatInput = "mat-input-7";
+                childMatDialog = "mat-dialog-8";
+            }
+            else
+            {
+                childMatInput = "mat-input-8";
+                childMatDialog = "mat-dialog-6";
+            }
+
+            coverTypeOptions.FirstOrDefault(aa => aa.Text == "Family").Click();
+            var childAge = Driver.Instance.FindElement(By.XPath("//*[@id='"+ childMatInput + "']"));
+            childAge.SendKeys("12,13");
+            Thread.Sleep(500);
+            string childAgeToolTipElement = "//*[@id='test_input_name']/div/div[1]/div/span/label/mat-label/button";
+            //Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(childAgeToolTipElement)));
+            Driver.Instance.FindElements(By.XPath(childAgeToolTipElement))[1].Click();
+
+            string childAgePath = "//*[@id='"+ childMatDialog + "']/custom-dialog/div/div";
+            string childAgeToolTipMessage = Driver.Instance.FindElement(By.XPath(childAgePath + "/div")).Text;
+
+            var childAgeToolTipTitle = Driver.Instance.FindElement(By.XPath("//*[@id='"+ childMatDialog + "']/custom-dialog/div/mat-toolbar"));
+            string childAgeTitleToolTipMessage = childAgeToolTipTitle.FindElement(By.XPath("./span")).Text;
+
+            Driver.Instance.FindElement(By.XPath(childAgePath + "/button")).Click();
+            Console.WriteLine(childAgeTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   childAgeToolTipMessage);
+            
+
+        }
+
+        public static void QuoteErrorMessageTest(FullElementSelector fullElementSelector, bool isSingleTrip = true)
+        {
             string countriesElement = fullElementSelector.countriesElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
             var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
-            destination.Click();
+            destination.SendKeys("");
+            //mat-error-2
 
-            string destinationToolTip = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button";
+            string adultAgeElement = fullElementSelector.adultAgeElement;
+            var travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
+            travellerAge.SendKeys("");
+            //mat-error-1
 
+            //enter more than 5
+            //mat-error-17
             
+            //child age
+            //mat-error-3
+
+
+
         }
 
+        public static void PlanPageFunctionalityTest(FullElementSelector fullElementSelector)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
+
+            string accordionCollapsedElement = "mat-expansion-panel";
+            ReadOnlyCollection<IWebElement> planCollapsed = Driver.Instance.FindElements(By.XPath("//mat-expansion-panel[contains(@class, '" + accordionCollapsedElement + "')]"));
+            planCollapsed[0].Click();
+            js.ExecuteScript("arguments[0].scrollIntoView();", planCollapsed[1]);
+            planCollapsed[1].Click();
+            js.ExecuteScript("arguments[0].scrollIntoView();", planCollapsed[2]);
+            planCollapsed[2].Click();
+            js.ExecuteScript("arguments[0].scrollIntoView();", planCollapsed[3]);
+            planCollapsed[3].Click();
+            js.ExecuteScript("arguments[0].scrollIntoView();", planCollapsed[4]);
+            planCollapsed[4].Click();
+
+            Thread.Sleep(1500);
+
+            string accordionExpandedElement = "mat-expansion-panel-spacing";
+            ReadOnlyCollection<IWebElement> planExpanded = Driver.Instance.FindElements(By.XPath("//mat-expansion-panel[contains(@class, '" + accordionExpandedElement + "')]"));
+            if (planExpanded.Count != 5)
+            {
+                Console.WriteLine("FAIL: " + "Each individual key benefit can be expanded by clicking the  dropdown arrow which shows more in-depth coverage for each key benefit");
+            }
+
+            //Collapse all
+            if (Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")).Text.ToUpper() != "COLLAPSE ALL")
+                Console.WriteLine("FAIL: Collapse All button is incorrectly named.");
+            js.ExecuteScript("arguments[0].scrollIntoView();", Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")));
+            Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")).Click();
+            planExpanded = Driver.Instance.FindElements(By.XPath("//mat-expansion-panel[contains(@class, '" + accordionExpandedElement + "')]"));
+            if (planExpanded.Count > 0)
+            {
+                Console.WriteLine("FAIL: " + "Clicking on collapse all button collapses all the key benefits");
+            }
+            //Expand all
+            if (Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")).Text.ToUpper() != "EXPAND ALL")
+                Console.WriteLine("FAIL: Expand All button is incorrectly named.");
+            js.ExecuteScript("arguments[0].scrollIntoView();", Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")));
+            Driver.Instance.FindElement(By.XPath("/html/body/app-root/plan/div/div/div/div[1]/div/div[1]/custom-label[2]/span")).Click();
+            planExpanded = Driver.Instance.FindElements(By.XPath("//mat-expansion-panel[contains(@class, '" + accordionExpandedElement + "')]"));
+            ReadOnlyCollection<IWebElement> planCarets = Driver.Instance.FindElements(By.XPath("//div[contains(@class, 'accordion-caret')]"));
+            if (planExpanded.Count != 5)
+            {
+                Console.WriteLine("FAIL: " + "Clicking on expand all button opens all the key benefits");
+            }
+            js.ExecuteScript("arguments[0].scrollIntoView();", planCarets[0]);
+            planCarets[0].Click();
+            //js.ExecuteScript("arguments[0].scrollIntoView();", planExpanded[1]);
+
+
+            planCarets[1].Click();
+            //js.ExecuteScript("arguments[0].scrollIntoView();", planExpanded[2]);
+
+            planCarets[2].Click();
+            //js.ExecuteScript("arguments[0].scrollIntoView();", planExpanded[3]);
+
+            planCarets[3].Click();
+            //js.ExecuteScript("arguments[0].scrollIntoView();", planExpanded[4]);
+
+            planCarets[4].Click();
+        }
     }
 
     public class QuoteCommand
@@ -273,10 +572,12 @@ namespace QuotePageAutomation
         {
             foreach (IFillable section in this.sectionsToFill)
             {
-                section.Fill(fullElementSelector);
+                if (section != null)
+                    section.Fill(fullElementSelector);
 
             }
 
+            Thread.Sleep(1000);
             string quoteButtonElement = fullElementSelector.quoteButtonElement;
             // Trigger Get Quote Button Here /html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-button/button
             Driver.ClickWithRetry(By.XPath(quoteButtonElement));

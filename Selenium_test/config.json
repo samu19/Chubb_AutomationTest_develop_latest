@@ -1,18 +1,19 @@
 [  
    {  
       "testId":1,
-	  "testName":"MyTest1",
+	  "testName":"SingleTrip_Family",
 	  "quoteData":{  
          "isSingleTrip":true,
          "countries":"Thailand",
-         "departDate":"2018-10-29",
-         "returnDate":"2018-12-01",
+		 "regionNo" : 0,
+         "departDate":"2018-10-11",
+         "returnDate":"2018-12-12",
          "coverType":"Family",
-         "adultAge":"30",
-         "childAge":"9",
+         "adultAge":"30,20",
+         "childAge":"8",
 		 "promoCode":"DBSCUSTOMER"
       },
-      "planNo":1,
+      "planNo":3,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
@@ -21,6 +22,20 @@
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
       },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"aa",
+		"tFullName":"aa",
+		"tDOB":"30/10/1988",
+		"tNationality":"Malaysia"
+	  },
+	  {
+		"tNRIC":"bb",
+		"tFullName":"cc",
+		"tDOB":"10/10/1988",
+		"tNationality":"Indonesia"
+	  }]
+	  },
       "creditCardInfo":{  
          "cardNo":"4918914107195005",
          "cardHolderName":"Bruce Wayne",
@@ -30,16 +45,55 @@
    },
    {  
 	  "testId":2,
-	  "testName":"MyTest2",
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
-         "isSingleTrip":true,
+         "isSingleTrip":false,
          "countries":"Malaysia",
-         "departDate":"2018-09-01",
-         "returnDate":"2018-10-30",
+		 "regionNo" : 2,
+         "departDate":"2018-09-11",
          "coverType":"Individual",
          "adultAge":"30",
          "childAge":"",
-		 "promoCode":"DBSSTAFF"
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Dick Grayson",
+         "aDOB":"27/10/1977",
+         "aNationality":"Thailand",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com",
+		 "applicantIsTraveller" : false
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"aa",
+		"tFullName":"aa",
+		"tDOB":"30/10/1988",
+		"tNationality":"Malaysia"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"07/20",
+         "cvv":"123"
+      }
+   },
+   {  
+	  "testId":3,
+	  "testName":"AnnualTrip__Indiv_applicantIsTraveller",
+      "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Malaysia",
+		 "regionNo" : 1,
+         "departDate":"2018-09-11",
+         "returnDate":"2018-10-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
       },
       "planNo":1,
       "applicantDetail":{  
