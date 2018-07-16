@@ -24,5 +24,18 @@ namespace SeleniumAutomation
             sw.Close();
 
         }
+
+        public static bool isAlertPresent()
+        {
+            try
+            {
+                Driver.Instance.SwitchTo().Alert();
+                return true;
+            } // try
+            catch (Exception e)
+            {
+                return false;
+            } // catch
+        }
     }
 }

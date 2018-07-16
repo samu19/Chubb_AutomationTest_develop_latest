@@ -19,11 +19,11 @@ namespace TravellerDetailsPageAutomation
         public string aNationality;
         public string aMobile;
         public string aEmail;
-        public bool applicantIsTraveller = true;
         
         public void Fill(FullElementSelector fullElementSelector)
         {
             /* applicant info */
+            /*
             Driver.Instance.FindElement(By.Id("aNric")).SendKeys(aNRIC); 
             Driver.Instance.FindElement(By.Id("aFullName")).SendKeys(aFullName); 
             Driver.Instance.FindElement(By.Id("aDob")).SendKeys(aDOB); 
@@ -37,15 +37,23 @@ namespace TravellerDetailsPageAutomation
                 Thread.Sleep(500);
             }
             Driver.Instance.FindElement(By.XPath("//*[@id='applicant-Nationality']/div/div[1]/div/div/div/div")).Click(); // Selects the autocomplete popup
+            */
 
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='applicant-Number']/div/div[1]/div/input")));
-            Driver.Instance.FindElement(By.XPath("//*[@id='applicant-Number']/div/div[1]/div/input")).SendKeys(aMobile);
 
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='applicant-Email']/div/div[1]/div/input")));
-            Driver.Instance.FindElement(By.XPath("//*[@id='applicant-Email']/div/div[1]/div/input")).SendKeys(aEmail);
+            /*
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input")));
+            var mobile = Driver.Instance.FindElement(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input"));
+            mobile.Click();
+            mobile.Clear();
+            mobile.SendKeys(aMobile);
 
-            if (!applicantIsTraveller)
-                ;//toggle off (only for individual)
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='lbl-applicant-email']/div/div[1]/div/input")));
+            var email = Driver.Instance.FindElement(By.XPath("//*[@id='lbl-applicant-email']/div/div[1]/div/input"));
+            email.Click();
+            email.Clear();
+            email.SendKeys(aEmail);
+            */
+  
         }
     }
 }

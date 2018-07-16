@@ -8,9 +8,9 @@
 		 "regionNo" : 0,
          "departDate":"2018-10-11",
          "returnDate":"2018-12-12",
-         "coverType":"Family",
-         "adultAge":"30,20",
-         "childAge":"8",
+         "coverType":"Group",
+         "adultAge":"30,20,20,20,20,20,20,20,20,20",
+         "childAge":"",
 		 "promoCode":"DBSCUSTOMER"
       },
       "planNo":3,
@@ -24,16 +24,58 @@
       },
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
-		"tNRIC":"aa",
-		"tFullName":"aa",
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
 		"tDOB":"30/10/1988",
-		"tNationality":"Malaysia"
+		"tNationality":"A"
 	  },
 	  {
-		"tNRIC":"bb",
-		"tFullName":"cc",
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
 		"tDOB":"10/10/1988",
-		"tNationality":"Indonesia"
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/1988",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"tincidunt fringilla lectus vehicula",
+		"tDOB":"10/10/1988",
+		"tNationality":"D"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"facilisis suscipit orci",
+		"tDOB":"10/10/1988",
+		"tNationality":"E"
+	  },
+	  {
+		"tNRIC":"A6",
+		"tFullName":"Cras erat nisi",
+		"tDOB":"10/10/1988",
+		"tNationality":"F"
+	  },
+	  {
+		"tNRIC":"A7",
+		"tFullName":"blandit at commodo ac",
+		"tDOB":"10/10/1988",
+		"tNationality":"G"
+	  },
+	  {
+		"tNRIC":"A8",
+		"tFullName":"ultrices vel est",
+		"tDOB":"10/10/1988",
+		"tNationality":"H"
+	  },
+	  {
+		"tNRIC":"A9",
+		"tFullName":"Vivamus et mauris nec",
+		"tDOB":"10/10/1988",
+		"tNationality":"I"
 	  }]
 	  },
       "creditCardInfo":{  
@@ -63,10 +105,10 @@
          "aDOB":"27/10/1977",
          "aNationality":"Thailand",
          "aMobile":"91129553",
-         "aEmail":"edmundtoh5@gmail.com",
-		 "applicantIsTraveller" : false
+         "aEmail":"edmundtoh5@gmail.com"
       },
 	  "travellerDetails" : {
+	  "applicantIsTraveller" : false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"aa",
 		"tFullName":"aa",

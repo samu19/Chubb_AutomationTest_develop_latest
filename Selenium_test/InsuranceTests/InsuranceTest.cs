@@ -81,11 +81,14 @@ namespace InsuranceTests
             {
                 QuotePage.GotoQuotePage();
 
-                if (quoteData.coverType != "Family")
+                //if (quoteData.coverType != "Family")
+                //{
+                if (Helper.isAlertPresent())
                 {
                     IAlert alert = Driver.Instance.SwitchTo().Alert();
                     alert.Accept();
                 }
+                //}
                 //QuotePage.FillSection(countries).FillSection(dates).FillSection(adultAge).GetQuote();
                 QuotePage.FillSection(_quoteData).GetQuote(fullElementSelector);
 
@@ -105,16 +108,16 @@ namespace InsuranceTests
         }
 
         [Test, TestCaseSource("NewData"), Order(1)]
-        public void Test_002_SelectPlan(InputData input)
+        public void Test_002_FillTravelDetails(InputData input)
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
             string TestName = input.testid + "-" + input.testName;
-            UITest("SelectPlan", () =>
+            UITest("FillTravelDetails", () =>
             {
-                FillTravelDetails(input.applicantDetail, input.travellerDetails);
 
                 GetQuote(input.quoteData, fullElementSelector);
                 SelectPlan(1);
+                FillTravelDetails(input.applicantDetail, input.travellerDetails);
 
             });
         }
