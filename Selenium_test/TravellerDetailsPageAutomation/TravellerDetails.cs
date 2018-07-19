@@ -18,14 +18,16 @@ namespace TravellerDetailsPageAutomation
 
         public void Fill(FullElementSelector fullElementSelector)
         {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
+
             if (!applicantIsTraveller)
             {//toggle off (only for individual)
-                string toggleElement = "//*[@id='itemID']/label/div/div/div[1]";
-                Driver.Instance.FindElement(By.XPath(toggleElement)).Click();
+                string toggleElement = "//*[@id='itemID']/label/div";
+                var applicantIsTravellerToggle = Driver.Instance.FindElement(By.XPath(toggleElement));
+                js.ExecuteScript("arguments[0].scrollIntoView();", applicantIsTravellerToggle);
+
+                applicantIsTravellerToggle.Click();
                 Thread.Sleep(1000);
-                Driver.Instance.FindElement(By.XPath(toggleElement)).Click();
-                Thread.Sleep(1000);
-                Driver.Instance.FindElement(By.XPath(toggleElement)).Click();
             }
 
             int totalCount = travellerDetailsList.Count;
@@ -36,7 +38,7 @@ namespace TravellerDetailsPageAutomation
             }
 
             ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
-            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
+            
 
 
             if (!applicantIsTraveller) // individual, one traveller detail, start from traveller one

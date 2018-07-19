@@ -15,6 +15,7 @@ using PaymentPageAutomation;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace InsuranceTests
 {
@@ -116,8 +117,25 @@ namespace InsuranceTests
             {
 
                 GetQuote(input.quoteData, fullElementSelector);
-                SelectPlan(1);
+                SelectPlan(input.planNo);
                 FillTravelDetails(input.applicantDetail, input.travellerDetails);
+
+            });
+        }
+
+
+
+        [Test, TestCaseSource("NewData"), Order(1)]
+        public void Test_000_VerifyPlanCosts(InputData input)
+        {
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = input.testid + "-" + input.testName;
+            UITest("VerifyPlanCosts", () =>
+            {
+
+                GetQuote(input.quoteData, fullElementSelector);
+                SelectPlan(input.planNo);
+
 
             });
         }
@@ -126,10 +144,29 @@ namespace InsuranceTests
         {
             try
             {
-
                 PlanPage.SelectPlan(_planNo);
                 Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "apply/application-details", "Enter Travel Details Page not reached.");
                 //Thread.Sleep(100000);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                Assert.Fail();
+            }
+
+
+
+            Console.WriteLine("Select Plan passed.");
+
+        }
+
+
+        public void VerifyPlanAmount()
+        {
+            try
+            {
+                PlanPage.VerifyPlanAmount();
+
             }
             catch (Exception ex)
             {
@@ -231,32 +268,53 @@ namespace InsuranceTests
         public void QuoteFunctionality()
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
+            List<QuoteErrors> quoteErrors = LoadQuoteErrors();
             //string TestName = input.testid + "-" + input.testName;
             string TestName = "Quote Functionality Test";
-            UITest("GetQuote", () =>
+            UITest(TestName, () =>
             {
                 try
                 {
                     QuotePage.GotoQuotePage();
-                    QuotePage.QuoteErrorMessageTest(fullElementSelector);
+                    QuotePage.QuoteErrorMessageTest(fullElementSelector, quoteErrors);
 
-                    /*
                     QuotePage.GotoQuotePage();
+                    if (Helper.isAlertPresent())
+                    {
+                        IAlert alert = Driver.Instance.SwitchTo().Alert();
+                        alert.Accept();
+                    }
+
+                    Console.WriteLine("Single Trip" + Environment.NewLine);
+                    QuotePage.QuoteToolTipTest(fullElementSelector, LoadToolTip());
+                    
+                    //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
+
+                    QuotePage.GotoQuotePage();
+                    if (Helper.isAlertPresent())
+                    {
+                        IAlert alert = Driver.Instance.SwitchTo().Alert();
+                        alert.Accept();
+                    }
+                    Console.WriteLine("Annual Trip" + Environment.NewLine);
+                    QuotePage.QuoteToolTipTest(fullElementSelector, LoadToolTip(), false);
+                    //QuotePage.QuoteToolTipTest(fullElementSelector);
+                    //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
+
+                    //QuotePage.GotoQuotePage();
+                    //if (Helper.isAlertPresent())
+                    //{
+                    //    IAlert alert = Driver.Instance.SwitchTo().Alert();
+                    //    alert.Accept();
+                    //}
+                    ////QuotePage.FillSection(null).GetQuote(fullElementSelector);
+                    //////QuotePage.PlanPageFunctionalityTest(fullElementSelector);
                     //QuotePage.QuoteFunctionalityTest(fullElementSelector);
-                    //QuotePage.FillSection(null).GetQuote(fullElementSelector);
-                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
-                    QuotePage.QuoteToolTipTest(fullElementSelector);
-                    Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
-
-                    QuotePage.GotoQuotePage();
-
-                    IAlert alert = Driver.Instance.SwitchTo().Alert();
-                    alert.Accept();
-
-                    QuotePage.QuoteToolTipTest(fullElementSelector, false);
+                    //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
+                    //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
                     //QuotePage.QuoteErrorMessageTest(fullElementSelector);
-                    */
+
                 }
                 catch (Exception ex)
                 {
@@ -478,7 +536,7 @@ namespace InsuranceTests
         public static List<InputData> LoadJsonInput()
         {
             string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
-            using (StreamReader r = new StreamReader(jsonConfigFolder + "config.json"))
+            using (StreamReader r = new StreamReader(jsonConfigFolder + "config2.json"))
             {
                 string json = r.ReadToEnd();
                 List<InputData> foo = JsonConvert.DeserializeObject<List<InputData>>(json);
@@ -489,7 +547,7 @@ namespace InsuranceTests
 
         public static FullElementSelector LoadElementSelectors()
         {
-            string jsonConfigFolder = Path.GetFullPath(@"C:\Users\edmund.toh\Source\Repos\Chubb_AutomationTest_develop\Selenium_test\");
+            string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
             using (StreamReader r = new StreamReader(jsonConfigFolder + "elementConfig.json"))
             {
                 string json = r.ReadToEnd();
@@ -498,12 +556,30 @@ namespace InsuranceTests
             }
         }
 
+        public static List<QuoteErrors> LoadQuoteErrors()
+        {
+            string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
+            using (StreamReader r = new StreamReader(jsonConfigFolder + "quoteErrors.json"))
+            {
+                string json = r.ReadToEnd();
+                List<QuoteErrors> foo = JsonConvert.DeserializeObject<List<QuoteErrors>>(json);
+                return foo;
+            }
+        }
 
+        public JObject LoadToolTip()
+        {
+            string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
+            JObject o1 = JObject.Parse(File.ReadAllText(jsonConfigFolder + "quoteToolTip.json"));
+            //string a = (string)o1["tooltip"][0]["Destination"];\
+            return o1;
+        }
 
         [OneTimeSetUp()]
         public void SetupTest()
         {
-            Driver.Initialize();          
+            Driver.Initialize();
+            //LoadToolTip();
         }
 
         [OneTimeTearDown()]

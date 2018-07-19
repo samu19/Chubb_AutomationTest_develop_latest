@@ -1,0 +1,55 @@
+[
+	{
+		"error" : "Enter all the countries (up to 5) where you are travelling to on your journey."
+	},
+	{
+		"error" : "Enter the age of the traveller. A Child below 12 years of age must be accompanied by an Adult traveller."
+	},
+	{
+		"error" : "You can select up to 5 destinations."
+	},
+	{
+		"error" : "Enter the ages of two travellers 18 years of age and above."
+	},
+	{
+		"error" : "Enter the age of the adult traveller(s) 18 years of age and above."
+	},
+	{
+		"error" : "Enter the ages of up to five dependants, between 0-23 years old."
+	},
+	{
+		"error" : "Enter the ages of all the travellers (at least two to form a group). One traveller must be at least 18 years of age or older."
+	},
+	{
+		"error" : "Enter the ages of all the travellers (at least two to form a group). One traveller must be at least 18 years of age or older."
+	},
+	{
+		"error" : "Enter the age of the adult traveller(s) 18 years of age and above."
+	},
+	{
+		"error" : "Enter the ages of two travellers 18 years of age and above."
+	},
+	{
+		"error" : "No matching record, please try again."
+	},
+	{
+		"error" : "Enter the age of the traveller, between 18-69 years old."
+	},
+	{
+		"error" : "Enter the ages of two adult travellers, between 18-69 years old."
+	},
+	{
+		"error" : "Enter the age of the adult traveller(s), between 18-69 years old."
+	},
+	{
+		"error" : "Enter the ages of up to five dependants, between 0-23 years old."
+	},
+	{
+		"error" : "Enter the age of the adult traveller(s), between 18-69 years old."
+	},
+	{
+		"error" : "Enter the ages of two adult travellers, between 18-69 years old."
+	}
+	
+]
+	

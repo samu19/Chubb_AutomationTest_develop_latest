@@ -1,0 +1,23 @@
+{
+	"annual tooltip": {
+		"Destination" : "\nRegion 4:\r\nRest of the world including Region 1, 2 and 3 but excluding Cuba.\nRegion 3:\r\nRest of the world including Nepal, Tibet, Region 1 and 2 but excluding Cuba, USA and Canada.\nRegion 2:\r\nChina (excluding Tibet), Mongolia, Hong Kong, Macau, Taiwan, North Korea, South Korea, Japan, Australia, New Zealand, India, Sri Lanka, Timor-Leste and all countries in Region 1.\nRegion 1:\r\nBrunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, Philippines, Thailand and Vietnam.",
+		"Departure Date" : "Enter the commencement date of your annual plan.",
+		"Cover Type" : "\nIndividual\r\nFor an individual traveller.\nCouple\r\nFor you and your partner.\nFamily\r\nFor you, your partner and any of your Child(ren). The Child(ren) who is/are below 12 years of age must be accompanied by an Adult for any journey made during the period of insurance.",
+		"Traveller Age" : "Individual\r\nEnter the age of traveller at the departure date. Please note traveller must be under the age of 70 to be eligible for Annual Multi-Trip plan.",
+		"Adults Age" : "Couple\r\nEnter the age of travellers at the departure date. Please note all travellers must be under the age of 70 to be eligible for Annual Multi-Trip plan.",
+		"Adult(s) Age" : "Family\r\nEnter the age of traveller(s) at the departure date. Please note all travellers must be under the age of 70 to be eligible for Annual Multi-Trip plan.",
+		"Child(ren) Age" : "Family\r\n\"Child\" means your legal child who is aged at least 1 month old and below 18 years at the commencement of the journey. The age is raised to 23 years provided the child is primarily dependent on you and is studying full-time in an accredited institution of higher learning at the commencement of the journey."
+		
+	},
+	"single tooltip" : {
+		"Destination(s)" : "Enter all the countries (up to 5) where you are travelling to on your journey.",
+		"Depart Date" : "Enter the start and end date of your trip (i.e. the day you leave and return to Singapore).",
+		"Return Date" : "Enter the start and end date of your trip (i.e. the day you leave and return to Singapore).",
+		"Cover Type" : "\nIndividual\r\nFor an individual traveller.\nCouple\r\nFor you and your partner travelling together on the same journey.\nFamily\r\nFor you, your partner and any of your Child(ren) travelling together on the same journey.\nGroup\r\nFor you and up to 9 of your travelling companions together on the same journey.",
+		"Traveller Age" : "Individual\r\nEnter the age of traveller at the departure date. Please note special conditions apply to traveller aged 70 and above for Single Trip plan. Please ensure you read the Policy Wording to ensure the product is suitable for you.",
+		"Adults Age" : "Couple\r\nEnter the age of travellers at the departure date. Please note special conditions apply to traveller(s) aged 70 and above for Single Trip plan. Please ensure you read the Policy Wording to ensure the product is suitable for you.",
+		"Adult(s) Age" : "Family\r\nEnter the age of traveller(s) at the departure date. Please note special conditions apply to traveller(s) aged 70 and above for Single Trip plan. Please ensure you read the Policy Wording to ensure the product is suitable for you.",
+		"Travellers Age" : "Group\r\nEnter the age of travellers at the departure date. Please note special conditions apply to traveller(s) aged 70 and above for Single Trip plan. Please ensure you read the Policy Wording to ensure the product is suitable for you.",
+		"Child(ren) Age" : "Family\r\n\"Child\" means your legal child who is aged at least 1 month old and below 18 years at the commencement of the journey. The age is raised to 23 years provided the child is primarily dependent on you and is studying full-time in an accredited institution of higher learning at the commencement of the journey."
+	}
+}

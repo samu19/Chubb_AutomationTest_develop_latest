@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Newtonsoft.Json.Linq;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using SeleniumAutomation;
@@ -236,7 +237,7 @@ namespace QuotePageAutomation
 
           }
 
-        public static void QuoteToolTipTest(FullElementSelector fullElementSelector, bool isSingleTrip = true)
+        public static void QuoteToolTipTest(FullElementSelector fullElementSelector, JObject toolTipMsg, bool isSingleTrip = true)
         {
             if (!isSingleTrip) // If Annual Trip
             {
@@ -267,8 +268,8 @@ namespace QuotePageAutomation
                 string popupCountryElement = fullElementSelector.popupCountryElement;
                 Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
 
-
-                string destinationToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/autocomplete-countries/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button";
+                ///html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button
+                string destinationToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button";
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(destinationToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(destinationToolTipElement)).Click();
                 string destinationToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/div/span[2]")).Text;
@@ -277,13 +278,19 @@ namespace QuotePageAutomation
                 string destinationTitleToolTipMessage = destinationToolTipTitle.FindElement(By.XPath("./span")).Text;
 
                 Console.WriteLine(destinationTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine + destinationToolTipMessage);
+
+                //if (!((string)toolTipMsg["single tooltip"][destinationTitleToolTipMessage]).Equals(destinationToolTipMessage))
+                //    Console.WriteLine("FAIL: " + destinationTitleToolTipMessage);
+
+                CheckToolTip(isSingleTrip, destinationTitleToolTipMessage, destinationToolTipMessage, toolTipMsg);
+
                 Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/button")).Click();
 
                 
             }
             else
-            {////*[@id="mat-dialog-0"]/custom-dialog/div/div
-                string regionToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/select-region/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button";
+            {///html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button
+                string regionToolTipElement = "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button";
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(regionToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(regionToolTipElement)).Click();
 
@@ -297,10 +304,20 @@ namespace QuotePageAutomation
                 //    Console.WriteLine(i.FindElement(By.XPath(".//span[1]")).Text + ": " + i.FindElement(By.XPath(".//span[2]")).Text);
                 //}
                 ReadOnlyCollection<IWebElement> regionToolTipAll = regionToolTipMessage.FindElements(By.XPath("./div"));
+                string tempRegionToolTip = null;
                 foreach (IWebElement i in regionToolTipAll)
                 {
-                    Console.WriteLine(i.Text + Environment.NewLine);
+                    tempRegionToolTip += ("\n" + i.Text);
+                    //Console.WriteLine(i.Text + Environment.NewLine);
                 }
+                Console.WriteLine(tempRegionToolTip);
+
+                //if (!((string)toolTipMsg["annual tooltip"][regionTitleToolTipMessage]).Equals(tempRegionToolTip))
+                //    Console.WriteLine("FAIL: " + regionTitleToolTipMessage);
+
+                CheckToolTip(isSingleTrip, regionTitleToolTipMessage, tempRegionToolTip, toolTipMsg);
+
+
                 Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/button")).Click();
 
             }
@@ -325,6 +342,19 @@ namespace QuotePageAutomation
             Console.WriteLine(departDateTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   departDateToolTipMessage);
             Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-1']/custom-dialog/div/div/button")).Click();
 
+            CheckToolTip(isSingleTrip, departDateTitleToolTipMessage, departDateToolTipMessage, toolTipMsg);
+
+
+            //if (isSingleTrip)
+            //{
+            //    if (!((string)toolTipMsg["single tooltip"][departDateTitleToolTipMessage]).Equals(departDateToolTipMessage))
+            //        Console.WriteLine("FAIL: " + departDateTitleToolTipMessage);
+            //}
+            //else
+            //{
+            //    if (!((string)toolTipMsg["annual tooltip"][departDateTitleToolTipMessage]).Equals(departDateToolTipMessage))
+            //        Console.WriteLine("FAIL: " + departDateTitleToolTipMessage);
+            //}
             Thread.Sleep(500);
             Console.WriteLine(Environment.NewLine);
 
@@ -340,6 +370,12 @@ namespace QuotePageAutomation
 
                 Console.WriteLine(returnDateTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine + returnDateToolTipMessage);
                 Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/custom-dialog/div/div/button")).Click();
+
+
+                //if (!((string)toolTipMsg["single tooltip"][returnDateTitleToolTipMessage]).Equals(returnDateToolTipMessage))
+                //    Console.WriteLine("FAIL: " + returnDateTitleToolTipMessage);
+
+                CheckToolTip(isSingleTrip, returnDateTitleToolTipMessage, returnDateToolTipMessage, toolTipMsg);
 
                 //
 
@@ -367,11 +403,35 @@ namespace QuotePageAutomation
             //    Console.WriteLine(i.FindElement(By.XPath(".//span[1]")).Text + ": " + i.FindElement(By.XPath(".//span[2]")).Text);
             //}
             ReadOnlyCollection<IWebElement> coverTypeToolTipAll = coverTypeToolTipMessage.FindElements(By.XPath("./div"));
+            string tempCoverType = null;
+
+           
             foreach (IWebElement i in coverTypeToolTipAll)
             {
-                Console.WriteLine(i.Text + Environment.NewLine);
+                tempCoverType += ("\n" + i.Text);
+                //Console.WriteLine(i.Text + Environment.NewLine);
             }
+
+            Console.WriteLine(tempCoverType);
+
+            //if (isSingleTrip)
+            //{
+            //    if (!((string)toolTipMsg["single tooltip"][coverTypeTitleToolTipMessage]).Equals(tempCoverType))
+            //        Console.WriteLine("FAIL: " + coverTypeTitleToolTipMessage);
+            //}
+            //else
+            //{
+            //    if (!((string)toolTipMsg["annual tooltip"][coverTypeTitleToolTipMessage]).Equals(tempCoverType))
+            //        Console.WriteLine("FAIL: " + coverTypeTitleToolTipMessage);
+            //}
+
+            CheckToolTip(isSingleTrip, coverTypeTitleToolTipMessage, tempCoverType, toolTipMsg);
+
+
             Driver.Instance.FindElement(By.XPath("//*[@id='" + coverTypeMatDialog + "']/custom-dialog/div/div/button")).Click();
+
+            //if (!((string)toolTipMsg["single tooltip"][coverTypeTitleToolTipMessage]).Equals(tempCoverType))
+            //    Console.WriteLine("FAIL: " + coverTypeTitleToolTipMessage);
 
             IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
             
@@ -423,7 +483,22 @@ namespace QuotePageAutomation
 
                 Driver.Instance.FindElement(By.XPath(travellerAgePath + "/button")).Click();
                 Console.WriteLine(travellerAgeTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   travellerAgeToolTipMessage);
+
+                //if (isSingleTrip)
+                //{
+                //    if (!((string)toolTipMsg["single tooltip"][travellerAgeTitleToolTipMessage]).Equals(travellerAgeToolTipMessage))
+                //        Console.WriteLine("FAIL: " + travellerAgeTitleToolTipMessage);
+                //}
+                //else
+                //{
+                //    if (!((string)toolTipMsg["annual tooltip"][travellerAgeTitleToolTipMessage]).Equals(travellerAgeToolTipMessage))
+                //        Console.WriteLine("FAIL: " + travellerAgeTitleToolTipMessage);
+                //}
                 //
+
+                CheckToolTip(isSingleTrip, travellerAgeTitleToolTipMessage, travellerAgeToolTipMessage, toolTipMsg);
+
+
                 Thread.Sleep(500);
                 Console.WriteLine(Environment.NewLine);
 
@@ -461,31 +536,224 @@ namespace QuotePageAutomation
 
             Driver.Instance.FindElement(By.XPath(childAgePath + "/button")).Click();
             Console.WriteLine(childAgeTitleToolTipMessage + Environment.NewLine + "--------------" + Environment.NewLine +   childAgeToolTipMessage);
-            
+
+            //if (isSingleTrip)
+            //{
+            //    if (!((string)toolTipMsg["single tooltip"][childAgeTitleToolTipMessage]).Equals(childAgeToolTipMessage))
+            //        Console.WriteLine("FAIL: " + childAgeTitleToolTipMessage);
+            //}
+            //else
+            //{
+            //    if (!((string)toolTipMsg["annual tooltip"][childAgeTitleToolTipMessage]).Equals(childAgeToolTipMessage))
+            //        Console.WriteLine("FAIL: " + childAgeTitleToolTipMessage);
+            //}
+
+            CheckToolTip(isSingleTrip, childAgeTitleToolTipMessage, childAgeToolTipMessage, toolTipMsg);
 
         }
 
-        public static void QuoteErrorMessageTest(FullElementSelector fullElementSelector, bool isSingleTrip = true)
+        public static void QuoteErrorMessageTest(FullElementSelector fullElementSelector, List<QuoteErrors> quoteErrors)
         {
+            //IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
+            List<QuoteErrors> displayedQuoteErrors = new List<QuoteErrors>();
+
+            string errorElement = ".mat-error.ng-star-inserted";
+            string quoteButtonElement = fullElementSelector.quoteButtonElement;
+            // Trigger Get Quote Button Here /html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-button/button
+
+
             string countriesElement = fullElementSelector.countriesElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
             var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
             destination.SendKeys("");
-            //mat-error-2
+            Thread.Sleep(1000);
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+
+            //var errorMessage = Driver.Instance.FindElement(By.CssSelector(errorElement));
+            //Console.WriteLine(errorMessage.Text);
 
             string adultAgeElement = fullElementSelector.adultAgeElement;
             var travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
             travellerAge.SendKeys("");
-            //mat-error-1
+            Thread.Sleep(1000);
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
 
-            //enter more than 5
-            //mat-error-17
-            
-            //child age
-            //mat-error-3
+            var errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 0 If no Destination for Single Trip is filled or no Countries selected," + Environment.NewLine + "1 For Individual cover type, if Traveller Age is not filled: ***");
+            foreach (IWebElement i in errorMessage)
+            {
+                Console.WriteLine(i.Text);
+                displayedQuoteErrors.Add(new QuoteErrors{ error = i.Text });
+            }
+
+            travellerAge.SendKeys("22");
+
+            for (int i = 0; i < 6; i++)
+            {
+                destination.SendKeys("A");
+                //Thread.Sleep(1000); // 
+                string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
+                string popupCountryElement = fullElementSelector.popupCountryElement;
+                Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
+
+            }
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 2 If more than 5 countries selected: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+            Thread.Sleep(3000);
 
 
+            /* Destination ok, individual age ok */
+            string coverTypeElement = fullElementSelector.coverTypeElement;
+            var coverType = Driver.Instance.FindElement(By.XPath(coverTypeElement));
+            coverType.Click();
 
+            //Driver.Instance.FindElement(By.XPath(coverTypeElement)).Click(); ////div[@class='select-list-dropdown-option with-border select-singleline-option ng-star-inserted']/div
+            string coverTypeDropDownElement = fullElementSelector.coverTypeDropDownElement;
+            ReadOnlyCollection<IWebElement> coverTypeOptions = Driver.Instance.FindElements(By.XPath(coverTypeDropDownElement));
+            coverTypeOptions[1].Click();
+
+            travellerAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 3 For Couple cover type, if Adults Age is not filled: ***");
+
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType.Click();
+            coverTypeOptions[2].Click();
+
+            travellerAge.SendKeys("");
+            string childAgeElement = fullElementSelector.childAgeElement;
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(childAgeElement)));
+            var childAge = Driver.Instance.FindElement(By.XPath(childAgeElement));
+            childAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 4 If under Family Cover Type,  Adult(s) Age is not filled," + Environment.NewLine + "5 If under Family Cover Type,  Child(ren) Age is not filled: ***");
+            foreach (IWebElement i in errorMessage)
+            {
+                Console.WriteLine(i.Text);
+                displayedQuoteErrors.Add(new QuoteErrors { error = i.Text });
+            }
+
+            coverType.Click();
+            coverTypeOptions[3].Click();
+
+            travellerAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 6 If under Group Cover Type,  Traveller(s) Age is not filled: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            travellerAge.SendKeys("17,17,17");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 7 If under Group Cover Type, all the travellers are under 18: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType.Click();
+            coverTypeOptions[2].Click();
+            travellerAge.SendKeys("17,17");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 8 When customer selects family plan type, if customer enters age below 18 in the Adult(s) Age: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType.Click();
+            coverTypeOptions[1].Click();
+            travellerAge.SendKeys("17,17");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 9 When customer selects couple plan type, if customer enters age below 18 in the Adult(s) Age: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+
+            coverType.Click();
+            coverTypeOptions[0].Click();
+            destination.SendKeys("Amazing");
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 10 If customer tries to search an invalid string, inputs integer or inputs Special Character: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            GotoQuotePage();
+            IAlert alert = Driver.Instance.SwitchTo().Alert();
+            alert.Accept();
+            /* change to annual trip */
+            string tripTypeElement = fullElementSelector.tripTypeElement;
+            Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
+            Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
+
+            travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
+            travellerAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 11 For Individual cover type, if Traveller Age is not filled: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType = Driver.Instance.FindElement(By.XPath(coverTypeElement));
+            coverType.Click();
+
+            //Driver.Instance.FindElement(By.XPath(coverTypeElement)).Click(); ////div[@class='select-list-dropdown-option with-border select-singleline-option ng-star-inserted']/div
+            coverTypeOptions = Driver.Instance.FindElements(By.XPath(coverTypeDropDownElement));
+            coverTypeOptions[1].Click();
+
+            travellerAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 12 For Couple cover type, if Adults Age is not filled: ***");
+
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType.Click();
+            coverTypeOptions[2].Click();
+
+            travellerAge.SendKeys("");
+            childAgeElement = fullElementSelector.annualChildAgeElement;
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(childAgeElement)));
+            childAge = Driver.Instance.FindElement(By.XPath(childAgeElement));
+            childAge.SendKeys("");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 13 If under Family Cover Type,  Adult(s) Age is not filled," + Environment.NewLine + "14 If under Family Cover Type,  Child(ren) Age is not filled: ***");
+            foreach (IWebElement i in errorMessage)
+            {
+                Console.WriteLine(i.Text);
+                displayedQuoteErrors.Add(new QuoteErrors { error = i.Text });
+            }
+
+            travellerAge.SendKeys("17,17");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 15 When customer selects family plan type, if customer enters age below 18 in the Adult(s) Age: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            coverType.Click();
+            coverTypeOptions[1].Click();
+            travellerAge.SendKeys("17,17");
+            Driver.ClickWithRetry(By.XPath(quoteButtonElement));
+            errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
+            Console.WriteLine("*** 16 When customer selects couple plan type, if customer enters age below 18 in the Adult(s) Age: ***");
+            Console.WriteLine(errorMessage[0].Text);
+            displayedQuoteErrors.Add(new QuoteErrors { error = errorMessage[0].Text });
+
+            int count = quoteErrors.Count;
+            for (int j = 0; j < count; j++)
+            {
+                if (!quoteErrors[j].error.Equals(displayedQuoteErrors[j].error))
+                    Console.WriteLine(j.ToString() + " FAIL" + Environment.NewLine + quoteErrors[j].error + Environment.NewLine + displayedQuoteErrors[j].error + Environment.NewLine);
+
+            }
         }
 
         public static void PlanPageFunctionalityTest(FullElementSelector fullElementSelector)
@@ -550,6 +818,19 @@ namespace QuotePageAutomation
 
             planCarets[4].Click();
         }
+
+        public static void CheckToolTip(bool isSingleTrip, string elementTitleToCheck, string messageToCheck, JObject toolTipMsg)
+        {
+            string toolTipType = null;
+            if (isSingleTrip)
+                toolTipType = "single tooltip";
+            else
+                toolTipType = "annual tooltip";
+
+            if (!((string)toolTipMsg[toolTipType][elementTitleToCheck]).Equals(messageToCheck))
+                Console.WriteLine("FAIL: " + elementTitleToCheck);
+        }
+
     }
 
     public class QuoteCommand
