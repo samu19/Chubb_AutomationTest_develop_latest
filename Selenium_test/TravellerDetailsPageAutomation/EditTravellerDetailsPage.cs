@@ -119,10 +119,10 @@ namespace TravellerDetailsPageAutomation
             }
 
             // Trigger Proceed Button Here /html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button")));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/app-root/apply/div/div/div/div[2]/div/application-details/div/div[2]/custom-button[2]/button")));
 
-            Driver.Instance.FindElement(By.XPath("/html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button")).Click();
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("summary/preview"));
+            //Driver.Instance.FindElement(By.XPath("/html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button")).Click();
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("summary/preview"));
         }
 
 

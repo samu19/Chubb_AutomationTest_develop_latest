@@ -16,10 +16,12 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace InsuranceTests
 {
     [TestFixture]
+    [Parallelizable]
     public class InsuranceTest : PageTestBase
     {
         /// <summary>
@@ -34,7 +36,7 @@ namespace InsuranceTests
 
             FullElementSelector fullElementSelector = LoadElementSelectors();
             string TestName = input.testid + "-" + input.testName;
-            UITest("GetQuote", () =>
+            UITest(TestName, () =>
             {
                 try
                 {
@@ -61,6 +63,160 @@ namespace InsuranceTests
             });
         }
 
+
+        [Test]
+        [TestCaseSource("checkRatesData")]
+        //[TestCaseSource("NewData2")]
+        public void Test_005_CheckRates(InputData input)
+        {
+
+
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = "CHECK_RATE_" + input.testid + "-" + input.testName;
+            UITest(TestName, () =>
+            {
+
+                //before your loop
+                var csv = new StringBuilder();
+
+                //in your loop
+                var first = TestName;
+  
+                
+
+                //after your loop
+
+                try
+                {
+                    GetQuote(input.quoteData, fullElementSelector);
+                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
+                    List<double> aaa = new List<double>();
+                    aaa = PlanPage.VerifyPlanAmount();
+                    var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6}", first, aaa[0].ToString(), aaa[1].ToString(), aaa[2].ToString(), Convert.ToInt16(aaa[0].Equals(input.expectedRates[0])), Convert.ToInt16(aaa[1].Equals(input.expectedRates[1])), Convert.ToInt16(aaa[2].Equals(input.expectedRates[2])));
+                    csv.AppendLine(newLine);
+                    File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
+
+                }
+                catch (Exception ex)
+                {
+                    string message_ = "Exception for " + TestName + " : " + ex.Message;
+                    Helper.redirectConsoleLog(TestName, message_);
+                    Assert.Fail();
+                }
+
+
+
+                string message = TestName + " passed.";
+
+                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+
+                SaveScreenshot(path, "Success", TestName);
+                Helper.redirectConsoleLog(TestName, message);
+
+            });
+        }
+
+        [Test]
+        public void Test_005_CheckRates_AllInOne()
+        {
+            string TestName = "Check_Rates_AllinOne";
+            List<InputData> ratesInput = LoadJsonInput("checkRatesTesting2");
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            UITest(TestName, () =>
+            {
+
+                var csv = new StringBuilder();
+
+                string first = null;
+
+
+
+                try
+                {
+                    foreach(InputData i in ratesInput)
+                    {
+                        string TestName_ = "CHECK_RATE_" + i.testid + "-" + i.testName;
+                        GetQuote(i.quoteData, fullElementSelector);
+                        List<double> aaa = new List<double>();
+                        aaa = PlanPage.VerifyPlanAmount();
+                        var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6}", TestName, aaa[0].ToString(), aaa[1].ToString(), aaa[2].ToString(), Convert.ToInt16(aaa[0].Equals(i.expectedRates[0])), Convert.ToInt16(aaa[1].Equals(i.expectedRates[1])), Convert.ToInt16(aaa[2].Equals(i.expectedRates[2])));
+                        csv.AppendLine(newLine);
+                        File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
+
+                    }
+                    //After the loop
+                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
+
+                }
+                catch (Exception ex)
+                {
+                    string message_ = "Exception for " + TestName + " : " + ex.Message;
+                    Helper.redirectConsoleLog(TestName, message_);
+                    Assert.Fail();
+                }
+
+
+
+                string message = TestName + " passed.";
+
+                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+
+                //SaveScreenshot(path, "Success", TestName);
+                Helper.redirectConsoleLog(TestName, message);
+
+            });
+        }
+
+
+        [Test]
+        public void Test_009_CalculateTestPassRates()
+        {
+            string fileName = ConfigurationManager.AppSettings["checkRatesFileName"];
+            string TestName = "CalculateTestPassRates";
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(Path.Combine(ConfigurationManager.AppSettings["testFolder"] + fileName + ".csv"));
+                IEnumerable<string> strs = lines;
+
+                //var columnQuery =
+                //    from line in strs
+                //    let elements = line.Split(',')
+                //    select Convert.ToInt32(elements[4]);
+
+                IEnumerable<IEnumerable<int>> multiColQuery =
+                    from line in strs
+                    let elements = line.Split(',')
+                    let scores = elements.Skip(4)
+                    select (from str in scores
+                            select Convert.ToInt32(str));
+
+                var results = multiColQuery.ToList();
+                int columnCount = results[0].Count();
+
+                for (int column = 0; column < columnCount; column++)
+                {
+                    var results2 = from row in results
+                                   select row.ElementAt(column);
+
+                    double average = results2.Average() * 100;
+                    int passed = results2.Sum();
+                    int failed = results2.Count() - passed;
+
+                    // Add one to column because the first exam is Exam #1,  
+                    // not Exam #0.  
+                    Console.WriteLine("Pass percentage: {0}%   Total Passed: {1}   Total Failed: {2}", average, passed, failed);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string message_ = "Exception for " + TestName + " : " + ex.Message;
+                Helper.redirectConsoleLog(TestName, message_);
+                Assert.Fail();
+            }
+
+        }
 
         public void GetQuote(QuoteData quoteData, FullElementSelector fullElementSelector)
         {
@@ -113,7 +269,7 @@ namespace InsuranceTests
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
             string TestName = input.testid + "-" + input.testName;
-            UITest("FillTravelDetails", () =>
+            UITest(TestName, () =>
             {
 
                 GetQuote(input.quoteData, fullElementSelector);
@@ -125,7 +281,7 @@ namespace InsuranceTests
 
 
 
-        [Test, TestCaseSource("NewData"), Order(1)]
+        //[Test, TestCaseSource("NewData"), Order(1)]
         public void Test_000_VerifyPlanCosts(InputData input)
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
@@ -222,9 +378,9 @@ namespace InsuranceTests
                 /* traveller info */
                 // if needed
 
-                Thread.Sleep(5000);
+                //Thread.Sleep(5000);
 
-                TravellerDetailsSummaryPage.ProceedToPaymentSelection();
+                //TravellerDetailsSummaryPage.ProceedToPaymentSelection();
 
             }
             catch (Exception ex)
@@ -264,7 +420,7 @@ namespace InsuranceTests
         }
 
 
-        [Test]
+        //[Test]
         public void QuoteFunctionality()
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
@@ -300,6 +456,12 @@ namespace InsuranceTests
                     QuotePage.QuoteToolTipTest(fullElementSelector, LoadToolTip(), false);
                     //QuotePage.QuoteToolTipTest(fullElementSelector);
                     //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
+                    QuotePage.GotoQuotePage();
+                    if (Helper.isAlertPresent())
+                    {
+                        IAlert alert = Driver.Instance.SwitchTo().Alert();
+                        alert.Accept();
+                    }
 
                     //QuotePage.GotoQuotePage();
                     //if (Helper.isAlertPresent())
@@ -309,7 +471,7 @@ namespace InsuranceTests
                     //}
                     ////QuotePage.FillSection(null).GetQuote(fullElementSelector);
                     //////QuotePage.PlanPageFunctionalityTest(fullElementSelector);
-                    //QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                    QuotePage.QuoteFunctionalityTest(fullElementSelector);
                     //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
                     //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
@@ -340,7 +502,7 @@ namespace InsuranceTests
         /// Its format is an object array. If the object array has n objects,
         /// this test will run n times.
         /// </summary>
-        [Test, TestCaseSource("NewData"), Order(7)]
+        //[Test, TestCaseSource("NewData"), Order(7)]
         public void Test_007_EndToEnd(InputData input)
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
@@ -447,6 +609,9 @@ namespace InsuranceTests
         static object[] EndToEndData= AddConfigData2();
 
         static object[] NewData = AddConfigData3();
+
+
+        static object[] checkRatesData = AddConfigData4(Convert.ToInt16(ConfigurationManager.AppSettings["checkRatesStart"]));
         //{
         //    addConfigData(1),
         //    addConfigData(2)
@@ -490,7 +655,7 @@ namespace InsuranceTests
         public static object[] AddConfigData2()
         {
             List<object> full = new List<object>();
-            List<InputData> fromJson = LoadJsonInput(); // fromJson will contain all the information from config.json
+            List<InputData> fromJson = LoadJsonInput("config"); // fromJson will contain all the information from config.json
             int listLen = fromJson.Count;
             for (int i = 0; i < listLen; i++)
             {
@@ -517,9 +682,24 @@ namespace InsuranceTests
         public static object[] AddConfigData3()
         {
             List<object> full = new List<object>();
-            List<InputData> fromJson = LoadJsonInput(); // fromJson will contain all the information from config.json
+            List<InputData> fromJson = LoadJsonInput("config"); // fromJson will contain all the information from config.json
             int listLen = fromJson.Count;
             for (int i = 0; i < listLen; i++)
+            {
+                List<object> singleSet = new List<object>();
+                singleSet.Add(fromJson[i]);
+                full.Add(singleSet.ToArray());
+            }
+            return full.ToArray();
+
+        }
+
+        public static object[] AddConfigData4(int start)
+        {
+            List<object> full = new List<object>();
+            List<InputData> fromJson = LoadJsonInput("checkRatesTesting"); // fromJson will contain all the information from config.json
+            int listLen = fromJson.Count;
+            for (int i = start; i < listLen; i++)
             {
                 List<object> singleSet = new List<object>();
                 singleSet.Add(fromJson[i]);
@@ -533,10 +713,11 @@ namespace InsuranceTests
         /// Retrieves the information from config.json file,
         /// and deserialises into InputData class. Returns as a list of that class.
         /// </summary>
-        public static List<InputData> LoadJsonInput()
+        public static List<InputData> LoadJsonInput(string fileName)
         {
             string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
-            using (StreamReader r = new StreamReader(jsonConfigFolder + "config2.json"))
+            //string jsonConfigFolder = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\");
+            using (StreamReader r = new StreamReader(jsonConfigFolder + fileName + ".json"))
             {
                 string json = r.ReadToEnd();
                 List<InputData> foo = JsonConvert.DeserializeObject<List<InputData>>(json);
@@ -544,6 +725,16 @@ namespace InsuranceTests
             }
         }
 
+        public static List<InputData> LoadJsonInput2()
+        {
+            string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
+            using (StreamReader r = new StreamReader(jsonConfigFolder + "checkRatesTesting2.json"))
+            {
+                string json = r.ReadToEnd();
+                List<InputData> foo = JsonConvert.DeserializeObject<List<InputData>>(json);
+                return foo;
+            }
+        }
 
         public static FullElementSelector LoadElementSelectors()
         {
@@ -578,9 +769,10 @@ namespace InsuranceTests
         [OneTimeSetUp()]
         public void SetupTest()
         {
+            //Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\");
             Driver.Initialize();
             //LoadToolTip();
-        }
+       }
 
         [OneTimeTearDown()]
         public void MyTestCleanup()
@@ -595,4 +787,9 @@ namespace InsuranceTests
         //    alert.Accept();
         //}
     }
+
+
+
+
+    
 }

@@ -24,6 +24,17 @@ namespace TravellerDetailsPageAutomation
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
+            //if (!applicantIsTraveller)
+            //{//toggle off (only for individual)
+            //    string toggleElement = "/html/body/app-root/apply/div/div/div/div[2]/div/application-details/applicant-detail/form/mat-card/mat-card-header/div/mat-card-title/span";
+            //    var applicantIsTravellerToggle = Driver.Instance.FindElement(By.XPath(toggleElement));
+            //    js.ExecuteScript("arguments[0].scrollIntoView();", applicantIsTravellerToggle);
+
+            //    applicantIsTravellerToggle.Click();
+            //    Thread.Sleep(1000);
+            //}
+
+
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input")));
             var mobile = Driver.Instance.FindElement(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input"));
             js.ExecuteScript("arguments[0].scrollIntoView();", mobile);

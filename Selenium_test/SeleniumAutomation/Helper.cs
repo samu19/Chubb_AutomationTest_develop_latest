@@ -13,7 +13,7 @@ namespace SeleniumAutomation
         public static void redirectConsoleLog(string testName, string message)
         {
             string path = ConfigurationManager.AppSettings["testFolder"].ToString();
-            FileStream fs = new FileStream(path + testName + "\\out.txt", FileMode.Append);
+            FileStream fs = new FileStream(path + testName + "\\out.txt", FileMode.Create);
             // First, save the standard output.
             TextWriter tmp = Console.Out;
             StreamWriter sw = new StreamWriter(fs);

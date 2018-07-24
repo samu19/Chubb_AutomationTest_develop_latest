@@ -14,9 +14,9 @@ namespace TravellerDetailsPageAutomation
         public static void ProceedToPaymentSelection()
         {
             /* i accept and buy now */
-            Driver.Instance.FindElement(By.XPath("//*[@id='mat-checkbox-2']/label/div")).Click();
-            Driver.Instance.FindElement(By.Id("buyNow")).Click();
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("select"));
+            Driver.Instance.FindElement(By.XPath("/html/body/app-root/apply/div/div/div/div[2]/div/application-details/div/div[2]/custom-button[2]/button")).Click();
+            //Driver.Instance.FindElement(By.Id("buyNow")).Click();
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("select"));
 
         }
 

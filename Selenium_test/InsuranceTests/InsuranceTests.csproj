@@ -84,6 +84,9 @@
     <None Include="..\app.config">
       <Link>app.config</Link>
     </None>
+    <None Include="..\config.json">
+      <Link>config.json</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

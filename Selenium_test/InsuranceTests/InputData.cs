@@ -12,6 +12,7 @@ namespace InsuranceTests
     public class InputData
     {
         public QuoteData quoteData { get; set; }
+        public List<double> expectedRates { get; set; }
         public int planNo { get; set; }
         public ApplicantDetail applicantDetail { get; set; }
         public TravellerDetails travellerDetails { get; set; }

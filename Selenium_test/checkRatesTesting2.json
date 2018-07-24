@@ -1,0 +1,543 @@
+[  
+   {  
+	  "testId":555,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 3,
+         "departDate":"2018-09-11",
+		 "returnDate":"2020-01-01",
+         "coverType":"Individual",
+         "adultAge":"50",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			288,360,520
+		],
+   },
+   {  
+	  "testId":556,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+		 "returnDate":"2020-01-01",
+         "coverType":"Couple",
+         "adultAge":"38,20",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			336,432,640
+		],
+   },
+   {  
+	  "testId":557,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Malaysia",
+		 "regionNo" : 2,
+         "departDate":"2018-09-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Group",
+         "adultAge":"38,21,20",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			92.25,116.25,160.5
+		],
+   },
+   {  
+	  "testId":558,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Canada",
+		 "regionNo" : 2,
+         "departDate":"2018-09-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Family",
+         "adultAge":"38",
+         "childAge":"10",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			114,144,197.5
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			18.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.5
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,19.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.5
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			16.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,14.5,265.75
+		],
+   },
+   {  
+	  "testId":559,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,194.5,25.75
+		],
+   }
+   
+]

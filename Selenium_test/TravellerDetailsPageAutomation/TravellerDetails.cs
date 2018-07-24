@@ -22,12 +22,12 @@ namespace TravellerDetailsPageAutomation
 
             if (!applicantIsTraveller)
             {//toggle off (only for individual)
-                string toggleElement = "//*[@id='itemID']/label/div";
+                string toggleElement = "/html/body/app-root/apply/div/div/div/div[2]/div/application-details/applicant-detail/form/mat-card/mat-card-header/div/mat-card-title/span";
                 var applicantIsTravellerToggle = Driver.Instance.FindElement(By.XPath(toggleElement));
                 js.ExecuteScript("arguments[0].scrollIntoView();", applicantIsTravellerToggle);
 
                 applicantIsTravellerToggle.Click();
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
             }
 
             int totalCount = travellerDetailsList.Count;

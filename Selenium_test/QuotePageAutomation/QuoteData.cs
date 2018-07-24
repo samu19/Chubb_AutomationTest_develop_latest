@@ -127,9 +127,12 @@ namespace QuotePageAutomation
             }
 
             //promo code
-            string promoCodeElement = fullElementSelector.promoCodeElement;
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(promoCodeElement)));
-            Driver.Instance.FindElement(By.XPath(promoCodeElement)).SendKeys(promoCode);
+            if (!String.IsNullOrWhiteSpace(promoCode))
+            {
+                string promoCodeElement = fullElementSelector.promoCodeElement;
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(promoCodeElement)));
+                Driver.Instance.FindElement(By.XPath(promoCodeElement)).SendKeys(promoCode);
+            }
         }
 
         

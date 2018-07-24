@@ -26,6 +26,7 @@ namespace QuotePageAutomation
             Driver.Instance.Navigate().GoToUrl(quotePage);
         }
 
+
         public static string GetCurrentURLSlug()
         {
             return Driver.Instance.Url.Split('/').Last();
@@ -858,7 +859,7 @@ namespace QuotePageAutomation
 
             }
 
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             string quoteButtonElement = fullElementSelector.quoteButtonElement;
             // Trigger Get Quote Button Here /html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-button/button
             Driver.ClickWithRetry(By.XPath(quoteButtonElement));

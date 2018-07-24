@@ -2,7 +2,7 @@
 	"tripTypeElement" : "mat-radio-3",
     "countriesElement" : "//*[@id='mat-input-2']",
     "autocompletePopupElement" : ".autocomplete-option.ng-star-inserted",
-    "popupTriggerElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/div[1]/div/span/img",
+    "popupTriggerElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/div[1]/div/span",
 	"popupCountryElement" : "/html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/div[2]/div/div",
     "departDateElement" : "//*[@id='mat-input-0']",
     "returnDateElement" : "//*[@id='mat-input-1']",
