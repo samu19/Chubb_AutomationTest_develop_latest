@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerDetailsPageAutomat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentPageAutomation", "PaymentPageAutomation\PaymentPageAutomation.csproj", "{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigibankUAT", "DigibankUAT\DigibankUAT.csproj", "{EC1BB639-D60F-48C2-8A04-4B190BF93A29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC1BB639-D60F-48C2-8A04-4B190BF93A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1BB639-D60F-48C2-8A04-4B190BF93A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1BB639-D60F-48C2-8A04-4B190BF93A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1BB639-D60F-48C2-8A04-4B190BF93A29}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

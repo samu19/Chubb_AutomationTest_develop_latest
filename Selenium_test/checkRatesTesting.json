@@ -15,7 +15,7 @@
       },
 	  "expectedRates" : [
 			208,
-			272,
+			22,
 			392
 		],
    },
@@ -44,7 +44,7 @@
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
-         "countries":"Malaysia",
+         "countries":"Malaysia, China",
 		 "regionNo" : 2,
          "departDate":"2018-09-11",
 		 "returnDate":"2018-09-20",
@@ -54,7 +54,7 @@
 		 "promoCode":""
       },
 	  "expectedRates" : [
-			92.25,
+			9.25,
 			116.25,
 			160.5
 		],
@@ -96,7 +96,7 @@
 	  "expectedRates" : [
 			52,
 			62.75,
-			87.5
+			87.
 		],
    }
 ]

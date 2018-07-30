@@ -9,6 +9,6 @@ namespace SeleniumAutomation
 
     public interface IFillable
     {
-        void Fill(FullElementSelector fullElementSelector);
+        void Fill(FullElementSelector fullElementSelector, string testId = null, string testName = null);
     }
 }

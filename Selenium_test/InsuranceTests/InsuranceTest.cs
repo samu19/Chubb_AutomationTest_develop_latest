@@ -17,6 +17,8 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Linq;
+using System.Collections.ObjectModel;
+using System.Text.RegularExpressions;
 
 namespace InsuranceTests
 {
@@ -40,8 +42,11 @@ namespace InsuranceTests
             {
                 try
                 {
-                    GetQuote(input.quoteData, fullElementSelector);
-                    //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
+                    if(input.runQuotePageFunctionality)
+                        QuoteFunctionality();
+                    GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                    if(input.runPlanPageFunctionality)
+                        PlanPage.PlanPageFunctionalityTest(fullElementSelector);
 
                 }
                 catch (Exception ex)
@@ -77,25 +82,22 @@ namespace InsuranceTests
             {
 
                 //before your loop
-                var csv = new StringBuilder();
 
                 //in your loop
-                var first = TestName;
-  
-                
+
+
 
                 //after your loop
 
+                //input.quoteData.isSingleTrip,input.quoteData.countries,input.quoteData.regionNo,input.quoteData.departDate,input.quoteData.returnDate,input.quoteData.coverType,input.quoteData.adultAge,input.quoteData.childAge,input.quoteData.promoCode
+
                 try
                 {
-                    GetQuote(input.quoteData, fullElementSelector);
+                    GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
                     //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
-                    List<double> aaa = new List<double>();
-                    aaa = PlanPage.VerifyPlanAmount();
-                    var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6}", first, aaa[0].ToString(), aaa[1].ToString(), aaa[2].ToString(), Convert.ToInt16(aaa[0].Equals(input.expectedRates[0])), Convert.ToInt16(aaa[1].Equals(input.expectedRates[1])), Convert.ToInt16(aaa[2].Equals(input.expectedRates[2])));
-                    csv.AppendLine(newLine);
-                    File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
-
+                    List<double> displayedRates = new List<double>();
+                    displayedRates = PlanPage.VerifyPlanAmount();
+                    LogRatesChecking(input, displayedRates);
                 }
                 catch (Exception ex)
                 {
@@ -125,10 +127,6 @@ namespace InsuranceTests
             UITest(TestName, () =>
             {
 
-                var csv = new StringBuilder();
-
-                string first = null;
-
 
 
                 try
@@ -136,13 +134,10 @@ namespace InsuranceTests
                     foreach(InputData i in ratesInput)
                     {
                         string TestName_ = "CHECK_RATE_" + i.testid + "-" + i.testName;
-                        GetQuote(i.quoteData, fullElementSelector);
-                        List<double> aaa = new List<double>();
-                        aaa = PlanPage.VerifyPlanAmount();
-                        var newLine = string.Format("{0},{1},{2},{3},{4},{5},{6}", TestName, aaa[0].ToString(), aaa[1].ToString(), aaa[2].ToString(), Convert.ToInt16(aaa[0].Equals(i.expectedRates[0])), Convert.ToInt16(aaa[1].Equals(i.expectedRates[1])), Convert.ToInt16(aaa[2].Equals(i.expectedRates[2])));
-                        csv.AppendLine(newLine);
-                        File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
-
+                        GetQuote(i.quoteData, fullElementSelector, i.testid, i.testName);
+                        List<double> displayedRates = new List<double>();
+                        displayedRates = PlanPage.VerifyPlanAmount();
+                        LogRatesChecking(i, displayedRates);
                     }
                     //After the loop
                     //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
@@ -160,7 +155,7 @@ namespace InsuranceTests
                 string message = TestName + " passed.";
 
                 string path = ConfigurationManager.AppSettings["testFolder"].ToString();
-
+                CalculateTestPassRates();
                 //SaveScreenshot(path, "Success", TestName);
                 Helper.redirectConsoleLog(TestName, message);
 
@@ -168,45 +163,53 @@ namespace InsuranceTests
         }
 
 
+
+        public void CalculateTestPassRates()
+        {
+            string fileName = ConfigurationManager.AppSettings["checkRatesFileName"];
+
+            string[] lines = System.IO.File.ReadAllLines(Path.Combine(ConfigurationManager.AppSettings["testFolder"] + fileName + ".csv"));
+            IEnumerable<string> strs = lines;
+
+            //var columnQuery =
+            //    from line in strs
+            //    let elements = line.Split(',')
+            //    select Convert.ToInt32(elements[4]);
+
+            IEnumerable<IEnumerable<int>> multiColQuery =
+                from line in strs
+                let elements = line.Split(',')
+                let scores = elements.Skip(4)
+                select (from str in scores
+                        select Convert.ToInt32(str));
+
+            var results = multiColQuery.ToList();
+            int columnCount = results[0].Count();
+
+            for (int column = 0; column < columnCount; column++)
+            {
+                var results2 = from row in results
+                               select row.ElementAt(column);
+
+                double average = results2.Average() * 100;
+                int passed = results2.Sum();
+                int failed = results2.Count() - passed;
+
+                // Add one to column because the first exam is Exam #1,  
+                // not Exam #0.  
+                Console.WriteLine("Pass percentage: {0}%   Total Passed: {1}   Total Failed: {2}", average, passed, failed);
+
+            }
+        }
+
+
         [Test]
         public void Test_009_CalculateTestPassRates()
         {
-            string fileName = ConfigurationManager.AppSettings["checkRatesFileName"];
             string TestName = "CalculateTestPassRates";
             try
             {
-                string[] lines = System.IO.File.ReadAllLines(Path.Combine(ConfigurationManager.AppSettings["testFolder"] + fileName + ".csv"));
-                IEnumerable<string> strs = lines;
-
-                //var columnQuery =
-                //    from line in strs
-                //    let elements = line.Split(',')
-                //    select Convert.ToInt32(elements[4]);
-
-                IEnumerable<IEnumerable<int>> multiColQuery =
-                    from line in strs
-                    let elements = line.Split(',')
-                    let scores = elements.Skip(4)
-                    select (from str in scores
-                            select Convert.ToInt32(str));
-
-                var results = multiColQuery.ToList();
-                int columnCount = results[0].Count();
-
-                for (int column = 0; column < columnCount; column++)
-                {
-                    var results2 = from row in results
-                                   select row.ElementAt(column);
-
-                    double average = results2.Average() * 100;
-                    int passed = results2.Sum();
-                    int failed = results2.Count() - passed;
-
-                    // Add one to column because the first exam is Exam #1,  
-                    // not Exam #0.  
-                    Console.WriteLine("Pass percentage: {0}%   Total Passed: {1}   Total Failed: {2}", average, passed, failed);
-
-                }
+                CalculateTestPassRates();
 
             }
             catch (Exception ex)
@@ -218,7 +221,7 @@ namespace InsuranceTests
 
         }
 
-        public void GetQuote(QuoteData quoteData, FullElementSelector fullElementSelector)
+        public void GetQuote(QuoteData quoteData, FullElementSelector fullElementSelector, string testId, string testName)
         {
             var _quoteData = new QuoteData
             {
@@ -247,7 +250,7 @@ namespace InsuranceTests
                 }
                 //}
                 //QuotePage.FillSection(countries).FillSection(dates).FillSection(adultAge).GetQuote();
-                QuotePage.FillSection(_quoteData).GetQuote(fullElementSelector);
+                QuotePage.FillSection(_quoteData).GetQuote(fullElementSelector, testId, testName);
 
 
                 Assert.IsTrue(QuotePage.GetCurrentURLSlug() == fullElementSelector.planSummarySlug, "Plan Summary Page not reached");
@@ -256,10 +259,14 @@ namespace InsuranceTests
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: " + ex.Message);
+                Helper.WriteToCSV("Quote Page", "Plan Summary Page reached", false, ex.Message, testId, testName);
+
                 Assert.Fail();
             }
 
             Console.WriteLine("GetQuote passed.");
+            Helper.WriteToCSV("Quote Page", "Plan Summary Page reached", true, null, testId, testName);
+
 
 
         }
@@ -271,10 +278,23 @@ namespace InsuranceTests
             string TestName = input.testid + "-" + input.testName;
             UITest(TestName, () =>
             {
+                if (input.runQuotePageFunctionality)
+                    QuoteFunctionality();
+                GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
-                GetQuote(input.quoteData, fullElementSelector);
-                SelectPlan(input.planNo);
-                FillTravelDetails(input.applicantDetail, input.travellerDetails);
+                //if (input.runPlanPageFunctionality)
+                //    PlanPage.PlanPageFunctionalityTest(fullElementSelector);
+
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
+
+                SelectPlan(input.planNo, input.testid, input.testName);
+                ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
+
+                //CheckTravelDetails(travelDetailsBox, input);
+                
+
+                FillTravelDetails(input.applicantDetail, input.travellerDetails, input.testid, input.testName);
 
             });
         }
@@ -289,30 +309,34 @@ namespace InsuranceTests
             UITest("VerifyPlanCosts", () =>
             {
 
-                GetQuote(input.quoteData, fullElementSelector);
-                SelectPlan(input.planNo);
+                GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                SelectPlan(input.planNo, input.testid, input.testName);
 
 
             });
         }
 
-        public void SelectPlan(int _planNo)
+        public void SelectPlan(int _planNo, string testId, string testName)
         {
             try
             {
-                PlanPage.SelectPlan(_planNo);
+                PlanPage.SelectPlan(_planNo, testId, testName);
                 Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "apply/application-details", "Enter Travel Details Page not reached.");
                 //Thread.Sleep(100000);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: " + ex.Message);
+                Helper.WriteToCSV("Plan Page", "Enter Travel Details Page reached", false, ex.Message, testId, testName);
+
                 Assert.Fail();
             }
 
 
 
             Console.WriteLine("Select Plan passed.");
+            Helper.WriteToCSV("Plan Page", "Enter Travel Details Page reached", true, null, testId, testName);
+
 
         }
 
@@ -342,30 +366,69 @@ namespace InsuranceTests
             }
         };
 
-        //[Test, Order(3)]
-        public void Test_003_FillTravelDetails(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
-            int _planNo, ApplicantDetail _a)
-        {
-            UITest("FillTravelDetails", () =>
-            {
-                //Test_002_SelectPlan(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo);
-                //FillTravelDetails(_a);
-            });
-        }
-
-        //[Test, Order(4)]
-        public void Test_004_FillPaymentDetails(bool _isSingleTrip, string _countries, DateTime _departDate, DateTime _returnDate, string _coverType, string _adultAge, string _childAge,
-            int _planNo, ApplicantDetail _a, CreditCardInfo _CCInfo)
+        [Test, TestCaseSource("NewData")]
+        public void Test_003_FillPaymentDetails(InputData input)
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
-            UITest("FillPaymentDetails", () =>
+            string TestName = input.testid + "-" + input.testName;
+            UITest(TestName, () =>
             {
-                Test_003_FillTravelDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a);
-                FillPaymentDetails(_CCInfo, fullElementSelector);
+                if (input.runQuotePageFunctionality)
+                    QuoteFunctionality();
+                GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
+
+                //if (input.runPlanPageFunctionality)
+                //    PlanPage.PlanPageFunctionalityTest(fullElementSelector);
+
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
+
+                SelectPlan(input.planNo, input.testid, input.testName);
+                ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
+
+                //CheckTravelDetails(travelDetailsBox, input);
+
+
+                FillTravelDetails(input.applicantDetail, input.travellerDetails, input.testid, input.testName);
+                FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
+
             });
         }
 
-        public void FillTravelDetails(ApplicantDetail _a, TravellerDetails _t)
+        [Test, TestCaseSource("NewData")]
+        public void Test_004_EndToEnd(InputData input)
+        {
+            FullElementSelector fullElementSelector = LoadElementSelectors();
+            string TestName = input.testid + "-" + input.testName;
+            UITest(TestName, () =>
+            {
+                if (input.runQuotePageFunctionality)
+                    QuoteFunctionality();
+                GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
+
+                //if (input.runPlanPageFunctionality)
+                //    PlanPage.PlanPageFunctionalityTest(fullElementSelector);
+
+                //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
+
+                SelectPlan(input.planNo, input.testid, input.testName);
+                ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
+
+                //CheckTravelDetails(travelDetailsBox, input);
+
+
+                FillTravelDetails(input.applicantDetail, input.travellerDetails, input.testid, input.testName);
+                FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
+
+                VerifyDetailsPage.ProceedWithPayment(input.testid, input.testName);
+
+                PaymentSuccessPage.ViewPDF(input.testid, input.testName);
+
+            });
+        }
+
+        public void FillTravelDetails(ApplicantDetail _a, TravellerDetails _t, string testId, string testName)
         {
             ApplicantDetail applicantDetail = _a;
 
@@ -386,24 +449,27 @@ namespace InsuranceTests
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: " + ex.Message);
+                Helper.WriteToCSV(null, ex.Message, false);
                 Assert.Fail();
             }
 
+            Helper.WriteToCSV("Payment Details Page", "Payment details page reached", true, null, testId, testName);
 
 
             Console.WriteLine("Fill traveller details passed.");
 
         }
 
-        public void FillPaymentDetails(CreditCardInfo creditCardInfo, FullElementSelector fullElementSelector)
+        public void FillPaymentDetails(CreditCardInfo creditCardInfo, FullElementSelector fullElementSelector, string testId, string testName)
         {
             try
             {
                 PaymentSelectionPage.SelectPaymentTypeAndProceed("CC");
 
+                Helper.WriteToCSV("Payment Details Page", "Credit card option selected", true, null, testId, testName);
 
                 //trigger payment
-                CreditCardDetailsPage.FillSection(creditCardInfo).Pay(fullElementSelector);
+                CreditCardDetailsPage.FillSection(creditCardInfo).Proceed(fullElementSelector);
                 
                 
 
@@ -415,23 +481,36 @@ namespace InsuranceTests
             }
 
 
+            Helper.WriteToCSV("Verify Details Page", "Verify details page reached", true, null, testId, testName);
 
-            Console.WriteLine("Payment Success.");
+            Console.WriteLine("Payment Details input successfully.");
         }
 
 
-        //[Test]
+        [Test]
         public void QuoteFunctionality()
         {
             FullElementSelector fullElementSelector = LoadElementSelectors();
             List<QuoteErrors> quoteErrors = LoadQuoteErrors();
             //string TestName = input.testid + "-" + input.testName;
             string TestName = "Quote Functionality Test";
+            ////For header
+            //var csv = new StringBuilder();
+            //var newLine = string.Format("{0}|{1}|{2}|{3}|{4}", "Date/Time", "Category", "Description", "Status", "More Info");
+            //csv.AppendLine(newLine);
+            //File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + ".csv", csv.ToString());
+
             UITest(TestName, () =>
             {
                 try
                 {
+                    if (Helper.isAlertPresent())
+                    {
+                        IAlert alert = Driver.Instance.SwitchTo().Alert();
+                        alert.Accept();
+                    }
                     QuotePage.GotoQuotePage();
+
                     QuotePage.QuoteErrorMessageTest(fullElementSelector, quoteErrors);
 
                     QuotePage.GotoQuotePage();
@@ -472,6 +551,14 @@ namespace InsuranceTests
                     ////QuotePage.FillSection(null).GetQuote(fullElementSelector);
                     //////QuotePage.PlanPageFunctionalityTest(fullElementSelector);
                     QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                    QuotePage.GotoQuotePage();
+                    if (Helper.isAlertPresent())
+                    {
+                        IAlert alert = Driver.Instance.SwitchTo().Alert();
+                        alert.Accept();
+                    }
+                    QuotePage.QuoteFunctionalityTest(fullElementSelector, false);
+
                     //Console.WriteLine(Environment.NewLine + "++++++++++++++++++++++++++++++++++++++++++++++++++++++" + Environment.NewLine);
                     //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
@@ -511,17 +598,17 @@ namespace InsuranceTests
             {
                 try
                 {
-                    GetQuote(input.quoteData, fullElementSelector);
-                    SelectPlan(input.planNo);
+                    GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
+                    SelectPlan(input.planNo, input.testid, input.testName);
                     //FillTravelDetails(input.applicantDetail);
-                    FillPaymentDetails(input.creditCardInfo, fullElementSelector);
+                    FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
 
                     //Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
                     //Test_004_FillPaymentDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a, _CCInfo);
 
 
 
-                    PaymentSuccessPage.ViewPDF();
+                    PaymentSuccessPage.ViewPDF(input.testid, input.testName);
                     // click pdf
 
 
@@ -605,6 +692,29 @@ namespace InsuranceTests
         //        }
         //    }
         //};
+
+        public static void CheckTravelDetails(ReadOnlyCollection<IWebElement> travelDetailsBox, InputData input)
+        {
+            string expectedTripType;
+            //policy Type Check
+            if (input.quoteData.isSingleTrip)
+                expectedTripType = "Single Trip";
+            else
+                expectedTripType = "Annual Multi-Trip";
+
+            if (expectedTripType != travelDetailsBox[0].Text)
+                Console.WriteLine("");
+            //Destination check Regex.Replace(countries, @"\s+", "");
+            if (Regex.Replace(input.quoteData.countries, @"\s+", "").ToLower() != Regex.Replace(travelDetailsBox[1].Text, @"\s+", "").ToLower() || ("Region " + input.quoteData.regionNo != travelDetailsBox[1].Text))
+                Console.WriteLine("");
+            //Dates
+
+            //Covertype
+            //plan
+            //Total premium
+        }
+
+
 
         static object[] EndToEndData= AddConfigData2();
 
@@ -766,18 +876,48 @@ namespace InsuranceTests
             return o1;
         }
 
+
+        public static void LogRatesChecking(InputData input, List<double> displayedRates)
+        {
+            var csv = new StringBuilder();
+            int classicOutcome = Convert.ToInt16(displayedRates[0].Equals(input.expectedRates[0]));
+            int premierOutcome = Convert.ToInt16(displayedRates[1].Equals(input.expectedRates[1]));
+            int platinumOutcome = Convert.ToInt16(displayedRates[2].Equals(input.expectedRates[2]));
+            var newLine = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}", input.testid, (input.quoteData.isSingleTrip?"Single Trip":"Annual Trip"), (input.quoteData.isSingleTrip ? input.quoteData.countries : null), (!input.quoteData.isSingleTrip ? input.quoteData.regionNo.ToString() : null), input.quoteData.departDate.ToString("dd MMM yyyy"), (input.quoteData.isSingleTrip ? input.quoteData.returnDate.ToString("dd MMM yyyy") : null), input.quoteData.coverType, input.quoteData.adultAge, input.quoteData.childAge, input.quoteData.promoCode, displayedRates[0].ToString(), input.expectedRates[0], classicOutcome, displayedRates[1].ToString(), input.expectedRates[1], premierOutcome, displayedRates[2].ToString(), input.expectedRates[2], platinumOutcome, (classicOutcome+premierOutcome+platinumOutcome == 3? 1 : 0)); //Convert.ToInt16(displayedRates[0].Equals(input.expectedRates[0])), Convert.ToInt16(displayedRates[1].Equals(input.expectedRates[1])), Convert.ToInt16(displayedRates[2].Equals(input.expectedRates[2])));
+            csv.AppendLine(newLine);
+            File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
+        }
+
+
         [OneTimeSetUp()]
         public void SetupTest()
         {
             //Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\");
             Driver.Initialize();
+            //For header
+            var csv = new StringBuilder();
+            var newLine = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", "Date/Time", "Test ID", "Scenario", "Category", "Description", "Status", "More Info");
+            csv.AppendLine(newLine);
+            File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + ".csv", csv.ToString());
             //LoadToolTip();
-       }
+
+            var csv2 = new StringBuilder();
+
+            var newLine2 = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}{22}|{23}", "Id", "TripType", "Countries", "RegionNo", "departDate", "returnDate", "coverType", "adultAge", "childAge", "promoCode", "Displayed Classic", "Expected Classic", "Classic Outcome", "Displayed Premier", "Expected Premier", "Premier Outcome", "Displayed Platinum", "Expected Platinum", "Platinum Outcome", "Overall Outcome", "=\"Pass Percentage: \"&AVERAGE(T:T)*100&\"%\"", "", "=\"# Passed: \"&SUM(T:T)", "=\"# Failed: \"&SUM(T:T)/AVERAGE(T:T)-SUM(T:T)");
+            csv2.AppendLine(newLine2);
+            File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv2.ToString());
+            //LoadToolTip();
+        }
 
         [OneTimeTearDown()]
         public void MyTestCleanup()
         {
             Driver.Close();
+            string oldfilePath = ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + ".csv";
+            string newfilePath = ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + "_" + DateTime.Now.ToString("ddMMMyyyy_hhmmss") + ".csv";
+            System.IO.File.Move(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + ".csv", ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + "_" + DateTime.Now.ToString("ddMMMyyyy_hhmmss") + ".csv");
+            System.IO.File.Move(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + "_" + DateTime.Now.ToString("ddMMMyyyy_hhmmss") + ".csv");
+
         }
 
         //[TearDown()]

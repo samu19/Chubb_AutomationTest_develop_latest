@@ -52,6 +52,7 @@
     <Compile Include="PaymentSelectionPage.cs" />
     <Compile Include="PaymentSuccessPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerifyDetailsPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeleniumAutomation\SeleniumAutomation.csproj">

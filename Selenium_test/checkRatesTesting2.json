@@ -1,6 +1,6 @@
 [  
    {  
-	  "testId":555,
+	  "testId":1,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":false,
@@ -18,7 +18,7 @@
 		],
    },
    {  
-	  "testId":556,
+	  "testId":2,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":false,
@@ -36,7 +36,7 @@
 		],
    },
    {  
-	  "testId":557,
+	  "testId":3,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -54,7 +54,7 @@
 		],
    },
    {  
-	  "testId":558,
+	  "testId":4,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -72,7 +72,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":5,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -90,7 +90,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":6,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -108,7 +108,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":7,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -126,7 +126,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":8,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -144,7 +144,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":9,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -162,7 +162,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":10,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -180,7 +180,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":11,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -198,7 +198,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":12,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -216,7 +216,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":13,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -234,7 +234,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":14,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -252,7 +252,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":15,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -270,7 +270,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":16,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -288,7 +288,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":17,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -306,7 +306,25 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":18,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			168.25,19.5,265.75
+		],
+   },
+   {  
+	  "testId":19,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -324,25 +342,7 @@
 		],
    },
    {  
-	  "testId":559,
-	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
-      "quoteData":{  
-         "isSingleTrip":true,
-         "countries":"Ghana",
-		 "regionNo" : 2,
-         "departDate":"2018-08-11",
-		 "returnDate":"2018-09-20",
-         "coverType":"Individual",
-         "adultAge":"38",
-         "childAge":"",
-		 "promoCode":""
-      },
-	  "expectedRates" : [
-			168.25,194.5,265.75
-		],
-   },
-   {  
-	  "testId":559,
+	  "testId":20,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -360,7 +360,25 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":21,
+	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
+      "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ghana",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+		 "returnDate":"2018-09-20",
+         "coverType":"Individual",
+         "adultAge":"38",
+         "childAge":"",
+		 "promoCode":""
+      },
+	  "expectedRates" : [
+			16.25,194.5,265.75
+		],
+   },
+   {  
+	  "testId":22,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -378,7 +396,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":23,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -396,7 +414,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":24,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -414,7 +432,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":25,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -432,7 +450,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":26,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -450,7 +468,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":27,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -468,7 +486,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":28,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -486,25 +504,7 @@
 		],
    },
    {  
-	  "testId":559,
-	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
-      "quoteData":{  
-         "isSingleTrip":true,
-         "countries":"Ghana",
-		 "regionNo" : 2,
-         "departDate":"2018-08-11",
-		 "returnDate":"2018-09-20",
-         "coverType":"Individual",
-         "adultAge":"38",
-         "childAge":"",
-		 "promoCode":""
-      },
-	  "expectedRates" : [
-			168.25,194.5,265.75
-		],
-   },
-   {  
-	  "testId":559,
+	  "testId":29,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,
@@ -522,7 +522,7 @@
 		],
    },
    {  
-	  "testId":559,
+	  "testId":30,
 	  "testName":"AnnualTrip_Indiv_applicantNotTraveller",
       "quoteData":{  
          "isSingleTrip":true,

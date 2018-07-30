@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -25,11 +26,11 @@ namespace QuotePageAutomation
 
 
 
-        public void Fill(FullElementSelector fullElementSelector)
+        public void Fill(FullElementSelector fullElementSelector, string testId, string testName)
         {
             //QuoteFunctionalityTest(fullElementSelector);
             if (!isSingleTrip) // If Annual Trip
-            {
+            {                
                 string tripTypeElement = fullElementSelector.tripTypeElement;
                 //To change - choose Annual Trip radio button
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
@@ -52,24 +53,32 @@ namespace QuotePageAutomation
                 //    destination.SendKeys(Keys.Backspace);
                 //}
 
-                destination.SendKeys(countries);
-                //Thread.Sleep(1500); // 
-                string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
-                ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
-                if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
-                {
-                    string popupTriggerElement = fullElementSelector.popupTriggerElement;
-                    Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
-                    Thread.Sleep(500);
+                countries = Regex.Replace(countries, @"\s+", "");
+                string[] allCountries = countries.Split(',');
+                
+                foreach (string _countries in allCountries)
+               {
+                    destination.SendKeys(_countries);
+                    //Thread.Sleep(1500); // 
+                    string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
+                    ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                    if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                    {
+                        string popupTriggerElement = fullElementSelector.popupTriggerElement;
+                        Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
+                        Thread.Sleep(500);
+                    }
+
+                    string popupCountryElement = fullElementSelector.popupCountryElement;
+                    Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
                 }
-
-                string popupCountryElement = fullElementSelector.popupCountryElement;
-                Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
-
+                Helper.WriteToCSV("Quote Page", "Entered Countries", true, null, testId, testName);
 
                 DateHandler(departDate, fullElementSelector.departDateElement, fullElementSelector.departDateMonthElement, fullElementSelector.departDateDecreaseElement, fullElementSelector.departDateIncreaseElement, fullElementSelector.dateDayElement);
-                DateHandler(returnDate, fullElementSelector.returnDateElement, fullElementSelector.returnDateMonthElement, fullElementSelector.returnDateDecreaseElement, fullElementSelector.returnDateIncreaseElement, fullElementSelector.dateDayElement);
+                Helper.WriteToCSV("Quote Page", "Entered Depart Date", true, null, testId, testName);
 
+                DateHandler(returnDate, fullElementSelector.returnDateElement, fullElementSelector.returnDateMonthElement, fullElementSelector.returnDateDecreaseElement, fullElementSelector.returnDateIncreaseElement, fullElementSelector.dateDayElement);
+                Helper.WriteToCSV("Quote Page", "Entered Return Date", true, null, testId, testName);
             }
             else
             {
@@ -82,8 +91,10 @@ namespace QuotePageAutomation
                 ReadOnlyCollection<IWebElement> _regionList = regionList.FindElements(By.XPath("./div/div"));
                 var aa = _regionList[0].FindElement(By.XPath("./div/div[1]"));
                 _regionList.FirstOrDefault(a => a.FindElement(By.XPath("./div/div[1]")).Text == "Region " + regionNo.ToString()).Click();
+                Helper.WriteToCSV("Quote Page", "Entered Region", true, null, testId, testName);
 
                 DateHandler(departDate, fullElementSelector.annualDateElement, fullElementSelector.annualDateMonthElement, fullElementSelector.annualDateDecreaseElement, fullElementSelector.annualDateIncreaseElement, fullElementSelector.dateDayElement);
+                Helper.WriteToCSV("Quote Page", "Entered Depart Date", true, null, testId, testName);
 
             }
 
@@ -101,8 +112,11 @@ namespace QuotePageAutomation
                 ReadOnlyCollection<IWebElement> coverTypeOptions = Driver.Instance.FindElements(By.XPath(coverTypeDropDownElement));
                 coverTypeOptions.FirstOrDefault(a => a.Text == coverType).Click();
                 //Thread.Sleep(10000);
+                
 
             }
+
+            Helper.WriteToCSV("Quote Page", "Entered Cover Type", true, null, testId, testName);
 
             //adult age
 
@@ -111,6 +125,8 @@ namespace QuotePageAutomation
 
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(adultAgeElement)));
             Driver.Instance.FindElement(By.XPath(adultAgeElement)).SendKeys(adultAge);
+
+            Helper.WriteToCSV("Quote Page", "Entered Adult Age", true, null, testId, testName);
 
             //child age
             if (!String.IsNullOrWhiteSpace(childAge))
@@ -124,6 +140,9 @@ namespace QuotePageAutomation
                 // To pass in child age
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(childAgeElement)));
                 Driver.Instance.FindElement(By.XPath(childAgeElement)).SendKeys(childAge);
+
+                Helper.WriteToCSV("Quote Page", "Entered Child Age", true, null, testId, testName);
+
             }
 
             //promo code
@@ -132,6 +151,9 @@ namespace QuotePageAutomation
                 string promoCodeElement = fullElementSelector.promoCodeElement;
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(promoCodeElement)));
                 Driver.Instance.FindElement(By.XPath(promoCodeElement)).SendKeys(promoCode);
+
+                Helper.WriteToCSV("Quote Page", "Entered Promo Code", true, null, testId, testName);
+
             }
         }
 

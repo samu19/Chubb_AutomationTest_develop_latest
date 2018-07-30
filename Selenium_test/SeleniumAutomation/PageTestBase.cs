@@ -20,12 +20,12 @@ namespace SeleniumAutomation
             {
                 action();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 try
                 {
                     string path = ConfigurationManager.AppSettings["testFolder"].ToString();
-
+                    
                     SaveScreenshot(path, "Error", TestName);
                 }
                 catch (Exception) { }
@@ -35,7 +35,7 @@ namespace SeleniumAutomation
         }
 
         public void SaveScreenshot(string path, string prefix, string TestName)
-        {
+            {
             var screenshot = ((ITakesScreenshot)Driver.Instance).GetScreenshot();
             string imageFolder = Path.GetFullPath(path + TestName + "\\Screenshots");
             if (!Directory.Exists(imageFolder))

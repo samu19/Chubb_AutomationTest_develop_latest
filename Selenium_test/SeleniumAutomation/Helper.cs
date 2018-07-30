@@ -37,5 +37,15 @@ namespace SeleniumAutomation
                 return false;
             } // catch
         }
+
+        public static void WriteToCSV(string category, string description, bool status, string moreInfo = null, string testId = null, string testScenario = null)
+        {
+            var csv = new StringBuilder();
+            var newLine = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}", DateTime.Now, testId, testScenario, category, description, (status ? "Pass" : "Fail"), moreInfo);
+            csv.AppendLine(newLine);
+            File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["UnitTestLogFileName"] + ".csv", csv.ToString());
+        }
+
+
     }
 }

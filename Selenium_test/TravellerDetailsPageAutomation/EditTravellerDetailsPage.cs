@@ -36,9 +36,12 @@ namespace TravellerDetailsPageAutomation
             new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
 
             /* Status bar should show 1/3 of the bar being filled in yellow */
-            string statusBarElement = "/html/body/app-root/apply/mat-progress-bar/div[2]";
+            string statusBarElement = "/html/body/app-root/apply/div[1]/mat-progress-bar/div[2]";
             Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(statusBarElement)));
             var statusBar = Driver.Instance.FindElement(By.XPath(statusBarElement)); //transform: scaleX(0.33);
+
+            
+
 
             string progressBarAttribute = statusBar.GetAttribute("style"); //transform: scaleX(0.33);
             if (progressBarAttribute != "transform: scaleX(0.33);")
@@ -61,7 +64,14 @@ namespace TravellerDetailsPageAutomation
             }
 
         }
+        
 
+        public static ReadOnlyCollection<IWebElement> RetrieveTravelDetails()
+        {
+            string travelDetailsBoxElement = "/html/body/app-root/apply/div[2]/div/div/div[2]/div/application-details/view-details-box/mat-card/mat-card-content/div/div";
+            ReadOnlyCollection<IWebElement> travelDetailsBox = Driver.Instance.FindElements(By.XPath(travelDetailsBoxElement));
+            return travelDetailsBox;
+        }
 
         public static void CheckTravellerCountry(int travellerIndex, FullElementSelector fullElementSelector, ReadOnlyCollection<IWebElement> travellerList, IJavaScriptExecutor js)
         {
@@ -114,15 +124,16 @@ namespace TravellerDetailsPageAutomation
         {
             foreach (IFillable section in this.sectionsToFill)
             {
-                section.Fill(fullElementSelector);
+                if (section != null)
+                    section.Fill(fullElementSelector);
 
             }
 
             // Trigger Proceed Button Here /html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/app-root/apply/div/div/div/div[2]/div/application-details/div/div[2]/custom-button[2]/button")));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='application-details-button-next']")));
 
-            //Driver.Instance.FindElement(By.XPath("/html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button")).Click();
-            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("summary/preview"));
+            Driver.Instance.FindElement(By.XPath("//*[@id='application-details-button-next']")).Click();
+            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("payment-details"));
         }
 
 

@@ -37,7 +37,7 @@ namespace SeleniumAutomation
             //options.EnableMobileEmulation("Galaxy S5");
             options.AddArgument("start-maximized");
             //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
-
+            options.AddArgument("disable-infobars");
             Instance = new ChromeDriver(options);
             Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
         }

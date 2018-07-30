@@ -18,6 +18,9 @@ namespace InsuranceTests
         public TravellerDetails travellerDetails { get; set; }
         public CreditCardInfo creditCardInfo { get; set; }
         public string testid { get; set; }
-        public string  testName { get; set; }
+        public string testName { get; set; }
+        public bool runQuotePageFunctionality { get; set; }
+        public bool runPlanPageFunctionality { get; set; }
+
     }
 }

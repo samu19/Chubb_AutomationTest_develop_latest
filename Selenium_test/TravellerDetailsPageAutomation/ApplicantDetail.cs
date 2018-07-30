@@ -20,7 +20,7 @@ namespace TravellerDetailsPageAutomation
         public string aMobile;
         public string aEmail;
         
-        public void Fill(FullElementSelector fullElementSelector)
+        public void Fill(FullElementSelector fullElementSelector, string testId, string testName)
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
@@ -33,27 +33,31 @@ namespace TravellerDetailsPageAutomation
             //    applicantIsTravellerToggle.Click();
             //    Thread.Sleep(1000);
             //}
-
-
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input")));
-            var mobile = Driver.Instance.FindElement(By.XPath("//*[@id='lbl-applicant-mobile']/div/div[1]/div/input"));
-            js.ExecuteScript("arguments[0].scrollIntoView();", mobile);
+            Thread.Sleep(1000);
+            string applicantMobileElement = "//*[@id='lbl-applicant-mobile-input']";
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
+            var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));
+            //js.ExecuteScript("arguments[0].scrollIntoView();", mobile);
             mobile.Click();
             mobile.Clear();
             mobile.SendKeys(Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace);
             mobile.SendKeys(aMobile);
+            Helper.WriteToCSV("Applicant Details Page", "Applicant mobile number updated", true, null, testId, testName);
 
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='lbl-applicant-email']/div/div[1]/div/input")));
-            var email = Driver.Instance.FindElement(By.XPath("//*[@id='lbl-applicant-email']/div/div[1]/div/input"));
-            js.ExecuteScript("arguments[0].scrollIntoView();", email);
+            string applicantEmailElement = "//*[@id='lbl-applicant-email-input']";
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantEmailElement)));
+            var email = Driver.Instance.FindElement(By.XPath(applicantEmailElement));
+            js.ExecuteScript("arguments[0].scrollIntoView();", mobile);
 
-            email.Click();
+            //email.Click();
             while(!string.IsNullOrWhiteSpace(email.GetAttribute("ng-reflect-value")))
             {
                 email.SendKeys(Keys.Backspace);
 
             }
-            email.SendKeys(aEmail);           
+            email.SendKeys(aEmail);
+            Helper.WriteToCSV("Applicant Details Page", "Applicant email updated", true, null, testId, testName);
+
         }
     }
 }
