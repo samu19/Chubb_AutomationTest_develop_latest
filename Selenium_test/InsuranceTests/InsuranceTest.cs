@@ -316,12 +316,14 @@ namespace InsuranceTests
             });
         }
 
-        public void SelectPlan(int _planNo, string testId, string testName)
+        public string[] SelectPlan(int _planNo, string testId, string testName)
         {
+            string[] planAmount = null;
             try
             {
-                PlanPage.SelectPlan(_planNo, testId, testName);
+                planAmount = PlanPage.SelectPlan(_planNo, testId, testName);
                 Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "apply/application-details", "Enter Travel Details Page not reached.");
+                
                 //Thread.Sleep(100000);
             }
             catch (Exception ex)
@@ -333,10 +335,10 @@ namespace InsuranceTests
             }
 
 
-
             Console.WriteLine("Select Plan passed.");
             Helper.WriteToCSV("Plan Page", "Enter Travel Details Page reached", true, null, testId, testName);
 
+            return planAmount;
 
         }
 
@@ -412,9 +414,9 @@ namespace InsuranceTests
 
                 //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
-                SelectPlan(input.planNo, input.testid, input.testName);
+                string[] planAmount = SelectPlan(input.planNo, input.testid, input.testName);
                 ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
-
+                CheckTravelDetails(travelDetailsBox, input, Convert.ToDouble(planAmount[1]));
                 //CheckTravelDetails(travelDetailsBox, input);
 
 
@@ -435,7 +437,7 @@ namespace InsuranceTests
             FullElementSelector fullElementSelector = LoadElementSelectors();
             try
             {
-                EditTravellerDetailsPage.FillSection(applicantDetail).FillSection(_t).Proceed(fullElementSelector);
+                EditTravellerDetailsPage.FillSection(applicantDetail).FillSection(_t).Proceed(fullElementSelector, testId, testName);
 
 
                 /* traveller info */
@@ -469,7 +471,7 @@ namespace InsuranceTests
                 Helper.WriteToCSV("Payment Details Page", "Credit card option selected", true, null, testId, testName);
 
                 //trigger payment
-                CreditCardDetailsPage.FillSection(creditCardInfo).Proceed(fullElementSelector);
+                CreditCardDetailsPage.FillSection(creditCardInfo).Proceed(fullElementSelector, testId, testName);
                 
                 
 
@@ -693,7 +695,7 @@ namespace InsuranceTests
         //    }
         //};
 
-        public static void CheckTravelDetails(ReadOnlyCollection<IWebElement> travelDetailsBox, InputData input)
+        public static void CheckTravelDetails(ReadOnlyCollection<IWebElement> travelDetailsBox, InputData input, double chosenPlanAmount)
         {
             string expectedTripType;
             //policy Type Check
@@ -702,23 +704,104 @@ namespace InsuranceTests
             else
                 expectedTripType = "Annual Multi-Trip";
 
-            if (expectedTripType != travelDetailsBox[0].Text)
-                Console.WriteLine("");
+            if (expectedTripType != travelDetailsBox[0].FindElement(By.XPath("./div/div")).Text)
+                Helper.WriteToCSV("Enter Travel Details Page", "Trip Type Check", false, null, input.testid, input.testName);
+            else
+                Helper.WriteToCSV("Enter Travel Details Page", "Trip Type Check", true, null, input.testid, input.testName);
+
             //Destination check Regex.Replace(countries, @"\s+", "");
-            if (Regex.Replace(input.quoteData.countries, @"\s+", "").ToLower() != Regex.Replace(travelDetailsBox[1].Text, @"\s+", "").ToLower() || ("Region " + input.quoteData.regionNo != travelDetailsBox[1].Text))
-                Console.WriteLine("");
-            //Dates
+            string inputCountry = Regex.Replace(input.quoteData.countries, @"\s+", "").ToLower();
+            string displayedCountry = Regex.Replace(travelDetailsBox[1].FindElement(By.XPath("./div/div")).Text, @"\s+", "").ToLower();
+            if (input.quoteData.isSingleTrip)
+            {
+                if (inputCountry != displayedCountry)
+                    Helper.WriteToCSV("Enter Travel Details Page", "Destination Check", false, "Displayed: " + displayedCountry, input.testid, input.testName);
+                else
+                    Helper.WriteToCSV("Enter Travel Details Page", "Destination Check", true, null, input.testid, input.testName);
+            }
+            else
+            {
+                if (("region" + input.quoteData.regionNo != displayedCountry))
+                    Helper.WriteToCSV("Enter Travel Details Page", "Destination Check", false, "Displayed: " + displayedCountry, input.testid, input.testName);
+                else
+                    Helper.WriteToCSV("Enter Travel Details Page", "Destination Check", true, null, input.testid, input.testName);
+            }
+
+            //Dates Regex.Replace(travelDetailsBox[1].Text, @"\s+", "")
+            string[] displayedDates = (Regex.Replace(travelDetailsBox[2].FindElement(By.XPath("./div/div")).Text, @"\s+", "")).Split('-');
+            DateTime displayedDepartDate = DateTime.ParseExact(displayedDates[0], "ddMMMyyyy", null);
+            DateTime displayedReturnDate = DateTime.ParseExact(displayedDates[1], "ddMMMyyyy", null);
+
+            if (input.quoteData.isSingleTrip)
+            {
+                if (displayedDepartDate.Date != input.quoteData.departDate.Date || displayedReturnDate.Date != input.quoteData.returnDate.Date)
+                    Helper.WriteToCSV("Enter Travel Details Page", "Depart and Return Date Check", false, null, input.testid, input.testName);
+                else
+                    Helper.WriteToCSV("Enter Travel Details Page", "Depart and Return Date Check", true, null, input.testid, input.testName);
+
+            }
+            else
+            {
+                if (displayedDepartDate.Date != input.quoteData.departDate.Date)
+                    Helper.WriteToCSV("Enter Travel Details Page", "Depart Date Check", false, null, input.testid, input.testName);
+                else
+                    Helper.WriteToCSV("Enter Travel Details Page", "Depart Date Check", true, null, input.testid, input.testName);
+
+            }
 
             //Covertype
+            if (input.quoteData.coverType.ToLower() != travelDetailsBox[3].FindElement(By.XPath("./div/div")).Text.ToLower())
+                Helper.WriteToCSV("Enter Travel Details Page", "Cover Type Check", false, "Displayed: " + travelDetailsBox[3].FindElement(By.XPath("./div/div")).Text, input.testid, input.testName);
+            else
+                Helper.WriteToCSV("Enter Travel Details Page", "Cover Type Check", true, null, input.testid, input.testName);
+
             //plan
+            bool planCorrect;
+            switch(input.planNo)
+            {
+                case 1:
+                    planCorrect = (travelDetailsBox[4].FindElement(By.XPath("./div/div")).Text.Contains("Classic")) ? true : false;
+
+                    break;
+
+                case 2:
+                    planCorrect = (travelDetailsBox[4].FindElement(By.XPath("./div/div")).Text.Contains("Premier")) ? true : false;
+
+                    break;
+
+                case 3:
+                    planCorrect = (travelDetailsBox[4].FindElement(By.XPath("./div/div")).Text.Contains("Platinum")) ? true : false;
+
+                
+                    break;
+                default:
+                    planCorrect = false;
+                    break;
+                    
+
+
+            }
+            if(planCorrect)
+                Helper.WriteToCSV("Enter Travel Details Page", "Selected Plan Check", true, null, input.testid, input.testName);
+            else
+                Helper.WriteToCSV("Enter Travel Details Page", "Selected Plan Check", false, "Displayed: " + travelDetailsBox[4].FindElement(By.XPath("./div/div")).Text, input.testid, input.testName);
+
+
+
             //Total premium
+            string displayedPremium = (travelDetailsBox[5].FindElement(By.XPath("./div/div")).Text);
+            if (chosenPlanAmount != Convert.ToDouble(displayedPremium.Substring(3)))
+                Helper.WriteToCSV("Enter Travel Details Page", "Displayed Premium Check", false, "Displayed: " + displayedPremium, input.testid, input.testName);
+            else
+                Helper.WriteToCSV("Enter Travel Details Page", "Displayed Premium Check", true, null, input.testid, input.testName);
+
         }
 
 
 
         static object[] EndToEndData= AddConfigData2();
 
-        static object[] NewData = AddConfigData3();
+        static object[] NewData = AddConfigData3(Convert.ToInt16(ConfigurationManager.AppSettings["endToEndStart"]));
 
 
         static object[] checkRatesData = AddConfigData4(Convert.ToInt16(ConfigurationManager.AppSettings["checkRatesStart"]));
@@ -789,12 +872,12 @@ namespace InsuranceTests
         }
 
 
-        public static object[] AddConfigData3()
+        public static object[] AddConfigData3(int start)
         {
             List<object> full = new List<object>();
-            List<InputData> fromJson = LoadJsonInput("config"); // fromJson will contain all the information from config.json
+            List<InputData> fromJson = LoadJsonInput(ConfigurationManager.AppSettings["endToEndFileName"]); // fromJson will contain all the information from config.json
             int listLen = fromJson.Count;
-            for (int i = 0; i < listLen; i++)
+            for (int i = start-1; i < listLen; i++)
             {
                 List<object> singleSet = new List<object>();
                 singleSet.Add(fromJson[i]);
@@ -809,7 +892,7 @@ namespace InsuranceTests
             List<object> full = new List<object>();
             List<InputData> fromJson = LoadJsonInput("checkRatesTesting"); // fromJson will contain all the information from config.json
             int listLen = fromJson.Count;
-            for (int i = start; i < listLen; i++)
+            for (int i = start-1; i < listLen; i++)
             {
                 List<object> singleSet = new List<object>();
                 singleSet.Add(fromJson[i]);

@@ -14,22 +14,29 @@ namespace PlanPageAutomation
 {
     public class PlanPage
     {
-        public static void SelectPlan(int i, string testId, string testName)
+        public static string[] SelectPlan(int i, string testId, string testName)
         {
             string applyPlanElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/custom-button[1]/button";
+            string planAmountElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/div[2]";
+            string originalAmountElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/div[3]";
+            string planAmount = Driver.Instance.FindElement(By.XPath(planAmountElement)).Text;
+            string originalAmount = Driver.Instance.FindElement(By.XPath(originalAmountElement)).Text;
+            Helper.WriteToCSV("Plan Page", "Retrieved Premiums", true, "Original: " + originalAmount + ", Final: " +  planAmount, testId, testName);
+
             Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
             //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("terms"));
             ///html/body/chubb-dbs-app/app-terms-conditions/div[2]/div/div/div[2]/button
 
-            string planPageProceedElement = "//*[@id='mat-dialog-0']/custom-dialog/div/div[2]/div/div[2]/button";
-            Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageProceedElement)));
-            Helper.WriteToCSV("Quote Page", "Selected Plan", true, null, testId, testName);
+            //string planPageProceedElement = "//*[@id='mat-dialog-0']/custom-dialog/div/div[2]/div/div[2]/button";
+            //Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageProceedElement)));
+            //Helper.WriteToCSV("Quote Page", "Selected Plan", true, null, testId, testName);
 
 
-            Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
+            //Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
             new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
-            Helper.WriteToCSV("Quote Page", "Proceeded to Application Details Page", true, null, testId, testName);
-
+            Helper.WriteToCSV("Plan Page", "Proceeded to Application Details Page", true, null, testId, testName);
+            string[] combinedAmount = { originalAmount, planAmount };
+            return combinedAmount;
         }
 
         public static List<double> VerifyPlanAmount()

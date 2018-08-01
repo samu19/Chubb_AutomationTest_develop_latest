@@ -34,14 +34,14 @@ namespace PaymentPageAutomation
             return this;
         }
 
-        public void Proceed(FullElementSelector fullElementSelector)
+        public void Proceed(FullElementSelector fullElementSelector, string testId, string testName)
         {
             //bool success = false;
             //while (!success)
             //{
                 foreach (IFillable section in this.sectionsToFill)
                 {
-                    section.Fill(fullElementSelector);
+                    section.Fill(fullElementSelector, testId, testName);
 
                 }
 

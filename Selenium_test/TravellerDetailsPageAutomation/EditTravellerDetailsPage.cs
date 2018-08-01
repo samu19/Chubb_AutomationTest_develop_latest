@@ -22,17 +22,17 @@ namespace TravellerDetailsPageAutomation
         {
             string applyPlanElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + 1 + "]/div/custom-button[1]/button";
             Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
-            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("terms"));
-            ///html/body/chubb-dbs-app/app-terms-conditions/div[2]/div/div/div[2]/button
-            string planPageBackElement = "//*[@id='mat-dialog-0']/custom-dialog/div/div[2]/div/div[1]/button";
-            Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageBackElement)));
-            Driver.Instance.FindElement(By.XPath(planPageBackElement)).Click();
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("plan"));
+            ////new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("terms"));
+            /////html/body/chubb-dbs-app/app-terms-conditions/div[2]/div/div/div[2]/button
+            //string planPageBackElement = "//*[@id='mat-dialog-0']/custom-dialog/div/div[2]/div/div[1]/button";
+            //Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageBackElement)));
+            //Driver.Instance.FindElement(By.XPath(planPageBackElement)).Click();
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("plan"));
             Thread.Sleep(1000);
-            Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
-            string planPageProceedElement = "//*[@id='mat-dialog-1']/custom-dialog/div/div[2]/div/div[2]/button";
-            Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageProceedElement)));
-            Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
+            //Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
+            //string planPageProceedElement = "//*[@id='mat-dialog-1']/custom-dialog/div/div[2]/div/div[2]/button";
+            //Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageProceedElement)));
+            //Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
             new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
 
             /* Status bar should show 1/3 of the bar being filled in yellow */
@@ -57,7 +57,7 @@ namespace TravellerDetailsPageAutomation
             IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
             ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
-            for(int i = 1; i <= 6; i++)
+            for(int i = 1; i <= (travellerList.Count); i++)
             {
                 CheckTravellerCountry(i, fullElementSelector, travellerList, js);
 
@@ -120,12 +120,12 @@ namespace TravellerDetailsPageAutomation
             return this;
         }
 
-        public void Proceed(FullElementSelector fullElementSelector)
+        public void Proceed(FullElementSelector fullElementSelector, string testId, string testName)
         {
             foreach (IFillable section in this.sectionsToFill)
             {
                 if (section != null)
-                    section.Fill(fullElementSelector);
+                    section.Fill(fullElementSelector, testId, testName);
 
             }
 

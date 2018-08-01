@@ -1,0 +1,1895 @@
+[  
+   {  
+      "testId":1,
+	  "testName":"Sprint4-TC1",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Thailand, Myanmar, Vietnam",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-11",
+         "coverType":"Group",
+         "adultAge":"1,18,23,38,44,50,69,75,99,99",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1919",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A6",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A7",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A8",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A9",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":2,
+	  "testName":"Sprint4-TC2",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Australia, China, Japan, Hong Kong, Mongolia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-11",
+         "coverType":"Couple",
+         "adultAge":"99,99",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":3,
+	  "testName":"Sprint4-TC3",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Canada, United States, Iceland, Hong Kong, Australia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Family",
+         "adultAge":"47,56",
+         "childAge":"1,7,12,17,23",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1970",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1970",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1970",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2010",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1970",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A6",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2010",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A7",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2000",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":4,
+	  "testName":"Sprint4-TC4",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Malaysia, Indonesia, Brunei, Laos",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"23",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":5,
+	  "testName":"Sprint4-TC5",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"New Zealand, South Korea, Taiwan, Indonesia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-13",
+         "coverType":"Individual",
+         "adultAge":"0",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2017",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":6,
+	  "testName":"Sprint4-TC6",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Philippines, Thailand, Vietnam",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-13",
+         "coverType":"Family",
+         "adultAge":"49",
+         "childAge":"0,5,9,12",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1969",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2006",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2009",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"tincidunt lectus vehicula",
+		"tDOB":"10/10/2013",
+		"tNationality":"D"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"fringilla lectus vehicula",
+		"tDOB":"01/06/2018",
+		"tNationality":"D"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":8,
+	  "testName":"Sprint4-TC8",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Greenland, Italy, France, Germany, China",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-15",
+         "coverType":"Individual",
+         "adultAge":"99",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1919",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":9,
+	  "testName":"Sprint4-TC9",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"India, Sri Lanka, Timor-Leste, Thailand",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-15",
+         "coverType":"Family",
+         "adultAge":"99,99",
+         "childAge":"5,9,15",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem hey",
+		"tDOB":"30/10/1919",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem who",
+		"tDOB":"30/10/1919",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem what",
+		"tDOB":"30/10/2013",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"Lorem when",
+		"tDOB":"30/10/2009",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"Lorem how",
+		"tDOB":"30/10/2003",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":10,
+	  "testName":"Sprint4-TC10",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Nepal, Tibet, India, Vietnam, China",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-17",
+         "coverType":"Couple",
+         "adultAge":"23,23",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum",
+		"tDOB":"30/10/1995",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"dolor sit amet",
+		"tDOB":"30/10/1995",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":11,
+	  "testName":"Sprint4-TC11",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"China, Hong Kong, Macau, Taiwan",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-17",
+         "coverType":"Individual",
+         "adultAge":"99",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":13,
+	  "testName":"Sprint4-TC13",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Canada, US, Iceland, Hong Kong, Australia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-20",
+         "coverType":"Group",
+         "adultAge":"0,3,36,69,79",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1939",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"nibh nunc",
+		"tDOB":"10/12/2017",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":14,
+	  "testName":"Sprint4-TC14",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Malaysia, Brunei, Cambodia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-20",
+         "coverType":"Family",
+         "adultAge":"30",
+         "childAge":"1,4",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2017",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2013",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":15,
+	  "testName":"Sprint4-TC15",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Indonesia, Philippines, Cambodia",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-22",
+         "coverType":"Couple",
+         "adultAge":"25,25",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1998",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4119114107195009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":17,
+	  "testName":"Sprint4-TC17",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Laos, Cambodia, Myanmar",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-22",
+         "coverType":"Individual",
+         "adultAge":"1",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2017",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":18,
+	  "testName":"Sprint4-TC18",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"South Korea, China, Hong Kong, Macau",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-25",
+         "coverType":"Individual",
+         "adultAge":"70",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1948",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":19,
+	  "testName":"Sprint4-TC19",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Australia, New Zealand, South Korea, Japan, Philippines",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-25",
+         "coverType":"Group",
+         "adultAge":"1,6,27,32,48,91",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsumt",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem ipsum dolor amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"Lorem dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":20,
+	  "testName":"Sprint4-TC20",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Hungary, Belgium, Bolivia, China, Thailand",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-30",
+         "coverType":"Family",
+         "adultAge":"40,40",
+         "childAge":"10,10",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":21,
+	  "testName":"Sprint4-TC21",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Brazil, Bulgaria, Bahamas, British Virgin Islands",
+		 "regionNo" : 0,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-30",
+         "coverType":"Individual",
+         "adultAge":"29",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+	{  
+      "testId":22,
+	  "testName":"Sprint4-TC22",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Australia, China, Japan, Hong Kong, Mongolia",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-04",
+         "coverType":"Couple",
+         "adultAge":"18,99",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":23,
+	  "testName":"Sprint4-TC23",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Thailand, Malaysia, Vietnam",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-04",
+         "coverType":"Family",
+         "adultAge":"50",
+         "childAge":"11",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":24,
+	  "testName":"Sprint4-TC24",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Thailand, Myanmar, Vietnam, Cambodia, Philippines",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-09",
+         "coverType":"Group",
+         "adultAge":"8,21,34,46,49,88,95",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A5",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A6",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A7",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":25,
+	  "testName":"Sprint4-TC25",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Laos, Cambodia, Myanmar",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-09",
+         "coverType":"Individual",
+         "adultAge":"35",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5587022800700001",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":26,
+	  "testName":"Sprint4-TC26",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Japan, New Zealand, Hong Kong, Taiwan",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-24",
+         "coverType":"Family",
+         "adultAge":"50,58",
+         "childAge":"23",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":27,
+	  "testName":"Sprint4-TC27",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Israel, Jordan, UAE, Saudi Arabia, Qatar",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-09-24",
+         "coverType":"Couple",
+         "adultAge":"39,45",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":28,
+	  "testName":"Sprint4-TC28",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Guam, Slovakia, Seychelles, Solomon Islands, Samoa",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-10-09",
+         "coverType":"Individual",
+         "adultAge":"23",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":29,
+	  "testName":"Sprint4-TC29",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"UK, Turkey, Russia, Spain, Switzerland",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-10-09",
+         "coverType":"Family",
+         "adultAge":"44",
+         "childAge":"3,9",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":30,
+	  "testName":"Sprint4-TC30",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"South Africa, Venezuela, Trinidad and Tobago, Tunisia, Tanzania",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-11-08",
+         "coverType":"Couple",
+         "adultAge":"37,43",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":31,
+	  "testName":"Sprint4-TC31",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Albania, Austria, Bahrain, Botswana, Bhutan",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-11-08",
+         "coverType":"Group",
+         "adultAge":"15,25,35,45",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A4",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":32,
+	  "testName":"Sprint4-TC32",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Belize, Chile, Colombia, Costa Rica, Croatia",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-11-18",
+         "coverType":"Individual",
+         "adultAge":"4",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/2014",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":33,
+	  "testName":"Sprint4-TC33",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Czech Republic, Denmark, Dominican Republic, Ecuador",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-11-18",
+         "coverType":"Group",
+         "adultAge":"9,29,49,59",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":34,
+	  "testName":"Sprint4-TC34",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Egypt, El Salvador, Estonia, Ethiopia, Fiji",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-12-08",
+         "coverType":"Family",
+         "adultAge":"55",
+         "childAge":"6,16,21",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":35,
+	  "testName":"Sprint4-TC35",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Finland, Greece, Guatemala, Haiti, Honduras",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-12-08",
+         "coverType":"Couple",
+         "adultAge":"20,25",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"5588042800700008",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":36,
+	  "testName":"Sprint4-TC36",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Ireland, Scotland, Switzerland, Luxembourg, Maldives",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2019-01-17",
+         "coverType":"Family",
+         "adultAge":"31,33",
+         "childAge":"4",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":37,
+	  "testName":"Sprint4-TC37",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Madagascar, Malta, Mauritius, Micronesia, Monaco",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2019-01-17",
+         "coverType":"Group",
+         "adultAge":"1,23",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":38,
+	  "testName":"Sprint4-TC38",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Netherlands, Nigeria, Norway, Oman, Palestine",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2019-02-06",
+         "coverType":"Individual",
+         "adultAge":"60",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":39,
+	  "testName":"Sprint4-TC39",
+	  "quoteData":{  
+         "isSingleTrip":true,
+         "countries":"Paraguay, Peru, Portugal, Poland, Puerto Rico",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2019-02-06",
+         "coverType":"Family",
+         "adultAge":"39",
+         "childAge":"9",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":40,
+	  "testName":"Sprint4-TC40",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"23",
+         "childAge":"",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":42,
+	  "testName":"Sprint4-TC42",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"69",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":43,
+	  "testName":"Sprint4-TC43",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Couple",
+         "adultAge":"18,69",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   },
+   {  
+      "testId":44,
+	  "testName":"Sprint4-TC44",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Family",
+         "adultAge":"69,69",
+         "childAge":"23,23",
+		 "promoCode":"DBSSTAFF"
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"boonkeonglee@dbs.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"377910280070009",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"1234"
+      }
+   }
+]

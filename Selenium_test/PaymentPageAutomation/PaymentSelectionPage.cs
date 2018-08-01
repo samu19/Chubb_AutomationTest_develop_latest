@@ -20,7 +20,8 @@ namespace PaymentPageAutomation
             {
                 //switch (paymentType)
                 {
-                    //case "CC": /html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]
+                    Thread.Sleep(3000);
+                    //case "CC":                                                      /html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]
                     Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]")));
                         Driver.Instance.FindElement(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]")).Click();
 

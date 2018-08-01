@@ -24,7 +24,7 @@ namespace PaymentPageAutomation
             Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath("//*[@id='tokenexIframe']")));
             Driver.Instance.FindElement(By.Id("pan")).SendKeys(cardNo); //
             Driver.Instance.SwitchTo().DefaultContent();
-            Helper.WriteToCSV("Payment Details Page", "Card number filled", true, null, testId, testName);
+            Helper.WriteToCSV("Payment Details Page", "Card number filled", true, cardNo, testId, testName);
 
             Thread.Sleep(1000);
 

@@ -92,6 +92,7 @@
          "aEmail":"edmundtoh5@gmail.com"
       },
 	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
 		"tFullName":"Lorem ipsum dolor sit amet",
@@ -153,7 +154,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Family",
          "adultAge":"30,30",
          "childAge":"2,4",
 		 "promoCode":""
@@ -203,7 +204,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Group",
          "adultAge":"30,30,30,30",
          "childAge":"",
 		 "promoCode":""
@@ -343,6 +344,7 @@
          "aEmail":"edmundtoh5@gmail.com"
       },
 	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
 		"tFullName":"Lorem ipsum dolor sit amet",
@@ -404,7 +406,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Family",
          "adultAge":"30,30",
          "childAge":"2,4",
 		 "promoCode":""
@@ -454,7 +456,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Group",
          "adultAge":"30,30,30,30",
          "childAge":"",
 		 "promoCode":""
@@ -594,6 +596,7 @@
          "aEmail":"edmundtoh5@gmail.com"
       },
 	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
 		"tFullName":"Lorem ipsum dolor sit amet",
@@ -655,7 +658,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Family",
          "adultAge":"30,30",
          "childAge":"2,4",
 		 "promoCode":""
@@ -705,7 +708,7 @@
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
-         "coverType":"Individual",
+         "coverType":"Group",
          "adultAge":"30,30,30,30",
          "childAge":"",
 		 "promoCode":""
@@ -751,5 +754,476 @@
          "expiryDate":"0720",
          "cvv":"123"
       }
-   } 
+   },
+	{  
+      "testId":19,
+	  "testName":"AnnualTrip_Individual_Is_Traveller_Classic",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":20,
+	  "testName":"AnnualTrip_Individual_Another_Adult_Traveller_Classic",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":21,
+	  "testName":"AnnualTrip_Couple_Classic",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Couple",
+         "adultAge":"30,30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":22,
+	  "testName":"AnnualTrip_Family_Classic",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Family",
+         "adultAge":"30,30",
+         "childAge":"2,4",
+		 "promoCode":""
+      },
+      "planNo":1,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":23,
+	  "testName":"AnnualTrip_Individual_Is_Traveller_Premier",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":24,
+	  "testName":"AnnualTrip_Individual_Another_Adult_Traveller_Premier",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":25,
+	  "testName":"AnnualTrip_Couple_Premier",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Couple",
+         "adultAge":"30,30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":26,
+	  "testName":"AnnualTrip_Family_Premier",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Family",
+         "adultAge":"30,30",
+         "childAge":"2,4",
+		 "promoCode":""
+      },
+      "planNo":2,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":27,
+	  "testName":"AnnualTrip_Individual_Is_Traveller_Platinum",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":28,
+	  "testName":"SingleTrip_Individual_Another_Adult_Traveller_Platinum",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 1,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Individual",
+         "adultAge":"30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "applicantIsTraveller":false,
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":29,
+	  "testName":"AnnualTrip_Couple_Platinum",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 2,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Couple",
+         "adultAge":"30,30",
+         "childAge":"",
+		 "promoCode":""
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   },
+   {  
+      "testId":30,
+	  "testName":"SingleTrip_Family_Platinum",
+	  "quoteData":{  
+         "isSingleTrip":false,
+         "countries":"Thailand",
+		 "regionNo" : 3,
+         "departDate":"2018-08-11",
+         "returnDate":"2018-08-12",
+         "coverType":"Family",
+         "adultAge":"30,30",
+         "childAge":"2,4",
+		 "promoCode":"DBSCUSTOMER"
+      },
+      "planNo":3,
+      "applicantDetail":{  
+         "aNRIC":"S1234567A",
+         "aFullName":"Bruce Willis",
+         "aDOB":"30/10/1990",
+         "aNationality":"Singapore",
+         "aMobile":"91129553",
+         "aEmail":"edmundtoh5@gmail.com"
+      },
+	  "travellerDetails" : {
+	  "travellerDetailsList" : [{
+		"tNRIC":"A1",
+		"tFullName":"Lorem ipsum dolor sit amet",
+		"tDOB":"30/10/1988",
+		"tNationality":"A"
+	  },
+	  {
+		"tNRIC":"A2",
+		"tFullName":"consectetur adipiscing elit",
+		"tDOB":"10/10/2016",
+		"tNationality":"B"
+	  },
+	  {
+		"tNRIC":"A3",
+		"tFullName":"Sed nibh nunc",
+		"tDOB":"10/10/2014",
+		"tNationality":"C"
+	  }]
+	  },
+      "creditCardInfo":{  
+         "cardNo":"4918914107195005",
+         "cardHolderName":"Bruce Wayne",
+         "expiryDate":"0720",
+         "cvv":"123"
+      }
+   }
 ]

@@ -53,7 +53,7 @@ namespace QuotePageAutomation
                 //    destination.SendKeys(Keys.Backspace);
                 //}
 
-                countries = Regex.Replace(countries, @"\s+", "");
+                countries = Regex.Replace(countries, @",\s+", ",");
                 string[] allCountries = countries.Split(',');
                 
                 foreach (string _countries in allCountries)

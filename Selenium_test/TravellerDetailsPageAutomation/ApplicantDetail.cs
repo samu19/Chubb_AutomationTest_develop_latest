@@ -33,7 +33,7 @@ namespace TravellerDetailsPageAutomation
             //    applicantIsTravellerToggle.Click();
             //    Thread.Sleep(1000);
             //}
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             string applicantMobileElement = "//*[@id='lbl-applicant-mobile-input']";
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
             var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));

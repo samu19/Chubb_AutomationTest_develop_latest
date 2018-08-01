@@ -818,7 +818,7 @@ namespace QuotePageAutomation
             ReadOnlyCollection<IWebElement> coverTypeOptions = Driver.Instance.FindElements(By.XPath(coverTypeDropDownElement));
             coverTypeOptions[1].Click();
 
-            travellerAge.SendKeys("");
+            travellerAge.SendKeys(" ");
             Driver.ClickWithRetry(By.XPath(quoteButtonElement));
             errorMessage = Driver.Instance.FindElements(By.CssSelector(errorElement));
             Console.WriteLine("*** 3 For Couple cover type, if Adults Age is not filled: ***");
