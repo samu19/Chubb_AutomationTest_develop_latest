@@ -67,10 +67,12 @@ namespace QuotePageAutomation
                         string popupTriggerElement = fullElementSelector.popupTriggerElement;
                         Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
                         Thread.Sleep(500);
+                        autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
                     }
 
-                    string popupCountryElement = fullElementSelector.popupCountryElement;
-                    Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
+                    autocompletePopUps.First(a => a.Text == _countries).Click();
+                    //string popupCountryElement = fullElementSelector.popupCountryElement;
+                    //Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
                 }
                 Helper.WriteToCSV("Quote Page", "Entered Countries", true, null, testId, testName);
 
@@ -119,6 +121,7 @@ namespace QuotePageAutomation
             Helper.WriteToCSV("Quote Page", "Entered Cover Type", true, null, testId, testName);
 
             //adult age
+            adultAge = Regex.Replace(adultAge, @"\s+", ",");
 
             string adultAgeElement = fullElementSelector.adultAgeElement;
 
@@ -131,6 +134,8 @@ namespace QuotePageAutomation
             //child age
             if (!String.IsNullOrWhiteSpace(childAge))
             {
+                childAge = Regex.Replace(childAge, @"\s+", ",");
+
                 string childAgeElement;
                 if (isSingleTrip)
                     childAgeElement = fullElementSelector.childAgeElement;

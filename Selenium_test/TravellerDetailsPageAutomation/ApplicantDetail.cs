@@ -37,7 +37,7 @@ namespace TravellerDetailsPageAutomation
             string applicantMobileElement = "//*[@id='lbl-applicant-mobile-input']";
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
             var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));
-            //js.ExecuteScript("arguments[0].scrollIntoView();", mobile);
+            js.ExecuteScript("arguments[0].scrollIntoView( {behavior: 'auto',block: 'center',inline: 'center'}); ", mobile);
             mobile.Click();
             mobile.Clear();
             mobile.SendKeys(Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace);
@@ -57,6 +57,7 @@ namespace TravellerDetailsPageAutomation
             }
             email.SendKeys(aEmail);
             Helper.WriteToCSV("Applicant Details Page", "Applicant email updated", true, null, testId, testName);
+            Thread.Sleep(1000);
 
         }
     }

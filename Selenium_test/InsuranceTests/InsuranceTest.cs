@@ -437,6 +437,7 @@ namespace InsuranceTests
             FullElementSelector fullElementSelector = LoadElementSelectors();
             try
             {
+                EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
                 EditTravellerDetailsPage.FillSection(applicantDetail).FillSection(_t).Proceed(fullElementSelector, testId, testName);
 
 
@@ -710,7 +711,10 @@ namespace InsuranceTests
                 Helper.WriteToCSV("Enter Travel Details Page", "Trip Type Check", true, null, input.testid, input.testName);
 
             //Destination check Regex.Replace(countries, @"\s+", "");
-            string inputCountry = Regex.Replace(input.quoteData.countries, @"\s+", "").ToLower();
+            string inputCountry = null;
+            if(!String.IsNullOrWhiteSpace(input.quoteData.countries))
+                inputCountry = Regex.Replace(input.quoteData.countries, @"\s+", "").ToLower();
+
             string displayedCountry = Regex.Replace(travelDetailsBox[1].FindElement(By.XPath("./div/div")).Text, @"\s+", "").ToLower();
             if (input.quoteData.isSingleTrip)
             {

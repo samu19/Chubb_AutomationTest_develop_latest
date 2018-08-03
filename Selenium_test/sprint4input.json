@@ -17,7 +17,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -25,56 +25,56 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1919",
+		"tFullName":"99 person person 1",
+		"tDOB":"11/08/1919",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"99 person person 2",
+		"tDOB":"11/08/1919",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"75 person person",
+		"tDOB":"11/08/1943",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"69 person person",
+		"tDOB":"11/08/1949",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A5",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"50 person person",
+		"tDOB":"11/08/1968",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A6",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"44 person person",
+		"tDOB":"11/08/1974",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A7",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"38 person person",
+		"tDOB":"11/08/1980",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A8",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"18 person person",
+		"tDOB":"11/08/2000",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A9",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"C"
 	  }]
 	  },
@@ -95,7 +95,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-11",
          "coverType":"Couple",
-         "adultAge":"99,99",
+         "adultAge":"23,99",
          "childAge":"",
 		 "promoCode":""
       },
@@ -103,7 +103,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -111,14 +111,14 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum",
-		"tDOB":"30/10/1988",
+		"tFullName":"99 person person",
+		"tDOB":"11/08/1919",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tDOB":"11/08/1988",
 		"tNationality":"A"
 	  }]
 	  },
@@ -139,7 +139,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
          "coverType":"Family",
-         "adultAge":"47,56",
+         "adultAge":"23,56",
          "childAge":"1,7,12,17,23",
 		 "promoCode":"DBSSTAFF"
       },
@@ -147,7 +147,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -155,44 +155,44 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1970",
+		"tFullName":"23 person person",
+		"tDOB":"11/08/1995",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1970",
+		"tFullName":"47 person person",
+		"tDOB":"11/08/1971",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1970",
+		"tFullName":"17 person person",
+		"tDOB":"11/08/2001",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2010",
+		"tFullName":"12 person person",
+		"tDOB":"11/08/2006",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A5",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1970",
+		"tFullName":"7 person person",
+		"tDOB":"11/08/2011",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A6",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2010",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A7",
 		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2000",
+		"tDOB":"11/08/2000",
 		"tNationality":"A"
 	  }]
 	  },
@@ -221,7 +221,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -251,7 +251,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -260,8 +260,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2017",
+		"tFullName":"10 months",
+		"tDOB":"11/10/2017",
 		"tNationality":"A"
 	  }]
 	  },
@@ -283,14 +283,14 @@
          "returnDate":"2018-08-13",
          "coverType":"Family",
          "adultAge":"49",
-         "childAge":"0,5,9,12",
+         "childAge":"0,5,9,23",
 		 "promoCode":""
       },
       "planNo":1,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -298,32 +298,26 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1969",
+		"tFullName":"40 person person",
+		"tDOB":"11/08/1969",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2006",
+		"tFullName":"9 person person",
+		"tDOB":"11/08/2009",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2009",
+		"tFullName":"5 person person",
+		"tDOB":"11/08/2013",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"tincidunt lectus vehicula",
-		"tDOB":"10/10/2013",
-		"tNationality":"D"
-	  },
-	  {
-		"tNRIC":"A5",
-		"tFullName":"fringilla lectus vehicula",
-		"tDOB":"01/06/2018",
+		"tFullName":"2 months",
+		"tDOB":"11/06/2018",
 		"tNationality":"D"
 	  }]
 	  },
@@ -352,7 +346,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -361,8 +355,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1919",
+		"tFullName":"99 person person",
+		"tDOB":"11/08/1919",
 		"tNationality":"A"
 	  }]
 	  },
@@ -383,7 +377,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-15",
          "coverType":"Family",
-         "adultAge":"99,99",
+         "adultAge":"23,99",
          "childAge":"5,9,15",
 		 "promoCode":""
       },
@@ -391,7 +385,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -399,32 +393,32 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem hey",
-		"tDOB":"30/10/1919",
+		"tFullName":"99 person person",
+		"tDOB":"11/08/1919",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem who",
-		"tDOB":"30/10/1919",
+		"tFullName":"15 person person",
+		"tDOB":"11/08/2003",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Lorem what",
-		"tDOB":"30/10/2013",
+		"tFullName":"5 person person",
+		"tDOB":"11/08/2013",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"Lorem when",
-		"tDOB":"30/10/2009",
+		"tFullName":"9 person person",
+		"tDOB":"11/08/2009",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A5",
 		"tFullName":"Lorem how",
-		"tDOB":"30/10/2003",
+		"tDOB":"11/08/2003",
 		"tNationality":"A"
 	  }]
 	  },
@@ -445,7 +439,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-17",
          "coverType":"Couple",
-         "adultAge":"23,23",
+         "adultAge":"23,18",
          "childAge":"",
 		 "promoCode":""
       },
@@ -453,7 +447,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -462,13 +456,13 @@
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
 		"tFullName":"Lorem ipsum",
-		"tDOB":"30/10/1995",
+		"tDOB":"11/08/2000",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"dolor sit amet",
-		"tDOB":"30/10/1995",
+		"tDOB":"11/08/1995",
 		"tNationality":"A"
 	  }]
 	  },
@@ -489,7 +483,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-17",
          "coverType":"Individual",
-         "adultAge":"99",
+         "adultAge":"23",
          "childAge":"",
 		 "promoCode":"DBSSTAFF"
       },
@@ -497,7 +491,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -514,12 +508,12 @@
 	  "testName":"Sprint4-TC13",
 	  "quoteData":{  
          "isSingleTrip":true,
-         "countries":"Canada, US, Iceland, Hong Kong, Australia",
+         "countries":"Canada, United States, Iceland, Hong Kong, Australia",
 		 "regionNo" : 0,
          "departDate":"2018-08-11",
          "returnDate":"2018-08-20",
          "coverType":"Group",
-         "adultAge":"0,3,36,69,79",
+         "adultAge":"0,3,23,69,79",
          "childAge":"",
 		 "promoCode":""
       },
@@ -527,7 +521,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -535,26 +529,26 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1939",
+		"tFullName":"79 person person",
+		"tDOB":"11/08/1939",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"69 person person",
+		"tDOB":"11/08/1949",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"3 person person",
+		"tDOB":"11/08/2015",
 		"tNationality":"C"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"nibh nunc",
-		"tDOB":"10/12/2017",
+		"tFullName":"9 months",
+		"tDOB":"11/11/2017",
 		"tNationality":"C"
 	  }]
 	  },
@@ -575,7 +569,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-20",
          "coverType":"Family",
-         "adultAge":"30",
+         "adultAge":"23",
          "childAge":"1,4",
 		 "promoCode":""
       },
@@ -583,28 +577,23 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
       },
 	  "travellerDetails" : {
-	  "travellerDetailsList" : [{
-		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
-		"tNationality":"A"
-	  },
+	  "travellerDetailsList" : [
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2017",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2013",
+		"tFullName":"4 person person",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -625,7 +614,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-22",
          "coverType":"Couple",
-         "adultAge":"25,25",
+         "adultAge":"23,25",
          "childAge":"",
 		 "promoCode":""
       },
@@ -633,7 +622,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -641,8 +630,8 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1998",
+		"tFullName":"25 person person",
+		"tDOB":"11/08/1993",
 		"tNationality":"A"
 	  }]
 	  },
@@ -671,7 +660,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -680,8 +669,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2017",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"A"
 	  }]
 	  },
@@ -710,7 +699,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -719,8 +708,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1948",
+		"tFullName":"70 person person",
+		"tDOB":"11/08/1948",
 		"tNationality":"A"
 	  }]
 	  },
@@ -741,7 +730,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-25",
          "coverType":"Group",
-         "adultAge":"1,6,27,32,48,91",
+         "adultAge":"1,6,23,32,48,91",
          "childAge":"",
 		 "promoCode":""
       },
@@ -749,7 +738,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -757,32 +746,32 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsumt",
-		"tDOB":"30/10/1988",
+		"tFullName":"91 person person",
+		"tDOB":"11/08/1927",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem ipsum dolor sit",
-		"tDOB":"30/10/1988",
+		"tFullName":"48 person person",
+		"tDOB":"11/08/1970",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Lorem ipsum dolor amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"32 person person",
+		"tDOB":"11/08/1986",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"6 person person",
+		"tDOB":"11/08/2012",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A5",
-		"tFullName":"Lorem dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"A"
 	  }]
 	  },
@@ -803,7 +792,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-30",
          "coverType":"Family",
-         "adultAge":"40,40",
+         "adultAge":"23,40",
          "childAge":"10,10",
 		 "promoCode":"DBSSTAFF"
       },
@@ -811,7 +800,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -819,20 +808,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"40 person person 1",
+		"tDOB":"11/08/1978",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"10 person person 2",
+		"tDOB":"11/08/2008",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"10 person person",
+		"tDOB":"11/08/2008",
 		"tNationality":"C"
 	  }]
 	  },
@@ -853,7 +842,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-30",
          "coverType":"Individual",
-         "adultAge":"29",
+         "adultAge":"23",
          "childAge":"",
 		 "promoCode":""
       },
@@ -861,7 +850,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -883,7 +872,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-09-04",
          "coverType":"Couple",
-         "adultAge":"18,99",
+         "adultAge":"23,99",
          "childAge":"",
 		 "promoCode":""
       },
@@ -891,7 +880,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -899,8 +888,8 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"99 person person",
+		"tDOB":"11/08/1919",
 		"tNationality":"A"
 	  }]
 	  },
@@ -921,7 +910,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-09-04",
          "coverType":"Family",
-         "adultAge":"50",
+         "adultAge":"23",
          "childAge":"11",
 		 "promoCode":""
       },
@@ -929,7 +918,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -937,8 +926,8 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"11 person person",
+		"tDOB":"11/08/2007",
 		"tNationality":"A"
 	  }]
 	  },
@@ -959,7 +948,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-09-09",
          "coverType":"Group",
-         "adultAge":"8,21,34,46,49,88,95",
+         "adultAge":"8,23,34,46,49,88,95",
          "childAge":"",
 		 "promoCode":""
       },
@@ -967,7 +956,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -975,44 +964,44 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"95 person person",
+		"tDOB":"11/08/1923",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"88 person person",
+		"tDOB":"11/08/1930",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"49 person person",
+		"tDOB":"11/08/1969",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A4",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"46 person person",
+		"tDOB":"11/08/1972",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A5",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"34 person person",
+		"tDOB":"11/08/1984",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A6",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"8 person person",
+		"tDOB":"11/08/2010",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A7",
 		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tDOB":"11/08/1988",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1041,7 +1030,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1050,8 +1039,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"35 person person",
+		"tDOB":"11/08/1983",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1072,15 +1061,15 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-09-24",
          "coverType":"Family",
-         "adultAge":"50,58",
-         "childAge":"23",
+         "adultAge":"50,23",
+         "childAge":"13",
 		 "promoCode":""
       },
       "planNo":2,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1088,20 +1077,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"13 person person",
+		"tDOB":"11/08/2005",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"50 person person",
+		"tDOB":"11/08/1968",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tDOB":"11/08/1988",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1117,12 +1106,12 @@
 	  "testName":"Sprint4-TC27",
 	  "quoteData":{  
          "isSingleTrip":true,
-         "countries":"Israel, Jordan, UAE, Saudi Arabia, Qatar",
+         "countries":"Israel, Jordan, United Arab Emirates, Saudi Arabia, Qatar",
 		 "regionNo" : 3,
          "departDate":"2018-08-11",
          "returnDate":"2018-09-24",
          "coverType":"Couple",
-         "adultAge":"39,45",
+         "adultAge":"23,45",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1130,7 +1119,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1138,14 +1127,14 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"45 person person",
+		"tDOB":"11/08/1973",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tDOB":"11/08/1988",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1174,7 +1163,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1191,12 +1180,12 @@
 	  "testName":"Sprint4-TC29",
 	  "quoteData":{  
          "isSingleTrip":true,
-         "countries":"UK, Turkey, Russia, Spain, Switzerland",
+         "countries":"United Kingdom, Turkey, Russia, Spain, Switzerland",
 		 "regionNo" : 2,
          "departDate":"2018-08-11",
          "returnDate":"2018-10-09",
          "coverType":"Family",
-         "adultAge":"44",
+         "adultAge":"23",
          "childAge":"3,9",
 		 "promoCode":""
       },
@@ -1204,7 +1193,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1212,20 +1201,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"9 person person",
+		"tDOB":"11/08/2009",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"3 person person",
+		"tDOB":"11/08/2015",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1246,7 +1235,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-11-08",
          "coverType":"Couple",
-         "adultAge":"37,43",
+         "adultAge":"23,43",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1254,7 +1243,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1262,20 +1251,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"43 person person",
+		"tDOB":"11/08/1975",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1296,7 +1285,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-11-08",
          "coverType":"Group",
-         "adultAge":"15,25,35,45",
+         "adultAge":"15,23,35,45",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1304,7 +1293,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1312,26 +1301,26 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"45 person person",
+		"tDOB":"11/08/1973",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"35 person person",
+		"tDOB":"11/08/1983",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"15 person person",
+		"tDOB":"11/08/2003",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A4",
 		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tDOB":"11/08/1988",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1360,7 +1349,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1369,8 +1358,8 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/2014",
+		"tFullName":"4 person person",
+		"tDOB":"11/08/2014",
 		"tNationality":"A"
 	  }]
 	  },
@@ -1391,7 +1380,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-11-18",
          "coverType":"Group",
-         "adultAge":"9,29,49,59",
+         "adultAge":"9,23,49,59",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1399,7 +1388,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1407,20 +1396,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"59 person person",
+		"tDOB":"11/08/1959",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"49 person person",
+		"tDOB":"11/08/1969",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"9 person person",
+		"tDOB":"11/08/2009",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1442,14 +1431,14 @@
          "returnDate":"2018-12-08",
          "coverType":"Family",
          "adultAge":"55",
-         "childAge":"6,16,21",
+         "childAge":"6,16,23",
 		 "promoCode":"DBSSTAFF"
       },
       "planNo":2,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1457,20 +1446,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"55 person person",
+		"tDOB":"11/08/1963",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"16 person person",
+		"tDOB":"11/08/2002",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"6 person person",
+		"tDOB":"11/08/2012",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1491,7 +1480,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-12-08",
          "coverType":"Couple",
-         "adultAge":"20,25",
+         "adultAge":"20,23",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1499,7 +1488,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1507,20 +1496,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"20 person person",
+		"tDOB":"11/08/1998",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1541,7 +1530,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2019-01-17",
          "coverType":"Family",
-         "adultAge":"31,33",
+         "adultAge":"23,33",
          "childAge":"4",
 		 "promoCode":"DBSSTAFF"
       },
@@ -1549,7 +1538,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1557,20 +1546,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"33 person person",
+		"tDOB":"11/08/1985",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"4 person person",
+		"tDOB":"11/08/2014",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1599,7 +1588,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1607,20 +1596,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"1 person person",
+		"tDOB":"11/08/2017",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1641,7 +1630,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2019-02-06",
          "coverType":"Individual",
-         "adultAge":"60",
+         "adultAge":"23",
          "childAge":"",
 		 "promoCode":""
       },
@@ -1649,7 +1638,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1671,7 +1660,7 @@
          "departDate":"2018-08-11",
          "returnDate":"2019-02-06",
          "coverType":"Family",
-         "adultAge":"39",
+         "adultAge":"23",
          "childAge":"9",
 		 "promoCode":""
       },
@@ -1679,7 +1668,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1687,20 +1676,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"9 person person",
+		"tDOB":"11/08/2009",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1729,7 +1718,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1759,7 +1748,7 @@
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1768,20 +1757,20 @@
 	  "applicantIsTraveller":false,
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"69 person person",
+		"tDOB":"11/08/1949",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1802,15 +1791,15 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
          "coverType":"Couple",
-         "adultAge":"18,69",
+         "adultAge":"23,69",
          "childAge":"",
 		 "promoCode":""
       },
-      "planNo":3,
+      "planNo":2,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"edmundtoh5@gmail.com"
@@ -1818,20 +1807,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"69 person person",
+		"tDOB":"11/08/1949",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
 		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tDOB":"11/08/2016",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
 		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tDOB":"11/08/2014",
 		"tNationality":"C"
 	  }]
 	  },
@@ -1852,15 +1841,15 @@
          "departDate":"2018-08-11",
          "returnDate":"2018-08-12",
          "coverType":"Family",
-         "adultAge":"69,69",
+         "adultAge":"69,23",
          "childAge":"23,23",
 		 "promoCode":"DBSSTAFF"
       },
-      "planNo":2,
+      "planNo":1,
       "applicantDetail":{  
          "aNRIC":"S1234567A",
          "aFullName":"Bruce Willis",
-         "aDOB":"30/10/1990",
+         "aDOB":"11/08/1990",
          "aNationality":"Singapore",
          "aMobile":"91129553",
          "aEmail":"boonkeonglee@dbs.com"
@@ -1868,20 +1857,20 @@
 	  "travellerDetails" : {
 	  "travellerDetailsList" : [{
 		"tNRIC":"A1",
-		"tFullName":"Lorem ipsum dolor sit amet",
-		"tDOB":"30/10/1988",
+		"tFullName":"69 person person 1",
+		"tDOB":"11/08/1949",
 		"tNationality":"A"
 	  },
 	  {
 		"tNRIC":"A2",
-		"tFullName":"consectetur adipiscing elit",
-		"tDOB":"10/10/2016",
+		"tFullName":"23 person person 2",
+		"tDOB":"11/08/1995",
 		"tNationality":"B"
 	  },
 	  {
 		"tNRIC":"A3",
-		"tFullName":"Sed nibh nunc",
-		"tDOB":"10/10/2014",
+		"tFullName":"23 person person",
+		"tDOB":"11/08/1995",
 		"tNationality":"C"
 	  }]
 	  },

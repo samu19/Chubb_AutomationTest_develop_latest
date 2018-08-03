@@ -20,8 +20,8 @@ namespace TravellerDetailsPageAutomation
 
         public static void TravelDetailPageFunctionalityTest(FullElementSelector fullElementSelector)
         {
-            string applyPlanElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + 1 + "]/div/custom-button[1]/button";
-            Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
+            //string applyPlanElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + 1 + "]/div/custom-button[1]/button";
+            //Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
             ////new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("terms"));
             /////html/body/chubb-dbs-app/app-terms-conditions/div[2]/div/div/div[2]/button
             //string planPageBackElement = "//*[@id='mat-dialog-0']/custom-dialog/div/div[2]/div/div[1]/button";
@@ -54,14 +54,30 @@ namespace TravellerDetailsPageAutomation
             else
                 Console.WriteLine("Next button is disabled until all mandatory fields are filled correctly");
 
-            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
+            //IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
-            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
-            for(int i = 1; i <= (travellerList.Count); i++)
-            {
-                CheckTravellerCountry(i, fullElementSelector, travellerList, js);
+            //ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
+            //if (travellerList.Count == 1)
+            //{
+            //    string toggleElement = "/html/body/app-root/apply/div/div/div/div[2]/div/application-details/applicant-detail/form/mat-card/mat-card-header/div/mat-card-title/span";
+            //    var applicantIsTravellerToggle = Driver.Instance.FindElement(By.XPath(toggleElement));
 
-            }
+            //    var scrollForToggle = Driver.Instance.FindElement(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/application-details/view-details-box/mat-card/mat-card-header"));
+            //    js.ExecuteScript("arguments[0].scrollIntoView();", scrollForToggle);
+            //    Thread.Sleep(1000);
+
+            //    applicantIsTravellerToggle.Click();
+            //    Thread.Sleep(2000);
+            //    CheckTravellerCountry(0, fullElementSelector, travellerList, js);
+            //}
+            //else
+            //{
+            //    for (int i = 1; i < (travellerList.Count); i++)
+            //    {
+            //        CheckTravellerCountry(i, fullElementSelector, travellerList, js);
+
+            //    }
+            //}
 
         }
         
@@ -128,11 +144,16 @@ namespace TravellerDetailsPageAutomation
                     section.Fill(fullElementSelector, testId, testName);
 
             }
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
             // Trigger Proceed Button Here /html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='application-details-button-next']")));
+            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
+            js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerList.Count - 1]);
+            (travellerList[travellerList.Count - 1]).Click();
+            //Driver.Instance.FindElement(By.XPath("//*[@id='application-details-button-next']")).Click();
+            Driver.ClickWithRetry(By.XPath("//*[@id='application-details-button-next']"));
 
-            Driver.Instance.FindElement(By.XPath("//*[@id='application-details-button-next']")).Click();
             new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("payment-details"));
         }
 
