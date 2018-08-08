@@ -22,10 +22,10 @@ namespace TravellerDetailsPageAutomation
             Thread.Sleep(3000);
             if (!applicantIsTraveller)
             {//toggle off (only for individual)
-                string toggleElement = "/html/body/app-root/apply/div/div/div/div[2]/div/application-details/applicant-detail/form/mat-card/mat-card-header/div/mat-card-title/span";
+                string toggleElement = fullElementSelector.applicantIsTravellerToggleElement;
                 var applicantIsTravellerToggle = Driver.Instance.FindElement(By.XPath(toggleElement));
 
-                var scrollForToggle = Driver.Instance.FindElement(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/application-details/view-details-box/mat-card/mat-card-header"));
+                var scrollForToggle = Driver.Instance.FindElement(By.XPath(fullElementSelector.scrollForToggleElement));
                 js.ExecuteScript("arguments[0].scrollIntoView();", scrollForToggle);
                 Thread.Sleep(1000);
 
@@ -40,7 +40,7 @@ namespace TravellerDetailsPageAutomation
                 return; // if nothing, skip
             }
 
-            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
+            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector(fullElementSelector.travellerListElement));
 
             int displayedTravellerCount = travellerList.Count();
 
@@ -72,7 +72,7 @@ namespace TravellerDetailsPageAutomation
             }
             else // start from traveller 2
             {
-                for (int i = 1; i <= displayedTravellerCount-1; i++)
+                for (int i = 0; i < displayedTravellerCount; i++)
                 {
                     FillTravellerDetails(i, fullElementSelector, travellerList, js);
                     Helper.WriteToCSV("Applicant Details Page", "Traveller" + (i+1) + "filled", true, null, testId, testName);
@@ -115,8 +115,8 @@ namespace TravellerDetailsPageAutomation
 
             js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerIndex]);
 
-            indivTraveller.FindElement(By.XPath("./custom-input[1]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tNRIC);
-            indivTraveller.FindElement(By.XPath("./custom-input[2]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tFullName);
+            indivTraveller.FindElement(By.XPath("./custom-input[1]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tFullName);
+            indivTraveller.FindElement(By.XPath("./custom-input[2]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tNRIC);
 
             indivTraveller.FindElement(By.XPath("./div/custom-input/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tDOB);
             indivTraveller.FindElement(By.XPath("./div/custom-autocomplete/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tNationality);

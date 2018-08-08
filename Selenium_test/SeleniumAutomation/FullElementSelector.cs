@@ -36,6 +36,17 @@ namespace SeleniumAutomation
         public string annualDateDecreaseElement { get; set; }
         public string annualDateIncreaseElement { get; set; }
         public string annualChildAgeElement { get; set; }
+        public string applyPlanLeftElement { get; set; }
+        public string applyPlanRightElement { get; set; }
+        public string planAmountLeftElement { get; set; }
+        public string planAmountRightElement { get; set; }
+        public string originalAmountLeftElement { get; set; }
+        public string originalAmountRightElement { get; set; }
+        public string applicantMobileElement { get; set; }
+        public string applicantEmailElement { get; set; }
+        public string applicantIsTravellerToggleElement { get; set; }
+        public string scrollForToggleElement { get; set; }
+        public string travellerListElement { get; set; }
     }
 
 }

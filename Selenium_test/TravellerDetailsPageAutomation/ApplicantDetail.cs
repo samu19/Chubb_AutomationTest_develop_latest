@@ -34,7 +34,7 @@ namespace TravellerDetailsPageAutomation
             //    Thread.Sleep(1000);
             //}
             Thread.Sleep(3000);
-            string applicantMobileElement = "//*[@id='lbl-applicant-mobile-input']";
+            string applicantMobileElement = fullElementSelector.applicantMobileElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
             var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));
             js.ExecuteScript("arguments[0].scrollIntoView( {behavior: 'auto',block: 'center',inline: 'center'}); ", mobile);
@@ -44,7 +44,7 @@ namespace TravellerDetailsPageAutomation
             mobile.SendKeys(aMobile);
             Helper.WriteToCSV("Applicant Details Page", "Applicant mobile number updated", true, null, testId, testName);
 
-            string applicantEmailElement = "//*[@id='lbl-applicant-email-input']";
+            string applicantEmailElement = fullElementSelector.applicantEmailElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantEmailElement)));
             var email = Driver.Instance.FindElement(By.XPath(applicantEmailElement));
             js.ExecuteScript("arguments[0].scrollIntoView();", mobile);

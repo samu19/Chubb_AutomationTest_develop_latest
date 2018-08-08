@@ -42,17 +42,17 @@ namespace LandingPageAutomation
 
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
 
-                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/div[2]/div/div/div/div[3]/div/h3[1]")));
-                var title = Driver.Instance.FindElement((By.XPath("/html/body/div[2]/div/div/div/div[3]/div/h3[1]")));
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/div[1]/header/div/div/div/h1")));
+                var title = Driver.Instance.FindElement((By.XPath("/html/body/div[1]/header/div/div/div/h1")));
                 string titleText = title.Text;
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/dia-log/div/mat-toolbar/button")).Click();
                 //Actions action = new Actions(Driver.Instance);
 
                 //action.KeyDown(Keys.Control).SendKeys( "W").Build().Perform();
-
+                Driver.Instance.Close();
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
 
-                return (titleText == "About Chubb Travel Insurance?");
+                return (titleText.ToUpper() == "ABOUT CHUBB IN SINGAPORE");
 
 
             }
@@ -76,7 +76,7 @@ namespace LandingPageAutomation
                 var title = Driver.Instance.FindElement((By.XPath("/html/body/div[1]/header/div/div/div/h1")));
                 string titleText = title.Text;
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-1']/dia-log/div/mat-toolbar/button")).Click();
-
+                Driver.Instance.Close();
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
 
 
@@ -103,6 +103,7 @@ namespace LandingPageAutomation
                 var title = Driver.Instance.FindElement((By.XPath("//div[@class='article-body'][1]/h3[1]")));
                 string titleText = title.Text;
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/dia-log/div/mat-toolbar/button")).Click();
+                Driver.Instance.Close();
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
 
                 return (titleText == "Acceptance of Terms");
@@ -128,6 +129,7 @@ namespace LandingPageAutomation
                 var title = Driver.Instance.FindElement((By.XPath("//div[@class='article-body'][1]/div[1]/h3")));
                 string titleText = title.Text;
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-3']/dia-log/div/mat-toolbar/button")).Click();
+                Driver.Instance.Close();
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
 
                 return (titleText == "24 Hour Emergency Hotline");
@@ -153,6 +155,7 @@ namespace LandingPageAutomation
                 var title = Driver.Instance.FindElement((By.XPath("//*[@id='container']/div[1]/div/div[1]/h2/span[1]")));
                 string titleText = title.Text;
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-4']/dia-log/div/mat-toolbar/button")).Click();
+                Driver.Instance.Close();
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
 
 
@@ -170,15 +173,16 @@ namespace LandingPageAutomation
                 Thread.Sleep(1500);
                 //Driver.GetWait().Until(d => d.FindElements(By.Id("main-nav")).Count > 0);
 
-                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/app-root/quote/foo-ter/footer/div/custom-label[5]/a")));
-                Driver.ClickWithRetry(By.XPath("/html/body/app-root/quote/foo-ter/footer/div/custom-label[5]/a"));
+                Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/app-root/quote/foo-ter/footer/div/div[3]/custom-label[2]/a")));
+                Driver.ClickWithRetry(By.XPath("/html/body/app-root/quote/foo-ter/footer/div/div[3]/custom-label[2]/a"));
                 Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
 
                 new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(10)).Until(ExpectedConditions.UrlContains("PolicyWording"));
-
+                Driver.Instance.Close();
+                Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.First());
                 //Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='mat-dialog-5']/dia-log/div/mat-dialog-content/div/pdf-viewer/div/div/div[1]/div[2]/div[8]")));
                 //var title = Driver.Instance.FindElement((By.XPath("//*[@id='mat-dialog-5']/dia-log/div/mat-dialog-content/div/pdf-viewer/div/div/div[1]/div[2]/div[8]")));
- 
+
                 //Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-5']/dia-log/div/mat-toolbar/button")).Click();
 
                 return (true);

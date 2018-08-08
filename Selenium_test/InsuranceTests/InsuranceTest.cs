@@ -288,7 +288,7 @@ namespace InsuranceTests
 
                 //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
-                SelectPlan(input.planNo, input.testid, input.testName);
+                SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
                 ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
 
                 //CheckTravelDetails(travelDetailsBox, input);
@@ -310,18 +310,18 @@ namespace InsuranceTests
             {
 
                 GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
-                SelectPlan(input.planNo, input.testid, input.testName);
+                SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
 
 
             });
         }
 
-        public string[] SelectPlan(int _planNo, string testId, string testName)
+        public string[] SelectPlan(int _planNo, FullElementSelector fullElementSelector, string testId, string testName)
         {
             string[] planAmount = null;
             try
             {
-                planAmount = PlanPage.SelectPlan(_planNo, testId, testName);
+                planAmount = PlanPage.SelectPlan(_planNo, fullElementSelector, testId, testName);
                 Assert.IsTrue(PlanPage.GetCurrentURLSlug() == "apply/application-details", "Enter Travel Details Page not reached.");
                 
                 //Thread.Sleep(100000);
@@ -385,7 +385,7 @@ namespace InsuranceTests
 
                 //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
-                SelectPlan(input.planNo, input.testid, input.testName);
+                SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
                 ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
 
                 //CheckTravelDetails(travelDetailsBox, input);
@@ -414,7 +414,7 @@ namespace InsuranceTests
 
                 //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
-                string[] planAmount = SelectPlan(input.planNo, input.testid, input.testName);
+                string[] planAmount = SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
                 ReadOnlyCollection<IWebElement> travelDetailsBox = EditTravellerDetailsPage.RetrieveTravelDetails();
                 CheckTravelDetails(travelDetailsBox, input, Convert.ToDouble(planAmount[1]));
                 //CheckTravelDetails(travelDetailsBox, input);
@@ -602,7 +602,7 @@ namespace InsuranceTests
                 try
                 {
                     GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
-                    SelectPlan(input.planNo, input.testid, input.testName);
+                    SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
                     //FillTravelDetails(input.applicantDetail);
                     FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
 

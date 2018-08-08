@@ -14,11 +14,11 @@ namespace PlanPageAutomation
 {
     public class PlanPage
     {
-        public static string[] SelectPlan(int i, string testId, string testName)
+        public static string[] SelectPlan(int i, FullElementSelector fullElementSelector, string testId, string testName)
         {
-            string applyPlanElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/custom-button[1]/button";
-            string planAmountElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/div[2]";
-            string originalAmountElement = "/html/body/app-root/plan/div/div/div/div[1]/div[1]/div[3]/div[" + i + "]/div/div[3]";
+            string applyPlanElement = fullElementSelector.applyPlanLeftElement  + i + fullElementSelector.applyPlanRightElement;
+            string planAmountElement = fullElementSelector.planAmountLeftElement + i + fullElementSelector.planAmountRightElement;
+            string originalAmountElement = fullElementSelector.originalAmountLeftElement + i + fullElementSelector.originalAmountRightElement;
             string planAmount = Driver.Instance.FindElement(By.XPath(planAmountElement)).Text;
             string originalAmount = Driver.Instance.FindElement(By.XPath(originalAmountElement)).Text;
             Helper.WriteToCSV("Plan Page", "Retrieved Premiums", true, "Original: " + originalAmount + ", Final: " +  planAmount, testId, testName);
@@ -41,7 +41,7 @@ namespace PlanPageAutomation
 
         public static List<double> VerifyPlanAmount()
         {
-            string packagePriceElement = "package-price";
+            string packagePriceElement = "package-price-before";
             ReadOnlyCollection<IWebElement> packagePricesFinal = Driver.Instance.FindElements(By.ClassName(packagePriceElement));
             List<double> convertedPrice = new List<double>();
             string priceInString;
