@@ -47,6 +47,13 @@ namespace SeleniumAutomation
         public string applicantIsTravellerToggleElement { get; set; }
         public string scrollForToggleElement { get; set; }
         public string travellerListElement { get; set; }
+        public string indivTravellerPathElement { get; set; }
+        public string tFullNameElement { get; set; }
+        public string tNRICElement { get; set; }
+        public string tDOBElement { get; set; }
+        public string tNationality { get; set; }
+        public string applicantDetailNextButtonElement { get; set; }
+        public string creditCardSelectorElement { get; set; }
     }
 
 }

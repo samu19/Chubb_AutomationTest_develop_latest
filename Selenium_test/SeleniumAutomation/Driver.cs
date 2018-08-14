@@ -8,6 +8,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Support.UI;
 using System.IO;
 using OpenQA.Selenium.Chrome;
+using System.Configuration;
 //using OpenQA.Selenium.Chrome;
 
 namespace SeleniumAutomation
@@ -34,7 +35,8 @@ namespace SeleniumAutomation
         {
             ChromeOptions options = new ChromeOptions();
 
-            //options.EnableMobileEmulation("Galaxy S5");
+            if (ConfigurationManager.AppSettings["elementConfigFileName"] == "elementConfigPaylah")
+                options.EnableMobileEmulation("Galaxy S5");
             options.AddArgument("start-maximized");
             //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
             options.AddArgument("disable-infobars");

@@ -4,6 +4,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -34,8 +35,8 @@ namespace QuotePageAutomation
                 string tripTypeElement = fullElementSelector.tripTypeElement;
                 //To change - choose Annual Trip radio button
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
-                Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
-                //Driver.ClickWithRetry(By.Id(tripTypeElement));
+                //Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
+                Driver.ClickWithRetry(By.Id(tripTypeElement));
             }
 
             if (isSingleTrip)
@@ -90,9 +91,24 @@ namespace QuotePageAutomation
                 region.Click();
                 string regionListElement = fullElementSelector.annualRegionListElement;
                 var regionList = Driver.Instance.FindElement(By.CssSelector(regionListElement));
-                ReadOnlyCollection<IWebElement> _regionList = regionList.FindElements(By.XPath("./div/div"));
-                var aa = _regionList[0].FindElement(By.XPath("./div/div[1]"));
-                _regionList.FirstOrDefault(a => a.FindElement(By.XPath("./div/div[1]")).Text == "Region " + regionNo.ToString()).Click();
+                string regionSubElement = null;
+                string regionSubElement2 = null;
+
+                if (ConfigurationManager.AppSettings["elementConfigFileName"] == "elementConfig")
+                {
+                    regionSubElement = "./div/div";
+                    regionSubElement2 = "./div/div[1]";
+                }
+                else
+                {
+                    regionSubElement = "./mat-option";
+                    regionSubElement2 = "./span";
+
+                }
+
+                ReadOnlyCollection<IWebElement> _regionList = regionList.FindElements(By.XPath(regionSubElement));
+                var aa = _regionList[0].FindElement(By.XPath(regionSubElement2));
+                _regionList.FirstOrDefault(a => a.FindElement(By.XPath(regionSubElement2)).Text.Substring(0, 8) == "Region " + regionNo.ToString()).Click();
                 Helper.WriteToCSV("Quote Page", "Entered Region", true, null, testId, testName);
 
                 DateHandler(departDate, fullElementSelector.annualDateElement, fullElementSelector.annualDateMonthElement, fullElementSelector.annualDateDecreaseElement, fullElementSelector.annualDateIncreaseElement, fullElementSelector.dateDayElement);

@@ -90,6 +90,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DigibankUAT\DigibankUAT.csproj">
+      <Project>{EC1BB639-D60F-48C2-8A04-4B190BF93A29}</Project>
+      <Name>DigibankUAT</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LandingPageAutomation\LandingPageAutomation.csproj">
       <Project>{19ED65A7-19F6-4CF4-8325-0315319B2A3A}</Project>
       <Name>LandingPageAutomation</Name>

@@ -19,6 +19,7 @@ using Newtonsoft.Json.Linq;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
+using DigibankUAT;
 
 namespace InsuranceTests
 {
@@ -122,7 +123,7 @@ namespace InsuranceTests
         public void Test_005_CheckRates_AllInOne()
         {
             string TestName = "Check_Rates_AllinOne";
-            List<InputData> ratesInput = LoadJsonInput("checkRatesTesting2");
+            List<InputData> ratesInput = LoadJsonInput(ConfigurationManager.AppSettings["CheckRatesSource"].ToString());
             FullElementSelector fullElementSelector = LoadElementSelectors();
             UITest(TestName, () =>
             {
@@ -239,7 +240,15 @@ namespace InsuranceTests
 
             try
             {
-                QuotePage.GotoQuotePage();
+                if (ConfigurationManager.AppSettings["paymentMode"] == "CC")
+                {
+                    QuotePage.GotoQuotePage();
+                }
+                else
+                {
+                    Driver.Instance.SwitchTo().ParentFrame();
+                }
+
 
                 //if (quoteData.coverType != "Family")
                 //{
@@ -392,7 +401,7 @@ namespace InsuranceTests
 
 
                 FillTravelDetails(input.applicantDetail, input.travellerDetails, input.testid, input.testName);
-                FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
+                FillPaymentDetails(ConfigurationManager.AppSettings["paymentMode"], input.creditCardInfo, fullElementSelector, input.testid, input.testName);
 
             });
         }
@@ -406,6 +415,14 @@ namespace InsuranceTests
             {
                 if (input.runQuotePageFunctionality)
                     QuoteFunctionality();
+
+                if (ConfigurationManager.AppSettings["paymentMode"] != "CC")
+                {
+                    DigibankPage.Login("CULUAT53", "723629");
+                    //DigibankPage.Login("RRCIN002", "173734");
+
+                    DigibankPage.GoToChubb();
+                }
                 GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
                 //EditTravellerDetailsPage.TravelDetailPageFunctionalityTest(fullElementSelector);
 
@@ -421,7 +438,7 @@ namespace InsuranceTests
 
 
                 FillTravelDetails(input.applicantDetail, input.travellerDetails, input.testid, input.testName);
-                FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
+                FillPaymentDetails(ConfigurationManager.AppSettings["paymentMode"], input.creditCardInfo, fullElementSelector, input.testid, input.testName);
 
                 VerifyDetailsPage.ProceedWithPayment(input.testid, input.testName);
 
@@ -463,18 +480,22 @@ namespace InsuranceTests
 
         }
 
-        public void FillPaymentDetails(CreditCardInfo creditCardInfo, FullElementSelector fullElementSelector, string testId, string testName)
+        public void FillPaymentDetails(string paymentType, CreditCardInfo creditCardInfo, FullElementSelector fullElementSelector, string testId, string testName)
         {
             try
             {
-                PaymentSelectionPage.SelectPaymentTypeAndProceed("CC");
+                PaymentSelectionPage.SelectPaymentTypeAndProceed(paymentType, fullElementSelector, testId, testName);
 
-                Helper.WriteToCSV("Payment Details Page", "Credit card option selected", true, null, testId, testName);
+                Helper.WriteToCSV("Payment Details Page", "payment option selected", true, null, testId, testName);
 
                 //trigger payment
-                CreditCardDetailsPage.FillSection(creditCardInfo).Proceed(fullElementSelector, testId, testName);
-                
-                
+                if(paymentType == "CC")
+                    CreditCardDetailsPage.FillSection(creditCardInfo).Proceed(fullElementSelector, testId, testName);
+                else
+                    CreditCardDetailsPage.FillSection(null).Proceed(fullElementSelector, testId, testName);
+
+
+
 
             }
             catch (Exception ex)
@@ -604,7 +625,7 @@ namespace InsuranceTests
                     GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
                     SelectPlan(input.planNo, fullElementSelector, input.testid, input.testName);
                     //FillTravelDetails(input.applicantDetail);
-                    FillPaymentDetails(input.creditCardInfo, fullElementSelector, input.testid, input.testName);
+                    FillPaymentDetails(ConfigurationManager.AppSettings["paymentMode"], input.creditCardInfo, fullElementSelector, input.testid, input.testName);
 
                     //Assert.IsTrue(QuotePage.GetCurrentURLSlug() == "quote", "Quote Summary Page not reached");
                     //Test_004_FillPaymentDetails(_isSingleTrip, _countries, _departDate, _returnDate, _coverType, _adultAge, _childAge, _planNo, _a, _CCInfo);
@@ -936,7 +957,8 @@ namespace InsuranceTests
         public static FullElementSelector LoadElementSelectors()
         {
             string jsonConfigFolder = Path.GetFullPath(ConfigurationManager.AppSettings["testFolder"]);
-            using (StreamReader r = new StreamReader(jsonConfigFolder + "elementConfig.json"))
+            //
+            using (StreamReader r = new StreamReader(jsonConfigFolder + ConfigurationManager.AppSettings["elementConfigFileName"] + ".json"))
             {
                 string json = r.ReadToEnd();
                 FullElementSelector foo = JsonConvert.DeserializeObject<FullElementSelector>(json);

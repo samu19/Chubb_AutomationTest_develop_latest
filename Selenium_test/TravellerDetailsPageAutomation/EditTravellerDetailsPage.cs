@@ -147,12 +147,12 @@ namespace TravellerDetailsPageAutomation
             IJavaScriptExecutor js = (IJavaScriptExecutor)Driver.Instance;
 
             // Trigger Proceed Button Here /html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='application-details-button-next']")));
-            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector("mat-expansion-panel[formarrayname='details']"));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(fullElementSelector.applicantDetailNextButtonElement)));
+            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector(fullElementSelector.travellerListElement));
             js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerList.Count - 1]);
             (travellerList[travellerList.Count - 1]).Click();
             //Driver.Instance.FindElement(By.XPath("//*[@id='application-details-button-next']")).Click();
-            Driver.ClickWithRetry(By.XPath("//*[@id='application-details-button-next']"));
+            Driver.ClickWithRetry(By.XPath(fullElementSelector.applicantDetailNextButtonElement));
 
             new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("payment-details"));
         }

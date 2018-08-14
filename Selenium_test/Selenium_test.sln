@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerDetailsPageAutomat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentPageAutomation", "PaymentPageAutomation\PaymentPageAutomation.csproj", "{EA57564E-9E4A-4C15-8BB1-6440F3EE51F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigibankUAT", "DigibankUAT\DigibankUAT.csproj", "{EC1BB639-D60F-48C2-8A04-4B190BF93A29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigibankUAT", "DigibankUAT\DigibankUAT.csproj", "{EC1BB639-D60F-48C2-8A04-4B190BF93A29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

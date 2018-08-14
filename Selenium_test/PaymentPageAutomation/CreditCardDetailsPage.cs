@@ -41,7 +41,8 @@ namespace PaymentPageAutomation
             //{
                 foreach (IFillable section in this.sectionsToFill)
                 {
-                    section.Fill(fullElementSelector, testId, testName);
+                    if (section != null)
+                        section.Fill(fullElementSelector, testId, testName);
 
                 }
 

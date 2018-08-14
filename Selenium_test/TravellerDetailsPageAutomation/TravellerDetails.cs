@@ -105,7 +105,7 @@ namespace TravellerDetailsPageAutomation
 
         public void FillTravellerDetails(int travellerIndex, FullElementSelector fullElementSelector, ReadOnlyCollection<IWebElement> travellerList, IJavaScriptExecutor js)
         {
-            var indivTraveller = travellerList[travellerIndex].FindElement(By.XPath("./div/div/div[2]"));
+            var indivTraveller = travellerList[travellerIndex].FindElement(By.XPath(fullElementSelector.indivTravellerPathElement));
             int retrieveIndex;
 
             if (travellerIndex == 0)
@@ -115,11 +115,11 @@ namespace TravellerDetailsPageAutomation
 
             js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerIndex]);
 
-            indivTraveller.FindElement(By.XPath("./custom-input[1]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tFullName);
-            indivTraveller.FindElement(By.XPath("./custom-input[2]/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tNRIC);
+            indivTraveller.FindElement(By.XPath(fullElementSelector.tFullNameElement)).SendKeys(travellerDetailsList[retrieveIndex].tFullName);
+            indivTraveller.FindElement(By.XPath(fullElementSelector.tNRICElement)).SendKeys(travellerDetailsList[retrieveIndex].tNRIC);
 
-            indivTraveller.FindElement(By.XPath("./div/custom-input/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tDOB);
-            indivTraveller.FindElement(By.XPath("./div/custom-autocomplete/div/mat-form-field/div/div[1]/div/input")).SendKeys(travellerDetailsList[retrieveIndex].tNationality);
+            indivTraveller.FindElement(By.XPath(fullElementSelector.tDOBElement)).SendKeys(travellerDetailsList[retrieveIndex].tDOB);
+            indivTraveller.FindElement(By.XPath(fullElementSelector.tNationality)).SendKeys(travellerDetailsList[retrieveIndex].tNationality);
 
             string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
             ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
@@ -128,10 +128,13 @@ namespace TravellerDetailsPageAutomation
                 string popupTriggerElement = fullElementSelector.popupTriggerElement;
                 Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
                 Thread.Sleep(500);
-            }
+                autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
 
-            string popupCountryElement = "./div/custom-autocomplete/div/mat-form-field/div/div[1]/div/div/div/div";
-            indivTraveller.FindElement(By.XPath(popupCountryElement)).Click();
+            }
+            autocompletePopUps.First(a => a.Text == travellerDetailsList[retrieveIndex].tNationality).Click();
+
+            //string popupCountryElement = "./div/custom-autocomplete/div/mat-form-field/div/div[1]/div/div/div/div";
+            //indivTraveller.FindElement(By.XPath(popupCountryElement)).Click();
 
             Thread.Sleep(1000);
         }
