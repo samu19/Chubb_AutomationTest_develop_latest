@@ -19,7 +19,7 @@
     "childAgeElement" : "/html/body/chubb-dbs-app/app-trip/div/form/div[1]/div/chubb-traveler-age/div/div[2]/mat-form-field/div/div[1]/div/input",
 	"promoCodeElement" : "//*[@id='PromoCode']/div/div[1]/div/input",
     "quoteButtonElement" : "/html/body/chubb-dbs-app/app-trip/div/form/div[2]/button",
-	"planSummarySlug"  : "plan",
+	"planSummarySlug"  : "quote",
 	"annualRegionElement" : "/html/body/chubb-dbs-app/app-trip/div/form/div[1]/div/mat-form-field/div/div[1]/div/mat-select",
 	"annualRegionListElement" : ".mat-select-content.ng-trigger.ng-trigger-fadeInContent",
 	"annualDateElement" : "//*[@id='DepartDate']/div/div[1]/div[1]/input",

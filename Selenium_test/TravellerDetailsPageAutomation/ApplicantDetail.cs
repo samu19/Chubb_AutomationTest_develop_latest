@@ -33,13 +33,13 @@ namespace TravellerDetailsPageAutomation
             //    applicantIsTravellerToggle.Click();
             //    Thread.Sleep(1000);
             //}
-            Thread.Sleep(3000);
+            Thread.Sleep(10000);
             string applicantMobileElement = fullElementSelector.applicantMobileElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
             var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));
             js.ExecuteScript("arguments[0].scrollIntoView( {behavior: 'auto',block: 'center',inline: 'center'}); ", mobile);
             mobile.Click();
-            mobile.Clear();
+            //mobile.Clear();
             mobile.SendKeys(Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace);
             mobile.SendKeys(aMobile);
             Helper.WriteToCSV("Applicant Details Page", "Applicant mobile number updated", true, null, testId, testName);

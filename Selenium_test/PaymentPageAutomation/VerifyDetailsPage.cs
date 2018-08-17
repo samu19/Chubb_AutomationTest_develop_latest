@@ -22,10 +22,16 @@ namespace PaymentPageAutomation
                 //Submit
                 Driver.GetWait().Until(OpenQA.Selenium.Support.UI.ExpectedConditions.ElementExists(By.XPath(submitElement)));
                 Driver.Instance.FindElement(By.XPath(submitElement)).Click();
+                //new OpenQA.Selenium.Support.UI.WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(60)).Until(OpenQA.Selenium.Support.UI.ExpectedConditions.UrlContains("complete"));
 
-                new OpenQA.Selenium.Support.UI.WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(60)).Until(OpenQA.Selenium.Support.UI.ExpectedConditions.UrlContains("complete"));
                 string policyNoElement = "/html/body/app-root/complete/div[2]/div/div/div/div[3]/custom-label[2]/div";
-                string policyNo = Driver.Instance.FindElement(By.XPath(policyNoElement)).Text;
+                
+
+                new OpenQA.Selenium.Support.UI.WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(60)).Until(OpenQA.Selenium.Support.UI.ExpectedConditions.ElementExists(By.XPath(policyNoElement)));
+
+                var policyNo_ = Driver.Instance.FindElement(By.XPath(policyNoElement));
+                string policyNo = policyNo_.Text;
+
                 Helper.WriteToCSV("Final Page", "Policy number shown", true, policyNo, testId, testName);
                 Thread.Sleep(2500);
             }

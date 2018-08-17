@@ -33,7 +33,7 @@ namespace TravellerDetailsPageAutomation
             //string planPageProceedElement = "//*[@id='mat-dialog-1']/custom-dialog/div/div[2]/div/div[2]/button";
             //Driver.GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath(planPageProceedElement)));
             //Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
 
             /* Status bar should show 1/3 of the bar being filled in yellow */
             string statusBarElement = "/html/body/app-root/apply/div[1]/mat-progress-bar/div[2]";
@@ -148,13 +148,13 @@ namespace TravellerDetailsPageAutomation
 
             // Trigger Proceed Button Here /html/body/chubb-dbs-app/app-summary/app-traveller-detail/form/div[4]/div/div[2]/button
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(fullElementSelector.applicantDetailNextButtonElement)));
-            ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector(fullElementSelector.travellerListElement));
-            js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerList.Count - 1]);
-            (travellerList[travellerList.Count - 1]).Click();
+            //ReadOnlyCollection<IWebElement> travellerList = Driver.Instance.FindElements(By.CssSelector(fullElementSelector.travellerListElement));
+            //js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerList.Count - 1]);
+            //(travellerList[travellerList.Count - 1]).Click();
             //Driver.Instance.FindElement(By.XPath("//*[@id='application-details-button-next']")).Click();
             Driver.ClickWithRetry(By.XPath(fullElementSelector.applicantDetailNextButtonElement));
 
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("payment-details"));
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("payment-details"));
         }
 
 

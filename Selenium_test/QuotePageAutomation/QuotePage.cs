@@ -1080,7 +1080,7 @@ namespace QuotePageAutomation
             string quoteButtonElement = fullElementSelector.quoteButtonElement;
             // Trigger Get Quote Button Here /html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-button/button
             Driver.ClickWithRetry(By.XPath(quoteButtonElement));
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("plan"));
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains(fullElementSelector.planSummarySlug));
             Helper.WriteToCSV("Quote Page", "Got Quote", true, null, testId, testName);
 
         }

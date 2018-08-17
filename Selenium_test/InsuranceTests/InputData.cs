@@ -21,6 +21,8 @@ namespace InsuranceTests
         public string testName { get; set; }
         public bool runQuotePageFunctionality { get; set; }
         public bool runPlanPageFunctionality { get; set; }
+        public string userName { get; set; }
+        public string pin { get; set; }
 
     }
 }

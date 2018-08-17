@@ -106,12 +106,12 @@ namespace TravellerDetailsPageAutomation
         public void FillTravellerDetails(int travellerIndex, FullElementSelector fullElementSelector, ReadOnlyCollection<IWebElement> travellerList, IJavaScriptExecutor js)
         {
             var indivTraveller = travellerList[travellerIndex].FindElement(By.XPath(fullElementSelector.indivTravellerPathElement));
-            int retrieveIndex;
+            int retrieveIndex = travellerIndex;
 
-            if (travellerIndex == 0)
-                retrieveIndex = 0;
-            else
-                retrieveIndex = travellerIndex - 1;
+            //if (travellerIndex == 0)
+            //    retrieveIndex = 0;
+            //else
+            //    retrieveIndex = travellerIndex - 1;
 
             js.ExecuteScript("arguments[0].scrollIntoView();", travellerList[travellerIndex]);
 

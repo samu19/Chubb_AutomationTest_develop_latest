@@ -33,7 +33,7 @@ namespace PlanPageAutomation
 
 
             //Driver.Instance.FindElement(By.XPath(planPageProceedElement)).Click();
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
+            //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("apply/application-details"));
             Helper.WriteToCSV("Plan Page", "Proceeded to Application Details Page", true, null, testId, testName);
             string[] combinedAmount = { originalAmount, planAmount };
             return combinedAmount;
@@ -191,7 +191,6 @@ namespace PlanPageAutomation
             policyWording.Click();
             Driver.Instance.SwitchTo().Window(Driver.Instance.WindowHandles.Last());
 
-            new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(SeleniumExtras.WaitHelpers.ExpectedConditions.UrlContains("PolicyWording.pdf"));
             Helper.WriteToCSV("Plan Page Functionality", "The policy wording link will download the policy wording document in PDF and open it as a new tab in the browser for iB", true);
 
             Driver.Instance.Close();

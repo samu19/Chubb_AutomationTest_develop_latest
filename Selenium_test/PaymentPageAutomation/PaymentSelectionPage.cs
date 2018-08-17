@@ -15,7 +15,7 @@ namespace PaymentPageAutomation
     {
         public static void SelectPaymentTypeAndProceed(string paymentType, FullElementSelector fullElementSelector, string testId, string testName)
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);
 
             if (paymentType == "CC")
             {
@@ -25,6 +25,7 @@ namespace PaymentPageAutomation
             }
             else
             {
+                string CASAArrowElement2 = "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[1]/div/custom-select/div/mat-form-field/div/div[1]/div/input";
                 string CASAArrowElement = "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[1]/div/custom-select/div/mat-form-field/div/div[1]/div/span[1]";
                 Driver.Instance.FindElement(By.XPath(CASAArrowElement)).Click();
 

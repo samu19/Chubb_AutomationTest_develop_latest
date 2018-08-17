@@ -140,7 +140,7 @@ namespace QuotePageAutomation
             adultAge = Regex.Replace(adultAge, @"\s+", ",");
 
             string adultAgeElement = fullElementSelector.adultAgeElement;
-
+            adultAgeElement = "//*[@id='quote-age-" + coverType.ToLower() + "-" + (isSingleTrip? "single" : "multi") + "-input']";
 
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(adultAgeElement)));
             Driver.Instance.FindElement(By.XPath(adultAgeElement)).SendKeys(adultAge);

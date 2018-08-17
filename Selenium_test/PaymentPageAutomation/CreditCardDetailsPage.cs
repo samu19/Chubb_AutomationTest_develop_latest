@@ -49,7 +49,7 @@ namespace PaymentPageAutomation
             // Trigger Pay Button Here
             Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/div/div[2]/custom-button[2]/button")));
             Driver.Instance.FindElement(By.XPath("/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/div/div[2]/custom-button[2]/button")).Click();
-            new OpenQA.Selenium.Support.UI.WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(OpenQA.Selenium.Support.UI.ExpectedConditions.UrlContains("verify-details"));
+            //new OpenQA.Selenium.Support.UI.WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(OpenQA.Selenium.Support.UI.ExpectedConditions.UrlContains("verify-details"));
 
             //ReadOnlyCollection<IWebElement> unexpectedPopUps = Driver.Instance.FindElements(By.CssSelector(".alert-wrapper.ng-star-inserted"));
 

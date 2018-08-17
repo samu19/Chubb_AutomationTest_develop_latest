@@ -12,6 +12,13 @@ namespace DigibankUAT
         public static void Login(string userID, string PIN)
         {
             Driver.Instance.Navigate().GoToUrl(@"https://sib8.dbs.com/IB/Welcome?FROM_IB=TRUE");
+
+            if (Helper.isAlertPresent())
+            {
+                IAlert alert = Driver.Instance.SwitchTo().Alert();
+                alert.Accept();
+            }
+
             string userIDElement = "//*[@id='UID']";
             string PINElement = "//*[@id='PIN']";
             string loginButtonElement = "/html/body/form[1]/div/div[7]/button[1]";
@@ -46,6 +53,7 @@ namespace DigibankUAT
             //Actions action = new Actions(Driver.Instance);
             //action.MoveToElement(applyMenu).Perform();
             applyMenu.Click();
+            Thread.Sleep(1000);
             Driver.Instance.FindElement(By.XPath(travelInsuranceElement)).Click();
 
 
@@ -63,6 +71,7 @@ namespace DigibankUAT
             //Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath(iframeElement)));
 
             //Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath(iframeElement2)));
+
 
             Driver.Instance.FindElement(By.XPath(getQuoteElement)).Click();
 
