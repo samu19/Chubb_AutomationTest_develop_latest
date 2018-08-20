@@ -31,6 +31,9 @@ namespace DigibankUAT
 
         public static void GoToChubb()
         {
+            
+
+
             string applyElement = "//*[@id='topnav6']/div[1]/h4";
             string travelInsuranceElement = "//*[@id='topnav6']/div[2]/a[6]";
             string getOTPElement = "//*[@id='btnLabel']";
@@ -42,11 +45,18 @@ namespace DigibankUAT
             string iframeElement = "/html/frameset/frame[2]";
 
             Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath(iframeElement)));
+            if (Helper.isAlertPresent())
+            {
+                IAlert alert = Driver.Instance.SwitchTo().Alert();
+                alert.Accept();
+            }
+
+
             //string popUpSkipElement = "//*[@id='skipButton']";
             //var popupSkip = Driver.Instance.FindElement(By.XPath(popUpSkipElement));
             //popupSkip.Click();
 
-            
+
 
             var applyMenu = Driver.Instance.FindElement(By.XPath(applyElement));
 
