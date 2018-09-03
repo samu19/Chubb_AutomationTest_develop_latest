@@ -42,6 +42,10 @@ namespace SeleniumAutomation
         public string planAmountRightElement { get; set; }
         public string originalAmountLeftElement { get; set; }
         public string originalAmountRightElement { get; set; }
+        public string applicantNameElement { get; set; }
+        public string applicantNRICElement { get; set; }
+        public string applicantDOBElement { get; set; }
+        public string applicantNationalityElement { get; set; }
         public string applicantMobileElement { get; set; }
         public string applicantEmailElement { get; set; }
         public string applicantIsTravellerToggleElement { get; set; }

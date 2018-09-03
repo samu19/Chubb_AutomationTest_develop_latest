@@ -445,7 +445,7 @@ namespace QuotePageAutomation
                 Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
 
                 ///html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-autocomplete/div/mat-form-field/div/div[1]/div/span/label/mat-label/button
-                string destinationToolTipElement = "//*[@id='quote-autocomplete-countries']/div/div[1]/div/span/label/mat-label/button";
+                string destinationToolTipElement = "//*[@id='Destination']/div/div[1]/div/span/label/mat-label/button";
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(destinationToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(destinationToolTipElement)).Click();
                 string destinationToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-0']/custom-dialog/div/div/div/span[2]")).Text;
@@ -466,7 +466,7 @@ namespace QuotePageAutomation
             }
             else
             {///html/body/app-root/quote/div/div[2]/div/div[2]/div/form/custom-select/div/mat-form-field/div/div[1]/div/span[2]/label/mat-label/button
-                string regionToolTipElement = "//*[@id='quote-select-region']/div/div[1]/div/span[2]/label/mat-label/button";
+                string regionToolTipElement = "//*[@id='Region']/div/div[1]/div/span[2]/label/mat-label/button";
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(regionToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(regionToolTipElement)).Click();
 
@@ -504,9 +504,9 @@ namespace QuotePageAutomation
             string departDateToolTipElement;
 
             if (isSingleTrip)
-                departDateToolTipElement = "//*[@id='quote-date-picker-single']/div[1]/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
+                departDateToolTipElement = "//*[@id='DepartDate']/div/div[1]/div[1]/span/label/mat-label/button";
             else
-                departDateToolTipElement = "//*[@id='quote-date-picker-multi']/div/div[1]/div[1]/span/label/mat-label/button";
+                departDateToolTipElement = "//*[@id='ct&dd']/custom-datepicker/div/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
 
             Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(departDateToolTipElement)));
             Driver.Instance.FindElement(By.XPath(departDateToolTipElement)).Click();
@@ -536,7 +536,7 @@ namespace QuotePageAutomation
 
             if (isSingleTrip)
             {
-                string returnDateToolTipElement = "//*[@id='quote-date-picker-single']/div[2]/mat-form-field/div/div[1]/div[1]/span/label/mat-label/button";
+                string returnDateToolTipElement = "//*[@id='ReturnDate']/div/div[1]/div[1]/span/label/mat-label/button";
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(returnDateToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(returnDateToolTipElement)).Click();
                 string returnDateToolTipMessage = Driver.Instance.FindElement(By.XPath("//*[@id='mat-dialog-2']/custom-dialog/div/div/div/span[2]")).Text;
@@ -559,7 +559,7 @@ namespace QuotePageAutomation
                 Console.WriteLine(Environment.NewLine);
             }
             
-            string coverTypeToolTipElement = "//*[@id='quote-date-select-cover']/div/div[1]/div/span[2]/label/mat-label/button";
+            string coverTypeToolTipElement = "//*[@id='CoverageType']/div/div[1]/div/span[2]/label/mat-label/button";
             Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(coverTypeToolTipElement)));
             Driver.Instance.FindElement(By.XPath(coverTypeToolTipElement)).Click();
 
@@ -616,13 +616,13 @@ namespace QuotePageAutomation
             Console.WriteLine(Environment.NewLine);
 
 
-            
-            string adultAgeElement = fullElementSelector.adultAgeElement;
-            var travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
 
+            string adultAgeElement;
             
 
-            string travellerAgeToolTipElement = "//*[@id='quote-input-adult-age']/div/div[1]/div/span/label/mat-label/button";
+            
+
+            string travellerAgeToolTipElement = "//*[@id='quote-age-individual-single']/mat-form-field/div/div[1]/div/span/label/mat-label/button";
 
             string coverTypeElement = fullElementSelector.coverTypeElement;
             var coverType = Driver.Instance.FindElement(By.XPath(coverTypeElement));
@@ -644,10 +644,15 @@ namespace QuotePageAutomation
             {
                 currentCoverType = coverTypeOptions[i].Text;
                 coverTypeOptions[i].Click();
- 
+
+                adultAgeElement = "//*[@id='quote-age-" + currentCoverType.ToLower() + "-" + (isSingleTrip ? "single" : "multi") + "-input']";
+
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(adultAgeElement)));
-                
+                var travellerAge = Driver.Instance.FindElement(By.XPath(adultAgeElement));
                 travellerAge.SendKeys("22,22"); ////*[@id="mat-dialog-5"]/custom-dialog/div/div/div/span[2]
+
+                travellerAgeToolTipElement = "//*[@id='quote-age-" + currentCoverType.ToLower() + "-" + (isSingleTrip ? "single" : "multi") + "']/mat-form-field/div/div[1]/div/span/label/mat-label/button";
+
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(travellerAgeToolTipElement)));
                 Driver.Instance.FindElement(By.XPath(travellerAgeToolTipElement)).Click();
                 
@@ -684,23 +689,27 @@ namespace QuotePageAutomation
             // Child ToolTip
             string childMatInput;
             string childMatDialog;
+            string childAgeToolTipElement;
+
 
             if (isSingleTrip)
             {
                 childMatInput = "mat-input-7";
                 childMatDialog = "mat-dialog-8";
+                childAgeToolTipElement = "//*[@id='quote-child-age-single']/mat-form-field/div/div[1]/div/span/label/mat-label/button";
             }
             else
             {
                 childMatInput = "mat-input-8";
                 childMatDialog = "mat-dialog-6";
+                childAgeToolTipElement = "//*[@id='quote-child-age-multi']/mat-form-field/div/div[1]/div/span/label/mat-label/button";
             }
 
             coverTypeOptions.FirstOrDefault(aa => aa.Text == "Family").Click();
             var childAge = Driver.Instance.FindElement(By.XPath(fullElementSelector.childAgeElement));
             childAge.SendKeys("12,13");
             Thread.Sleep(500);
-            string childAgeToolTipElement = "//*[@id='quote-input-child-age']/div/div[1]/div/span/label/mat-label/button";
+
             //Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.XPath(childAgeToolTipElement)));
             Driver.Instance.FindElement(By.XPath(childAgeToolTipElement)).Click();
 

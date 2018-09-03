@@ -37,6 +37,7 @@ namespace QuotePageAutomation
                 Driver.GetWait().Until(ExpectedConditions.ElementToBeClickable(By.Id(tripTypeElement)));
                 //Driver.Instance.FindElement(By.Id(tripTypeElement)).Click();
                 Driver.ClickWithRetry(By.Id(tripTypeElement));
+                Thread.Sleep(750);
             }
 
             if (isSingleTrip)

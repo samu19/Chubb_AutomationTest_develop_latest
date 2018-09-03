@@ -97,7 +97,7 @@ namespace InsuranceTests
                     GetQuote(input.quoteData, fullElementSelector, input.testid, input.testName);
                     //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
                     List<double> displayedRates = new List<double>();
-                    displayedRates = PlanPage.VerifyPlanAmount();
+                    displayedRates = PlanPage.RetrievePlanAmount();
                     LogRatesChecking(input, displayedRates);
                 }
                 catch (Exception ex)
@@ -125,39 +125,42 @@ namespace InsuranceTests
             string TestName = "Check_Rates_AllinOne";
             List<InputData> ratesInput = LoadJsonInput(ConfigurationManager.AppSettings["CheckRatesSource"].ToString());
             FullElementSelector fullElementSelector = LoadElementSelectors();
+            string path = ConfigurationManager.AppSettings["testFolder"].ToString();
             UITest(TestName, () =>
             {
 
 
 
-                try
+
+                foreach (InputData i in ratesInput)
                 {
-                    foreach(InputData i in ratesInput)
+                    try
                     {
+
                         string TestName_ = "CHECK_RATE_" + i.testid + "-" + i.testName;
                         GetQuote(i.quoteData, fullElementSelector, i.testid, i.testName);
                         List<double> displayedRates = new List<double>();
-                        displayedRates = PlanPage.VerifyPlanAmount();
+                        displayedRates = PlanPage.RetrievePlanAmount();
                         LogRatesChecking(i, displayedRates);
+                        SaveScreenshot(path, "Success", TestName_);
                     }
                     //After the loop
                     //QuotePage.PlanPageFunctionalityTest(fullElementSelector);
 
-                }
-                catch (Exception ex)
-                {
-                    string message_ = "Exception for " + TestName + " : " + ex.Message;
-                    Helper.redirectConsoleLog(TestName, message_);
-                    Assert.Fail();
-                }
 
+                    catch (Exception ex)
+                    {
+                        string message_ = i.testid + " # " + "Exception for " + "-" + i.testName + "___" + TestName + " : " + ex.Message;
+                        Helper.redirectConsoleLog(TestName, message_);
+                    }
+                }
 
 
                 string message = TestName + " passed.";
 
-                string path = ConfigurationManager.AppSettings["testFolder"].ToString();
-                CalculateTestPassRates();
-                //SaveScreenshot(path, "Success", TestName);
+                //string path = ConfigurationManager.AppSettings["testFolder"].ToString();
+                //CalculateTestPassRates();
+                
                 Helper.redirectConsoleLog(TestName, message);
 
             });
@@ -352,24 +355,24 @@ namespace InsuranceTests
         }
 
 
-        public void VerifyPlanAmount()
-        {
-            try
-            {
-                PlanPage.VerifyPlanAmount();
+        //public void VerifyPlanAmount()
+        //{
+        //    try
+        //    {
+        //        PlanPage.VerifyPlanAmount();
 
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: " + ex.Message);
-                Assert.Fail();
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Exception: " + ex.Message);
+        //        Assert.Fail();
+        //    }
 
 
 
-            Console.WriteLine("Select Plan passed.");
+        //    Console.WriteLine("Select Plan passed.");
 
-        }
+        //}
 
         static object[] PLANDATA_1 = {
             new int[] {
@@ -413,6 +416,9 @@ namespace InsuranceTests
             string TestName = input.testid + "-" + input.testName;
             UITest(TestName, () =>
             {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("Starting test for test id: " + input.testid + " , test case: " + input.testName);
+                Console.ForegroundColor = ConsoleColor.White;
                 if (input.runQuotePageFunctionality)
                     QuoteFunctionality();
 
@@ -535,7 +541,7 @@ namespace InsuranceTests
                     }
                     QuotePage.GotoQuotePage();
 
-                    QuotePage.QuoteErrorMessageTest(fullElementSelector, quoteErrors);
+                    //QuotePage.QuoteErrorMessageTest(fullElementSelector, quoteErrors);
 
                     QuotePage.GotoQuotePage();
                     if (Helper.isAlertPresent())
@@ -574,7 +580,7 @@ namespace InsuranceTests
                     //}
                     ////QuotePage.FillSection(null).GetQuote(fullElementSelector);
                     //////QuotePage.PlanPageFunctionalityTest(fullElementSelector);
-                    QuotePage.QuoteFunctionalityTest(fullElementSelector);
+                    //QuotePage.QuoteFunctionalityTest(fullElementSelector);
                     QuotePage.GotoQuotePage();
                     if (Helper.isAlertPresent())
                     {
@@ -989,10 +995,10 @@ namespace InsuranceTests
         public static void LogRatesChecking(InputData input, List<double> displayedRates)
         {
             var csv = new StringBuilder();
-            int classicOutcome = Convert.ToInt16(displayedRates[0].Equals(Math.Round(input.expectedRates[0], 1)));
-            int premierOutcome = Convert.ToInt16(displayedRates[1].Equals(Math.Round(input.expectedRates[1], 1)));
-            int platinumOutcome = Convert.ToInt16(displayedRates[2].Equals(Math.Round(input.expectedRates[2], 1)));
-            var newLine = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}", input.testid, (input.quoteData.isSingleTrip?"Single Trip":"Annual Trip"), (input.quoteData.isSingleTrip ? input.quoteData.countries : null), (!input.quoteData.isSingleTrip ? input.quoteData.regionNo.ToString() : null), input.quoteData.departDate.ToString("dd MMM yyyy"), (input.quoteData.isSingleTrip ? input.quoteData.returnDate.ToString("dd MMM yyyy") : null), input.quoteData.coverType, input.quoteData.adultAge, input.quoteData.childAge, input.quoteData.promoCode, displayedRates[0].ToString(), input.expectedRates[0], classicOutcome, displayedRates[1].ToString(), input.expectedRates[1], premierOutcome, displayedRates[2].ToString(), input.expectedRates[2], platinumOutcome, (classicOutcome+premierOutcome+platinumOutcome == 3? 1 : 0)); //Convert.ToInt16(displayedRates[0].Equals(input.expectedRates[0])), Convert.ToInt16(displayedRates[1].Equals(input.expectedRates[1])), Convert.ToInt16(displayedRates[2].Equals(input.expectedRates[2])));
+            int classicOutcome = Convert.ToInt16(displayedRates[0].Equals(input.expectedRates[0]));
+            int premierOutcome = Convert.ToInt16(displayedRates[1].Equals(input.expectedRates[1]));
+            int platinumOutcome = Convert.ToInt16(displayedRates[2].Equals(input.expectedRates[2]));
+            var newLine = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}|{22}|{23}", input.testid, (input.quoteData.returnDate - input.quoteData.departDate).Days + 1, (input.quoteData.isSingleTrip?"Single Trip":"Annual Trip"), (input.quoteData.isSingleTrip ? input.quoteData.countries : null), (!input.quoteData.isSingleTrip ? input.quoteData.regionNo.ToString() : null), input.quoteData.departDate.ToString("dd MMM yyyy"), (input.quoteData.isSingleTrip ? input.quoteData.returnDate.ToString("dd MMM yyyy") : null), input.quoteData.coverType, input.quoteData.adultAge, input.quoteData.childAge, input.quoteData.promoCode, displayedRates[0].ToString(), input.expectedRates[0], classicOutcome, displayedRates[1].ToString(), input.expectedRates[1], premierOutcome, displayedRates[2].ToString(), input.expectedRates[2], platinumOutcome, (classicOutcome+premierOutcome+platinumOutcome == 3? 1 : 0), displayedRates[3], displayedRates[4], displayedRates[5]); //Convert.ToInt16(displayedRates[0].Equals(input.expectedRates[0])), Convert.ToInt16(displayedRates[1].Equals(input.expectedRates[1])), Convert.ToInt16(displayedRates[2].Equals(input.expectedRates[2])));
             csv.AppendLine(newLine);
             File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv.ToString());
         }
@@ -1012,7 +1018,7 @@ namespace InsuranceTests
 
             var csv2 = new StringBuilder();
 
-            var newLine2 = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}{22}|{23}", "Id", "TripType", "Countries", "RegionNo", "departDate", "returnDate", "coverType", "adultAge", "childAge", "promoCode", "Displayed Classic", "Expected Classic", "Classic Outcome", "Displayed Premier", "Expected Premier", "Premier Outcome", "Displayed Platinum", "Expected Platinum", "Platinum Outcome", "Overall Outcome", "=\"Pass Percentage: \"&AVERAGE(T:T)*100&\"%\"", "", "=\"# Passed: \"&SUM(T:T)", "=\"# Failed: \"&SUM(T:T)/AVERAGE(T:T)-SUM(T:T)");
+            var newLine2 = string.Format("{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}|{10}|{11}|{12}|{13}|{14}|{15}|{16}|{17}|{18}|{19}|{20}|{21}{22}|{23}|{24}", "Id", "TripDuration", "TripType", "Countries", "RegionNo", "departDate", "returnDate", "coverType", "adultAge", "childAge", "promoCode", "Displayed Classic", "Expected Classic", "Classic Outcome", "Displayed Premier", "Expected Premier", "Premier Outcome", "Displayed Platinum", "Expected Platinum", "Platinum Outcome", "Overall Outcome", "=\"Pass Percentage: \"&AVERAGE(T:T)*100&\"%\"", "", "=\"# Passed: \"&SUM(U:U)", "=\"# Failed: \"&SUM(U:U)/AVERAGE(U:U)-SUM(U:U)");
             csv2.AppendLine(newLine2);
             File.AppendAllText(ConfigurationManager.AppSettings["testFolder"] + ConfigurationManager.AppSettings["checkRatesFileName"] + ".csv", csv2.ToString());
             //LoadToolTip();

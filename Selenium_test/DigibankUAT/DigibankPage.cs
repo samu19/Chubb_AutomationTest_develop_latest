@@ -45,11 +45,9 @@ namespace DigibankUAT
             string iframeElement = "/html/frameset/frame[2]";
 
             Driver.GetWait().Until(ExpectedConditions.FrameToBeAvailableAndSwitchToIt(By.XPath(iframeElement)));
-            if (Helper.isAlertPresent())
-            {
-                IAlert alert = Driver.Instance.SwitchTo().Alert();
-                alert.Accept();
-            }
+
+            Helper.isErraticPopUpPresent();
+
 
 
             //string popUpSkipElement = "//*[@id='skipButton']";

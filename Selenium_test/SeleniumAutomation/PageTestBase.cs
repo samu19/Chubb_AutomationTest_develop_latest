@@ -37,7 +37,7 @@ namespace SeleniumAutomation
         public void SaveScreenshot(string path, string prefix, string TestName)
             {
             var screenshot = ((ITakesScreenshot)Driver.Instance).GetScreenshot();
-            string imageFolder = Path.GetFullPath(path + TestName + "\\Screenshots");
+            string imageFolder = Path.GetFullPath(path + "\\Screenshots\\" + TestName );
             if (!Directory.Exists(imageFolder))
             {
                 Directory.CreateDirectory(imageFolder);

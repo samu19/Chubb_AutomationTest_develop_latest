@@ -5,6 +5,7 @@ using SeleniumExtras.WaitHelpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -24,6 +25,13 @@ namespace PlanPageAutomation
             Helper.WriteToCSV("Plan Page", "Retrieved Premiums", true, "Original: " + originalAmount + ", Final: " +  planAmount, testId, testName);
 
             Driver.Instance.FindElement(By.XPath(applyPlanElement)).Click();
+
+            if(ConfigurationManager.AppSettings["url"].Contains("pweb"))
+            {
+              
+                string pWebContinueElement = "/html/body/app-root/pweb-redirect/div/div/div/div/div[2]/custom-button[2]/button/span";
+                Driver.Instance.FindElement(By.XPath(pWebContinueElement)).Click();
+            }
             //new WebDriverWait(Driver.Instance, System.TimeSpan.FromSeconds(20)).Until(ExpectedConditions.UrlContains("terms"));
             ///html/body/chubb-dbs-app/app-terms-conditions/div[2]/div/div/div[2]/button
 
@@ -39,15 +47,26 @@ namespace PlanPageAutomation
             return combinedAmount;
         }
 
-        public static List<double> VerifyPlanAmount()
+        public static List<double> RetrievePlanAmount()
         {
-            string packagePriceElement = "package-price-before";
-            ReadOnlyCollection<IWebElement> packagePricesFinal = Driver.Instance.FindElements(By.ClassName(packagePriceElement));
+            string packagePriceBeforeElement = "package-price-before";
+            string packagePriceAfterElement = "package-price";
+            ReadOnlyCollection<IWebElement> packagePricesBefore = Driver.Instance.FindElements(By.ClassName(packagePriceBeforeElement));
+            ReadOnlyCollection<IWebElement> packagePricesFinal = Driver.Instance.FindElements(By.ClassName(packagePriceAfterElement));
+
             List<double> convertedPrice = new List<double>();
             string priceInString;
-            foreach(IWebElement i in packagePricesFinal)
+            foreach(IWebElement i in packagePricesBefore)
             {
                 priceInString = i.Text; 
+                priceInString = priceInString.Replace(",", ""); // remove comma if it exists
+                convertedPrice.Add(Convert.ToDouble(priceInString));
+
+            }
+
+            foreach (IWebElement i in packagePricesFinal)
+            {
+                priceInString = i.Text;
                 priceInString = priceInString.Replace(",", ""); // remove comma if it exists
                 convertedPrice.Add(Convert.ToDouble(priceInString));
 
@@ -64,9 +83,9 @@ namespace PlanPageAutomation
 
         public static void PlanPageFunctionalityTest(FullElementSelector fullElementSelector)
         {
-            List<double> planAmounts = VerifyPlanAmount();
+            List<double> planAmounts = RetrievePlanAmount();
 
-            if(planAmounts.Count == 3)
+            if(planAmounts.Count == 6)
                 Helper.WriteToCSV("Plan Page Functionality", "Pricing of the 3 plans, classic, premier and platinum is displayed", true);
             else
                 Helper.WriteToCSV("Plan Page Functionality", "Pricing of the 3 plans, classic, premier and platinum is displayed", false);

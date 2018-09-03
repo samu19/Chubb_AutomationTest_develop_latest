@@ -1,9 +1,12 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SeleniumAutomation
@@ -13,7 +16,7 @@ namespace SeleniumAutomation
         public static void redirectConsoleLog(string testName, string message)
         {
             string path = ConfigurationManager.AppSettings["testFolder"].ToString();
-            FileStream fs = new FileStream(path + testName + "\\out.txt", FileMode.Create);
+            FileStream fs = new FileStream(path + testName + "\\out.txt", FileMode.Append);
             // First, save the standard output.
             TextWriter tmp = Console.Out;
             StreamWriter sw = new StreamWriter(fs);
@@ -30,6 +33,22 @@ namespace SeleniumAutomation
             try
             {
                 Driver.Instance.SwitchTo().Alert();
+                return true;
+            } // try
+            catch (Exception e)
+            {
+                return false;
+            } // catch
+        }
+
+
+        public static bool isErraticPopUpPresent()
+        {
+            try
+            {
+                Thread.Sleep(3000);
+                var a = Driver.Instance.FindElement(By.XPath("//*[@id='skipButton']"));
+                a.Click();
                 return true;
             } // try
             catch (Exception e)

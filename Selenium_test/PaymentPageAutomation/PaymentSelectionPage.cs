@@ -4,6 +4,7 @@ using SeleniumAutomation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -17,13 +18,13 @@ namespace PaymentPageAutomation
         {
             Thread.Sleep(5000);
 
-            if (paymentType == "CC")
+            if (paymentType == "CC" & !ConfigurationManager.AppSettings["url"].Contains("pweb"))
             {
                 
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(fullElementSelector.creditCardSelectorElement)));
                 Driver.Instance.FindElement(By.XPath(fullElementSelector.creditCardSelectorElement)).Click();
             }
-            else
+            else if (paymentType == "CASA")
             {
                 string CASAArrowElement2 = "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[1]/div/custom-select/div/mat-form-field/div/div[1]/div/input";
                 string CASAArrowElement = "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[1]/div/custom-select/div/mat-form-field/div/div[1]/div/span[1]";

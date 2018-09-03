@@ -4,6 +4,7 @@ using SeleniumAutomation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -34,11 +35,12 @@ namespace TravellerDetailsPageAutomation
             //    Thread.Sleep(1000);
             //}
             Thread.Sleep(10000);
+
             string applicantMobileElement = fullElementSelector.applicantMobileElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));
             var mobile = Driver.Instance.FindElement(By.XPath(applicantMobileElement));
             js.ExecuteScript("arguments[0].scrollIntoView( {behavior: 'auto',block: 'center',inline: 'center'}); ", mobile);
-            mobile.Click();
+            //mobile.Click();
             //mobile.Clear();
             mobile.SendKeys(Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace + Keys.Backspace);
             mobile.SendKeys(aMobile);
@@ -58,6 +60,40 @@ namespace TravellerDetailsPageAutomation
             email.SendKeys(aEmail);
             Helper.WriteToCSV("Applicant Details Page", "Applicant email updated", true, null, testId, testName);
             Thread.Sleep(1000);
+            if (ConfigurationManager.AppSettings["url"].Contains("pweb"))
+            {
+                string applicantNameElement = fullElementSelector.applicantNameElement;
+                string applicantNRICElement = fullElementSelector.applicantNRICElement;
+                string applicantDOBElement = fullElementSelector.applicantDOBElement;
+                string applicantNationalityElement = fullElementSelector.applicantNationalityElement;
+
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantNameElement)));
+                Driver.Instance.FindElement(By.XPath(applicantNameElement)).SendKeys(aFullName);
+
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantNRICElement)));
+                Driver.Instance.FindElement(By.XPath(applicantNRICElement)).SendKeys(aNRIC);
+
+
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantDOBElement)));
+                Driver.Instance.FindElement(By.XPath(applicantDOBElement)).SendKeys(aDOB);
+
+
+                Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantNationalityElement)));
+                Driver.Instance.FindElement(By.XPath(applicantNationalityElement)).SendKeys(aNationality);
+
+                string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
+                ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                {
+                    string popupTriggerElement = fullElementSelector.popupTriggerElement;
+                    Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
+                    Thread.Sleep(500);
+                    autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+
+                }
+                autocompletePopUps.First(a => a.Text == aNationality).Click();
+
+            }
 
         }
     }

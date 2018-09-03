@@ -2,6 +2,8 @@
    {  
       "testId":1,
 	  "testName":"SingleTrip_Individual_Is_Traveller_Classic",
+	  "userName" : "",
+	  "pin" : "",
 	  "quoteData":{  
          "isSingleTrip":true,
          "countries":"Thailand",
