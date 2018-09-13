@@ -26,23 +26,23 @@ namespace PaymentPageAutomation
             Driver.Instance.SwitchTo().DefaultContent();
             Helper.WriteToCSV("Payment Details Page", "Card number filled", true, cardNo, testId, testName);
 
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
 
             /* name */
-            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("//*[@id='input-card-holder-name-input']")));
-            var name_ = Driver.Instance.FindElement(By.XPath("//*[@id='input-card-holder-name-input']"));
+            Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(fullElementSelector.cardholderNameElement)));
+            var name_ = Driver.Instance.FindElement(By.XPath(fullElementSelector.cardholderNameElement));
             name_.SendKeys(cardHolderName);
             Helper.WriteToCSV("Payment Details Page", "Cardholder name filled", true, null, testId, testName);
 
             /* Expiry */
             //Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/chubb-dbs-app/app-pay/payment-dbs/form/div[1]/div[3]/div[2]/div[1]/mat-form-field/div/div[1]/div/input")));
-            var expiry = Driver.Instance.FindElement(By.XPath("//*[@id='input-expiry-date-input']"));
+            var expiry = Driver.Instance.FindElement(By.XPath(fullElementSelector.cardExpiryElement));
             expiry.SendKeys(expiryDate);
             Helper.WriteToCSV("Payment Details Page", "Expiry Date filled", true, null, testId, testName);
 
             /* cvv */
             //Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath("/html/body/chubb-dbs-app/app-pay/payment-dbs/form/div[1]/div[3]/div[2]/div[2]/mat-form-field/div/div[1]/div/input")));
-            var cvv_ = Driver.Instance.FindElement(By.XPath("//*[@id='input-cvv-input']"));
+            var cvv_ = Driver.Instance.FindElement(By.XPath(fullElementSelector.cardCvvElement));
             cvv_.SendKeys(cvv);
             Helper.WriteToCSV("Payment Details Page", "cvv filled", true, null, testId, testName);
 

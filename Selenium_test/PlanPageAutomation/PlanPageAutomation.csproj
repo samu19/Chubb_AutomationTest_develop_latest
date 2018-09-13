@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CyberSmartPlanPage.cs" />
     <Compile Include="PlanPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="ApplicantDetail.cs" />
     <Compile Include="EditTravellerDetailsPage.cs" />
+    <Compile Include="PromoCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TravellerDetail.cs" />
     <Compile Include="TravellerDetails.cs" />

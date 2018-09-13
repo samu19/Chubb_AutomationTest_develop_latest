@@ -34,7 +34,10 @@ namespace TravellerDetailsPageAutomation
             //    applicantIsTravellerToggle.Click();
             //    Thread.Sleep(1000);
             //}
-            Thread.Sleep(10000);
+            if (ConfigurationManager.AppSettings["paymentMode"] == "CASA")
+                Thread.Sleep(10000);
+            else
+                Thread.Sleep(3000);
 
             string applicantMobileElement = fullElementSelector.applicantMobileElement;
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(applicantMobileElement)));

@@ -48,5 +48,11 @@
 	"tDOBElement" : "./div/custom-input/div/mat-form-field/div/div[1]/div/input",
 	"tNationality" : "./div/custom-autocomplete/div/mat-form-field/div/div[1]/div/input",
 	"applicantDetailNextButtonElement" : "//*[@id='application-details-button-next']",
-	"creditCardSelectorElement" : "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]"
+	"creditCardSelectorElement" : "/html/body/app-root/apply/div[2]/div/div/div[2]/div/payment-details/payment-method/mat-card/div/form/mat-radio-group/div/div[2]/mat-radio-button/label/div[1]/div[1]",
+	"cardholderNameElement" : "//*[@id='input-card-holder-name-input']",
+	"cardExpiryElement" : "//*[@id='input-expiry-date-input']",
+	"cardCvvElement" : "//*[@id='input-cvv-input']",
+	"iAcceptCheckBoxElement" : "/html/body/app-root/apply/div[2]/div/div/div[2]/div/verify-details/div/div[1]/div/div[1]/custom-checkbox/div/mat-checkbox/label/div" ,
+	"submitElement" : "//*[@id='verify-details-button-submit']",
+	"policyNoElement" : "/html/body/app-root/complete/div[2]/div/div/div/div[3]/custom-label[2]/div"
 }

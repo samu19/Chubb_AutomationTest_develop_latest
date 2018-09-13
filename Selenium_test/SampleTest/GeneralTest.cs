@@ -69,7 +69,7 @@ namespace SampleTest
         [SetUp()]
         public void SetupTest()
         {
-            Driver.Initialize();
+            Driver.Initialize(ConfigurationManager.AppSettings["browser"]);
 
         }
 

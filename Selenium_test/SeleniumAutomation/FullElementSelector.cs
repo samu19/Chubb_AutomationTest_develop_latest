@@ -58,6 +58,12 @@ namespace SeleniumAutomation
         public string tNationality { get; set; }
         public string applicantDetailNextButtonElement { get; set; }
         public string creditCardSelectorElement { get; set; }
+        public string cardholderNameElement { get; set; }
+        public string cardExpiryElement { get; set; }
+        public string cardCvvElement { get; set; }
+        public string iAcceptCheckBoxElement { get; set; }
+        public string submitElement { get; set; }
+        public string policyNoElement { get; set; }
     }
 
 }

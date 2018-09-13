@@ -20,28 +20,41 @@ namespace SeleniumAutomation
 
         public static IWebDriver Instance { get; set; }
 
-        public static void Initialize(int Timeout)
+        //public static void Initialize(int Timeout)
+        //{
+        //    ChromeOptions options = new ChromeOptions();
+
+        //    //options.EnableMobileEmulation("iPhone 6/7/8");
+        //    options.AddArgument("start-maximized");
+        //    Instance = new ChromeDriver();
+
+        //    Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(timeout);
+        //}
+
+        public static void Initialize(string browser)
         {
-            ChromeOptions options = new ChromeOptions();
+            if (browser.ToLower() == "chrome")
+            {
+                ChromeOptions options = new ChromeOptions();
 
-            //options.EnableMobileEmulation("iPhone 6/7/8");
-            options.AddArgument("start-maximized");
-            Instance = new ChromeDriver();
+                if (ConfigurationManager.AppSettings["elementConfigFileName"] == "elementConfigPaylah")
+                    options.EnableMobileEmulation("Galaxy S5");
+                options.AddArgument("start-maximized");
+                //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
+                options.AddArgument("disable-infobars");
+                Instance = new ChromeDriver(options);
+                Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
+            }
+            else if (browser.ToLower() == "ie")
+            {
+                var options = new InternetExplorerOptions { EnableNativeEvents = false };
+                options.AddAdditionalCapability("disable-popup-blocking", true);
+                //InternetExplorerOptions options = new InternetExplorerOptions();
+                //options.AddAdditionalCapability()
+                Instance = new InternetExplorerDriver(options);
+                Instance.Manage().Window.Maximize();
 
-            Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(timeout);
-        }
-
-        public static void Initialize()
-        {
-            ChromeOptions options = new ChromeOptions();
-
-            if (ConfigurationManager.AppSettings["elementConfigFileName"] == "elementConfigPaylah")
-                options.EnableMobileEmulation("Galaxy S5");
-            options.AddArgument("start-maximized");
-            //string driverFolder = Path.GetFullPath(@"..\..\..\..\Drivers");
-            options.AddArgument("disable-infobars");
-            Instance = new ChromeDriver(options);
-            Instance.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(10);
+            }
         }
 
         public static void Close()

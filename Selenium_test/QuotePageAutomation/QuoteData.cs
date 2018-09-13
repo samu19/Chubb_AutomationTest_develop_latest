@@ -44,6 +44,7 @@ namespace QuotePageAutomation
             {
                 // To pass in countries IBMB: 
                 ////*[@id="Destination"]/div/div[1]/div/div[1]/div/input
+                Thread.Sleep(500);
                 string countriesElement = fullElementSelector.countriesElement;
                 Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(countriesElement)));
                 var destination = Driver.Instance.FindElement(By.XPath(countriesElement));
@@ -63,15 +64,25 @@ namespace QuotePageAutomation
                     destination.SendKeys(_countries);
                     //Thread.Sleep(1500); // 
                     string autocompletePopUpElement = fullElementSelector.autocompletePopupElement;
-                    ReadOnlyCollection<IWebElement> autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
-                    if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                    ReadOnlyCollection<IWebElement> autocompletePopUps = null;
+                    if (ConfigurationManager.AppSettings["browser"].ToLower() != "ie")
+                    {
+                        autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                        if (autocompletePopUps.Count() == 0) // If autocomplete somehow does not popup
+                        {
+                            string popupTriggerElement = fullElementSelector.popupTriggerElement;
+                            Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
+                            Thread.Sleep(500);
+                            autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
+                        }
+                    }
+                    else
                     {
                         string popupTriggerElement = fullElementSelector.popupTriggerElement;
                         Driver.Instance.FindElement(By.XPath(popupTriggerElement)).Click(); // trigger dropdown arrow
                         Thread.Sleep(500);
                         autocompletePopUps = Driver.Instance.FindElements(By.CssSelector(autocompletePopUpElement));
                     }
-
                     autocompletePopUps.First(a => a.Text == _countries).Click();
                     //string popupCountryElement = fullElementSelector.popupCountryElement;
                     //Driver.Instance.FindElement(By.XPath(popupCountryElement)).Click();
@@ -141,7 +152,8 @@ namespace QuotePageAutomation
             adultAge = Regex.Replace(adultAge, @"\s+", ",");
 
             string adultAgeElement = fullElementSelector.adultAgeElement;
-            adultAgeElement = "//*[@id='quote-age-" + coverType.ToLower() + "-" + (isSingleTrip? "single" : "multi") + "-input']";
+            if (ConfigurationManager.AppSettings["elementConfigFileName"] != "elementConfigPaylah")
+                adultAgeElement = "//*[@id='quote-age-" + coverType.ToLower() + "-" + (isSingleTrip? "single" : "multi") + "-input']";
 
             Driver.GetWait().Until(ExpectedConditions.ElementExists(By.XPath(adultAgeElement)));
             Driver.Instance.FindElement(By.XPath(adultAgeElement)).SendKeys(adultAge);
